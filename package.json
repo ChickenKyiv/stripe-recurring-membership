@@ -40,7 +40,7 @@
     "express-session": "*",
     "express-subdomain": "^1.0.1",
     "express-validator": "^2.6.0",
-    "lodash": "^2.4.1",
+    "lodash": "^4.17.4",
     "middleware-responder": "^1.0.0",
     "mongoose": "^4.2.5",
     "mongoose-timestamp": "^0.3.0",
