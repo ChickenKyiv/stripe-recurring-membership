@@ -1,0 +1,64 @@
+<form {% if !user.stripe.last4 %}id="cardForm"{% endif %} 
+action="/user/plan" method="POST" 
+class="form-horizontal"
+id="billing2">
+
+  <div class="form-group">
+    <label for="plan" class="col-sm-3 control-label">
+    Plan
+    </label>
+    <div class="col-sm-4">
+
+      {% for plan in plans %}
+
+        {% if plan.change == true %}
+          not free plan
+        {% endif %}
+
+        {% if plan.change == true %}
+        
+          {% include "_plan-partial.html" %}
+
+
+
+        {% endif %}
+
+        
+
+      {% endfor %}
+
+    </div>
+  </div>
+
+  {% if !user.stripe.last4 %}
+
+  <div class="group" id="cardWrapper">
+      <label>
+        <span>
+        Card
+        </span>
+        <div class="form-control-static">4242424242424242, 11/19, 123 - <a href="https://stripe.com/docs/testing">additional test info</a></div>
+
+        <div id="card-element" class="field"></div>
+      </label>
+
+<!-- @TODO We don't need this element, because we're using Stripe error handlers. remove it later. Just for testing proposes -->
+        <div id="cardFormError" class="alert alert-danger hidden" role="alert">
+          <p>{{error}}</p>
+        </div>
+
+    </div>
+
+    <!-- {% include "_stripe-card-partial.html" %} -->
+
+  {% endif %}
+
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-4">
+      <button type="submit" class="btn btn-primary">
+      Update Plan
+      </button>
+    </div>
+  </div>
+
+</form>

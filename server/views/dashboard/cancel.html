@@ -1,0 +1,29 @@
+{% extends '../layouts/dashboard.html' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+ <div class="container-fluid container-max">
+    <div class="page-header">
+      <h1>
+      Home <small>/views/dashboard/cancel</small>
+      </h1>
+    </div>
+
+    {% include "../partials/flash.html" %}
+
+    <div class="page-header">
+      <h3>
+      Cancel account
+      </h3>
+    </div>
+
+    <p>
+    	I think we need some text here.
+    </p>
+    {% include "../forms/delete-subscription.html" %}
+
+    
+</div>
+
+{% endblock %}

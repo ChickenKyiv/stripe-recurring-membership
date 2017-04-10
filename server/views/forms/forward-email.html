@@ -1,0 +1,38 @@
+<form action="/user/update-forward-email" method="POST" class="form-horizontal">
+	<div class="form-group">
+	<label class="col-sm-3 control-label">
+	    Current Forward Email - {{forward-email}}
+    </label>	
+	</div>
+  <div class="form-group">
+
+
+
+    <label for="password" class="col-sm-3 control-label">
+    New Password
+    </label>
+    <div class="col-sm-4">
+      <input type="password" name="password" class="form-control">
+    </div>
+
+  </div>
+  <div class="form-group">
+
+    <label for="confirm" class="col-sm-3 control-label">
+    Confirm Password
+    </label>
+    <div class="col-sm-4">
+      <input type="password" name="confirm" class="form-control">
+    </div>
+
+  </div>
+  <div class="form-group">
+
+    <div class="col-sm-offset-3 col-sm-4">
+      <button type="submit" class="btn btn-primary">
+      	Update Password
+      </button>
+    </div>
+
+  </div>
+</form>

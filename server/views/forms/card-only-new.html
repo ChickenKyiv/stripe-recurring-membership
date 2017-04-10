@@ -1,0 +1,32 @@
+    <form role="form" id="cardForm2" action="/user/billing" method="POST" class="form-horizontal">
+      
+  <div class="group" id="cardWrapper">
+      <label>
+        <span>
+        Card
+        </span>
+        <div class="form-control-static">4242424242424242, 11/19, 123 - <a href="https://stripe.com/docs/testing">additional test info</a></div>
+
+        <div id="card-element" class="field"></div>
+      </label>
+
+<!-- @TODO We don't need this element, because we're using Stripe error handlers. remove it later. Just for testing proposes -->
+        <div id="cardFormError" class="alert alert-danger hidden" role="alert">
+          <p>{{error}}</p>
+        </div>
+
+    </div>
+
+     <!-- {% include "_stripe-card-partial.html" %} -->
+
+
+
+
+
+      <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-4">
+          <button type="submit" class="btn btn-primary">Update Card</button>
+        </div>
+      </div>
+      
+    </form>

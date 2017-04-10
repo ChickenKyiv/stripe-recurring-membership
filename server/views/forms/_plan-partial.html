@@ -1,0 +1,13 @@
+<div class="radio">
+	<label>
+	  <input type="radio" 
+	  		 {% if user.stripe.plan == loop.key %}checked{% endif %} 
+	         name="plan" 
+	         value="{{loop.key}}" 
+	         data-toggle="radio" />
+
+	  <span>
+	    {{plan.name}} - {{plan.amount}}
+	  </span>
+	</label>
+</div>

@@ -1,0 +1,80 @@
+{% extends 'layouts/application.html' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+
+
+    <div class="container" style="max-width: 400px;">
+      <!-- <form action="/charge" method="POST"> -->
+      <form action="/signup22" method="POST" id="payment-form">
+
+        <h2>Sign Up Step2</h2>
+        <p>
+        <a href="/">Back</a>
+        </p>
+        <!-- <p>
+          <input type="text" name="email" class="form-control" 
+                 placeholder="Email address" 
+                 value="{{form.email}}" autofocus />
+        </p> -->
+        <!-- <p>
+          <input type="password" name="password" class="form-control" placeholder="Password">
+        </p>
+        <p>
+          <input type="password" name="password2" class="form-control" placeholder="Password2">
+        </p> -->
+        <label>
+        <span>Name</span>
+        <input name="cardholder-name" class="field" placeholder="Jane Doe" />
+        </label>
+        <label>
+          <span>Phone</span>
+          <input class="field" placeholder="(123) 456-7890" type="tel" />
+        </label>
+        <label>
+        <span>ZIP code</span>
+        <input name="address-zip" class="field" placeholder="94110" />
+        
+
+
+        </label>
+
+
+
+
+
+
+
+
+        <div class="group">
+          <label>
+            <span>Card</span>
+            <div id="card-element" class="field"><!-- a Stripe Element will be inserted here. --></div>
+          </label>
+        </div>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+
+        <div class="outcome">
+            <div class="error"></div>
+            <div class="success">
+              Success! Your Stripe token is <span class="token"></span>
+            </div>
+          </div>
+
+        <!-- or -->
+        <!-- Used to display Element errors -->
+            <!-- <div id="card-errors"></div> -->
+
+
+
+      </form>
+
+
+
+
+
+      <hr>
+    </div>
+{% endblock %}
