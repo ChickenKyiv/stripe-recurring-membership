@@ -1,0 +1,8 @@
+node_modules
+.tmp
+.sass-cache
+/npm-debug.log
+.env
+/server/data/*
+local-links
+/server/config/secrets.js
