@@ -43,7 +43,7 @@
     "lodash": "^4.17.4",
     "middleware-responder": "^1.0.0",
     "mongoose": "^4.2.5",
-    "mongoose-timestamp": "^0.3.0",
+    "mongoose-timestamp": "^0.6.0",
     "morgan": "~1.8.1",
     "nodemailer": "^4.0.0",
     "nodemailer-mailgunapi-transport": "0.0.3",
