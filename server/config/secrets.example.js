@@ -20,7 +20,7 @@ module.exports = {
   },
 
 // second version. before it was stripeOptions with different array structure.
-  stripeNextVersion:{
+  stripeNextVersion: {
     "public": {
       "plans": [
        {

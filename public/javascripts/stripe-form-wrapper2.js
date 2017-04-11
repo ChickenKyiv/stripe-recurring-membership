@@ -41,7 +41,32 @@ function setOutcome(result) {
   // successElement.classList.remove('visible');
   // errorElement.classList.remove('visible');
 
-  console.log( result );
+    console.log( result );
+
+    var url  = '/signup2'; 
+    var data = {
+      result: result
+    };
+
+    var data = {
+      error: result.error
+    };
+    
+    var data = {
+      result: token
+    };
+    
+    // add ajax post and display info in error flash messages
+    // $.ajax({
+    //     type: "POST",
+    //     url : "/signupshort",
+    //     data: data,
+    //     // dataType: 'html'
+    // })
+    // .done(function () {
+    //     console.log("request succeeded");
+    //     // alert("login success");
+    // });
 
   if (result.token) {
     // Use the token to create a charge or a customer
