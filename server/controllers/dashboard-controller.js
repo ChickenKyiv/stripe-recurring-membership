@@ -153,7 +153,7 @@ exports.updateForwardEmailAction = function (req, res, next){
   // })
 };
 
-exports postForwardEmailAction = function (req, res, next){
+exports.postForwardEmailAction = function (req, res, next){
 
   var form       = {},
       error      = null,
@@ -172,5 +172,5 @@ exports postForwardEmailAction = function (req, res, next){
     user: req.user, 
     form: form, 
     error: error,
-  })
+  });
 };

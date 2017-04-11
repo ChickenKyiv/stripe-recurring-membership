@@ -33,7 +33,7 @@ function setOutcome(result) {
   var successElement = $('.success');
 
   // var errorElement = document.querySelector('.error');
-  var errorElement = $('.error');
+  var errorElement   = $('.error');
 
   successElement.removeClass('visible');
   errorElement.removeClass('visible');
@@ -41,15 +41,23 @@ function setOutcome(result) {
   // successElement.classList.remove('visible');
   // errorElement.classList.remove('visible');
 
+  console.log( result );
+
   if (result.token) {
     // Use the token to create a charge or a customer
     // https://stripe.com/docs/charges
+
+    console.log( result.token.id );
+
     successElement.find('.token').html( result.token.id );
     // successElement.querySelector('.token').textContent = result.token.id;
     // successElement.classList.add('visible');
     successElement.addClass('visible');
 
   } else if (result.error) {
+
+    console.log( result.error );
+    console.log( result.error.message );
 
   	errorElement.html( result.error.message );
     // errorElement.textContent = result.error.message;
@@ -59,6 +67,7 @@ function setOutcome(result) {
 
   }
 }
+
 
 card.on('change', function(event) {
   setOutcome(event);
@@ -74,7 +83,7 @@ $('#payment-form').submit(function(e){
 	};
 	console.log( extraDetails );
 
-		stripe.createToken(card, extraDetails).then(setOutcome);				
+	stripe.createToken(card, extraDetails).then(setOutcome);				
 
 });
 
