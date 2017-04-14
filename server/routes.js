@@ -281,6 +281,7 @@ module.exports = function (app, passport) {
     dashboard.getBilling
   );
 
+
   app.get('/profile',
     setRender('dashboard/profile'),
     setRedirect({auth: '/'}),
@@ -289,12 +290,6 @@ module.exports = function (app, passport) {
   );
 
 
-  app.get('/profile',
-    setRender('dashboard/whois-settings'),
-    setRedirect({auth: '/'}),
-    isAuthenticated,
-    dashboard.getProfile
-  );
 
 
 
