@@ -1,0 +1,48 @@
+{% extends 'layouts/homepage.html' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+  <div class="container" style="max-width: 400px;">
+    <h2>
+      Home Page with search field
+    </h2>
+
+
+<!-- =========================================
+     		Hero-Section
+	========================================== -->
+        <div class="container vmiddle fast-reg">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="hero-section">
+                        
+                        <!-- Welcome - Hero Message -->
+                        <h1 class="text-white">
+                            Get a professional email in 60 seconds <br /> 
+                            Use it directly from your existing email account
+                        </h1>
+                        <p class="text-white">
+                            (Gmail, Hotmail, Yahoo, and many more)
+                        </p>
+                        <p>
+                            No setup needed
+                        </p>
+                        
+                        <div class="col-sm-12">
+                            <div class="fast-reg-box">
+
+                        	    {% include "../forms/search-domain.html" %}
+
+                            </div><!-- /End Fast-Reg -->
+                        </div><!-- /End Col -->
+                    </div><!-- /End Intro-Section -->
+                </div><!-- /End Col -->
+            </div><!-- /End Row -->
+        </div><!-- /End Container Hero-Section -->
+
+
+
+
+  </div>
+{% endblock %}

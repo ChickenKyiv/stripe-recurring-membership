@@ -2,7 +2,9 @@
 
 exports.fetch = function(req, res, next){
 
-  
+  // fetchCom
+  // fetchNet
+  // fetchMe
 	return false;
 };
 

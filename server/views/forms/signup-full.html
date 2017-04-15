@@ -1,1 +1,38 @@
-signup-full.html
+      <form action="/signup2" method="post" role="payment-form" id="payment-form">
+
+        <div class="form-group">
+          <label class="sr-only" for="inputEmail">Domain name</label>
+          <input type="text" class="form-control" id="inputDomain" name="domain" placeholder="www.domain.net" value="{{form.domain}}" autofocus />
+          <!-- <span class="help-block">All emails sent to [anything]@mydomain.me will be received here</span> -->
+        </div>
+
+        <div class="form-group">
+          <label class="sr-only" for="inputEmail">your <u>existing</u> email</label>
+          <input type="email" class="form-control" id="inputEmail" name="email" placeholder="your existing email" value="{{form.email}}" autofocus>
+          <span class="help-block">All emails sent to [anything]@mydomain.me will be received here</span>
+        </div>
+        
+
+      <!--   <div class="form-group">
+          <label class="sr-only" for="inputPassword">choose a password</label>
+          <input type="password" class="form-control" id="inputPassword" name="password" placeholder="choose a password">
+        </div> -->
+
+
+        <!-- <div class="form-group">
+          <label class="sr-only" for="inputPasswordCheck">repeat password</label>
+          <input type="password" class="form-control" id="inputPasswordCheck" name="password_confirm" placeholder="repeat password">
+        </div> -->
+
+
+
+
+        <button type="submit" class="btn btn-primary btn-block" name="plan" value="quarterly">Quarterly</button>
+
+        <button type="submit" class="btn btn-primary btn-block" name="plan" value="yearly">Yearly</button>
+
+
+
+
+
+      </form>

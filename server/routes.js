@@ -11,6 +11,8 @@ setRedirect       = require('middleware-responder').setRedirect,
 // stripeEvents      = require('./middleware/stripe-events'),
 secrets           = require('./config/secrets');
 
+// var boot          = require('./controllers/boot');
+
 // controllers
 var users     = require('./controllers/users-controller'),
 main          = require('./controllers/main-controller'),
@@ -281,6 +283,7 @@ module.exports = function (app, passport) {
     dashboard.getBilling
   );
 
+
   app.get('/profile',
     setRender('dashboard/profile'),
     setRedirect({auth: '/'}),
@@ -289,12 +292,6 @@ module.exports = function (app, passport) {
   );
 
 
-  app.get('/profile',
-    setRender('dashboard/whois-settings'),
-    setRedirect({auth: '/'}),
-    isAuthenticated,
-    dashboard.getProfile
-  );
 
 
 
