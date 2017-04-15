@@ -11,6 +11,8 @@ setRedirect       = require('middleware-responder').setRedirect,
 // stripeEvents      = require('./middleware/stripe-events'),
 secrets           = require('./config/secrets');
 
+// var boot          = require('./controllers/boot');
+
 // controllers
 var users     = require('./controllers/users-controller'),
 main          = require('./controllers/main-controller'),
