@@ -11,6 +11,8 @@ setRedirect       = require('middleware-responder').setRedirect,
 // stripeEvents      = require('./middleware/stripe-events'),
 secrets           = require('./config/secrets');
 
+// var boot          = require('./controllers/boot');
+
 // controllers
 var users     = require('./controllers/users-controller'),
 main          = require('./controllers/main-controller'),
@@ -121,9 +123,9 @@ module.exports = function (app, passport) {
         from   : from, // sender address
         to     : 'Arthur <arthur.tkachenko.netweight@gmail.com>', // list of receivers
         // to: user.local.email,
-        subject: 'Hello ✔', // Subject line
-        text   : 'Hello world ?', // plain text body
-        html   : '<b>Hello world ?</b>' // html body
+        subject: 'Hello ✔',              // Subject line
+        text   : 'Hello world ?',        // plain text body
+        html   : '<b>Hello world ?</b>', // html body
 
         template: 'forgot', //Name email file template
         context: params
@@ -163,6 +165,8 @@ module.exports = function (app, passport) {
 
 
   });
+
+
 
   // homepage and dashboard
   app.get('/',
@@ -279,6 +283,7 @@ module.exports = function (app, passport) {
     dashboard.getBilling
   );
 
+
   app.get('/profile',
     setRender('dashboard/profile'),
     setRedirect({auth: '/'}),
@@ -287,12 +292,6 @@ module.exports = function (app, passport) {
   );
 
 
-  app.get('/profile',
-    setRender('dashboard/whois-settings'),
-    setRedirect({auth: '/'}),
-    isAuthenticated,
-    dashboard.getProfile
-  );
 
 
 
@@ -353,6 +352,7 @@ module.exports = function (app, passport) {
     isAuthenticated,
     users.postForwardEmailAction
   );
+  
   // // use this url to receive stripe webhook events
   // app.post('/stripe/events',
   //   stripeWebhook.middleware,

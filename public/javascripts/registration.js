@@ -30,9 +30,10 @@ $( document ).ready(function() {
 		}
 		// send request to /signupshort
 
+
 		$.ajax({
 		    type: "POST",
-		    url: "/signupshort",
+		    url : "/signupshort",
 		    data: data,
 		    // dataType: 'html'
 		})
@@ -41,26 +42,7 @@ $( document ).ready(function() {
             // alert("login success");
         });
 
-	})
-
-
-// 	$('#login_button').click(function () {
-
-//     var email = $('#email').val();
-//     var password = $('#password').val();
-//     alert ('email/pass:' + email + ", " + password);
-
-//     $.ajax({
-//         type: "POST",
-//         url: "/login",
-//         data: { email: email , password: password },
-//         dataType: 'html'
-//     })
-//             .done(function () {
-//                 console.log("http request succeeded");
-//                 alert("login success");
-//             });
-// });
+	});
 
 
 	//case 2: when user pick a subscription plan - we'll submit form again.

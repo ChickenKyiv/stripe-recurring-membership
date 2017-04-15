@@ -83,12 +83,16 @@ module.exports = function(passport){
           // edit this portion to accept other properties when creating a user.
           var user = new User({
             email   : req.body.email,
-            password: req.body.password, // user schema pre save task hashes this password
+            //@TODO set password empty, because we have a first version
+            // password: req.body.password, // user schema pre save task hashes this password
 
-            // profile.domain : req.body.domain,
+            profile : {
+              domain : req.body.domain,
+            }
 
           });
 
+          //or
           user.profile.domain = req.body.domain;
 
           //call to Namecheap API and book current domain from other purchases.
@@ -106,7 +110,9 @@ module.exports = function(passport){
             req.session.cookie.expires = new Date(Date.now() + time);
             req.session.touch();
 
-            return done(null, user, req.flash('success', 'Thanks for signing up!!'));
+
+            // don't show thank you in first - short registration time
+            // return done(null, user, req.flash('success', 'Thanks for signing up!!'));
 
           });
 

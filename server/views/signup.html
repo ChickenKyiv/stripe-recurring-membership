@@ -4,17 +4,10 @@
 
 {% block content %}
     <div class="container" style="max-width: 400px;">
-      <form action="/signup" method="POST">
-        <h2>Sign Up</h2>
-        <p><a href="/">Back</a></p>
-        <p>
-          <input type="text" name="email" class="form-control" placeholder="Email address" value="{{form.email}}" autofocus>
-        </p>
-        <p>
-          <input type="password" name="password" class="form-control" placeholder="Password">
-        </p>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
-      </form>
+
+      {% include "../forms/signup.html" %}
+
+
       <hr>
     </div>
 {% endblock %}

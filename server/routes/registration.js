@@ -46,4 +46,23 @@ module.exports    = function (app, passport) {
   );
 
 
+
+  //display whois form 
+  //@TODO change URL name
+  app.get('/whois',
+    setRender('dashboard/whois-settings'),
+    setRedirect({auth: '/'}),
+    isAuthenticated,
+    dashboard.getWhoisForm
+  );
+
+//@TODO replace redirect rules
+  app.post('/whois-settings',
+    setRedirect({ auth: '/', success: '/profile', failure: '/profile' }),
+    isAuthenticated,
+    users.postWhois
+  );
+
+
+
 };

@@ -1,0 +1,73 @@
+var dotenv = require('dotenv');
+// // There's no need to check if .env exists, dotenv will check this 
+// // for you. It will show a small warning which can be disabled when 
+// // using this in production.
+
+dotenv.load();
+
+
+
+
+module.exports = {
+
+  db: process.env.MONGODB_URI || 'mongodb://localhost/stripe-membership',
+
+  sessionSecret: process.env.SESSION_SECRET || '34SDgsdgspxxxxxxxdfsG', //you can use a long random string
+
+  mailgun: {
+    apiKey: process.env.MAILGUN_API_KEY || '',
+    domain: process.env.MAILGUN_DOMAIN  || ''
+  },
+
+// second version. before it was stripeOptions with different array structure.
+  stripeNextVersion: {
+    "public": {
+      "plans": [
+       {
+        name    : "Free Plan",
+        id      : "free",
+        interval: "month",
+        currency: "eur",
+        amount  : 0, //0
+        change  : false, // default : true - so this plan will be assigned if user don't finish payment
+       },
+       {
+        name    : "Quarterly",
+        id      : "quarterly",
+        interval: "month",
+        interval_count: "3",
+        currency: "eur",
+        amount  : 1485, //0
+        change  : true,
+
+        text: ""
+      },
+      {
+        name    : "Yearly",
+        id      : "yearly",
+        interval: "year",
+        currency: "eur",
+        amount  : 4560, //0
+        change  : true,
+
+        text: ""
+      }
+    ],
+      "stripe": {
+        "testPublishableKey": "pk_test_",
+        "livePublishableKey": "pk_live_"
+      }
+  },
+  "private": {
+    "stripe": {
+      "testSecretKey": "sk_test_",
+      "liveSecretKey": "sk_live_"
+    }
+  }
+}, 
+
+
+  googleAnalytics: process.env.GOOGLE_ANALYTICS || ''
+
+  
+};

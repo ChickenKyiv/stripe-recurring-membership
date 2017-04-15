@@ -68,7 +68,7 @@ module.exports = exports = function stripeCustomer (schema, options) {
             interval : plan.interval,            
             currency : plan.currency,
             amount   : plan.amount, //0
-            change   : (plan.amount) ? true : false
+            change   : (plan.amount) ? true : false,
             interval_count : plan.interval_count,
           }
 
