@@ -34,6 +34,11 @@ sessions      = require('./controllers/sessions-controller');
 
 
 
+
+
+
+
+
 module.exports = function (app, passport) {
 
   app.get('/ping', function(req, res, next){

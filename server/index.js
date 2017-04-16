@@ -27,6 +27,13 @@ var cors             = require('cors');
 var corsOptions      = { origin: '*' };
 var staticDir;
 
+
+// one routes version
+var allRoutes = require('./routes');
+// var allRoutes = require('./routes/index');
+var forgot    = require('./routes/forgot');
+
+
 // setup db
 mongoose.connect(secrets.db);
 mongoose.connection.on('error', function() {
@@ -44,6 +51,7 @@ if (app.get('env') === 'production') {
   staticDir = path.join(__dirname + '/../public');
 
 } else {
+
   app.locals.production = false;
   swig.setDefaults({ cache: false });
   staticDir = path.join(__dirname + '/../public');
@@ -57,11 +65,14 @@ app.set('view engine', 'html');
 
 app.locals._ = lodash;
 //@TODO change this
-app.locals.stripePubKey = secrets.stripeNextVersion.public.stripe.testPublishableKey;
 
-console.log( secrets.stripeNextVersion.public.stripe.testPublishableKey );
-// console.log( app.locals.stripePubKey );
-// app.locals.stripePubKey = secrets.stripeOptions.stripePubKey;
+
+if (app.get('env') === 'production') {
+  app.locals.stripePubKey = secrets.stripeNextVersion.public.stripe.livePublishableKey;
+} else {
+  //dev
+  app.locals.stripePubKey = secrets.stripeNextVersion.public.stripe.testPublishableKey;
+}
 
 
 app.use(favicon(path.join(__dirname + '/../public/favicon.ico')));
@@ -94,6 +105,7 @@ app.use(session({
 // setup passport authentication
 app.use(passport.initialize());
 app.use(passport.session());
+
 // @TODO fix it
 // app.use(passport.authenticate('remember-me'));
 
@@ -112,9 +124,14 @@ passportMiddleware(passport);
 app.use(viewHelper);
 
 
+// var allRoutes = require('./routes');
+// var allRoutes = require('./routes/index');
+// var forgot   
+app.use('/', allRoutes);
+// app.use('/', forgot);
 // setup routes
-var routes = require('./routes');
-routes(app, passport);
+// var routes = require('./routes');
+// routes(app, passport);
 
 
 
