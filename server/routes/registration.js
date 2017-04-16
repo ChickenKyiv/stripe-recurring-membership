@@ -10,7 +10,10 @@ stripeEvents      = require('./middleware/stripe-events'),
 secrets           = require('./config/secrets');
 
 // controllers
-var registrations = require('./controllers/registrations-controller');
+var registrations = require('./controllers/registrations-controller'),
+// @TODO split controller action's to a different place.
+users             = require('./controllers/users-controller'),
+dashboard         = require('./controllers/dashboard-controller');
 
 module.exports    = function (app, passport) {
 

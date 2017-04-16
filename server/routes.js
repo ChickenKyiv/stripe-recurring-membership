@@ -49,6 +49,8 @@ module.exports = function (app, passport) {
     main.getHome
   );
 
+  
+
   // sessions
   app.post('/login',
     setRedirect({auth: '/dashboard', success: '/dashboard', failure: '/'}),
@@ -104,34 +106,7 @@ module.exports = function (app, passport) {
 //---------------
 
 
-  // forgot password
-  app.get('/forgot',
-    setRedirect({auth: '/dashboard'}),
-    isUnauthenticated,
-    setRender('forgot'),
-    passwords.getForgotPassword
-  );
 
-  app.post('/forgot',
-    setRedirect({auth: '/dashboard', success: '/forgot', failure: '/forgot'}),
-    isUnauthenticated,
-    passwords.postForgotPassword
-  );
-
-
-  // reset tokens
-  app.get('/reset/:token',
-    setRedirect({auth: '/dashboard', failure: '/forgot'}),
-    isUnauthenticated,
-    setRender('reset'),
-    passwords.getToken
-  );
-
-  app.post('/reset/:token',
-    setRedirect({auth: '/dashboard', success: '/dashboard', failure: 'back'}),
-    isUnauthenticated,
-    passwords.postToken
-  );
 
 
   app.get('/dashboard',
