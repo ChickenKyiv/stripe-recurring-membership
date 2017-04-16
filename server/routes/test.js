@@ -1,12 +1,12 @@
 'use strict';
 
 // middleware
-secrets           = require('./config/secrets');
+let secrets       = require('./config/secrets');
 const nodemailer  = require('nodemailer');
 const hbs         = require('nodemailer-express-handlebars');
 
 module.exports = function (app, passport) {
-	
+
   //testing custom mail server
   app.get('/mail-test', function(req, res, next){
 
