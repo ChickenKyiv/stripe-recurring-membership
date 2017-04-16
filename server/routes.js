@@ -49,7 +49,7 @@ module.exports = function (app, passport) {
     main.getHome
   );
 
-  
+
 
   // sessions
   app.post('/login',
@@ -116,12 +116,14 @@ module.exports = function (app, passport) {
     dashboard.getDefault
   );
 
+
   app.get('/billing',
     setRender('dashboard/billing'),
     setRedirect({auth: '/'}),
     isAuthenticated,
     dashboard.getBilling
   );
+
 
 
   app.get('/profile',
@@ -143,11 +145,13 @@ module.exports = function (app, passport) {
     users.postProfile
   );
 
+
   app.post('/user/billing',
     setRedirect({auth: '/', success: '/billing', failure: '/billing'}),
     isAuthenticated,
     users.postBilling
   );
+
 
   app.post('/user/plan',
     setRedirect({auth: '/', success: '/billing', failure: '/billing'}),
@@ -187,6 +191,8 @@ module.exports = function (app, passport) {
     dashboard.updateForwardEmailAction
   );
 
+
+
   // app.post('/user/update-forward-email',
   //   setRedirect({auth: '/', success: '/'}),
   //   isAuthenticated,
@@ -194,13 +200,6 @@ module.exports = function (app, passport) {
   // );
   
 
-
-
-  // // use this url to receive stripe webhook events
-  // app.post('/stripe/events',
-  //   stripeWebhook.middleware,
-  //   stripeEvents
-  // );
 
 
 

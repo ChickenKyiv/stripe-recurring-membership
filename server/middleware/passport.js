@@ -1,5 +1,6 @@
 var LocalStrategy      = require('passport-local').Strategy;
-var RememberMeStrategy = require('passport-remember-me').Strategy;
+// var RememberMeStrategy = require('passport-remember-me').Strategy;
+
 var User = require('../models/user');
 
 module.exports = function(passport){
@@ -126,26 +127,26 @@ module.exports = function(passport){
   );
 
 
-  passport.use('login', new RememberMeStrategy(
-    function(token, done) {
+  // passport.use('login', new RememberMeStrategy(
+  //   function(token, done) {
 
-      Token.consume(token, function (err, user) {
-        if (err) { return done(err); }
-        if (!user) { return done(null, false); }
-        return done(null, user);
-      });
+  //     Token.consume(token, function (err, user) {
+  //       if (err) { return done(err); }
+  //       if (!user) { return done(null, false); }
+  //       return done(null, user);
+  //     });
 
-    },
-    function(user, done) {
+  //   },
+  //   function(user, done) {
 
-      var token = utils.generateToken(64);
-      Token.save(token, { userId: user.id }, function(err) {
-        if (err) { return done(err); }
-        return done(null, token);
-      });
+  //     var token = utils.generateToken(64);
+  //     Token.save(token, { userId: user.id }, function(err) {
+  //       if (err) { return done(err); }
+  //       return done(null, token);
+  //     });
       
-    }
+  //   }
 
-  ));
+  // ));
 
 };

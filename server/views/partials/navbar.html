@@ -1,1 +1,42 @@
-navbar.html
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container-fluid container-wide">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/dashboard">
+          Easymail App Dashboard
+          </a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li {%if path == '/dashboard'%}class="active"{%endif%}>
+              <a href="/dashboard">
+              Home
+              </a>
+            </li>
+            
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li {%if path == '/'%}class="active"{%endif%}>
+              <a href="/">
+              Log in
+              </a>
+            </li>
+            <li {%if path == '/signup2'%}class="active"{%endif%}>
+              <a href="/signup">
+              Sign Up
+              </a>
+            </li>
+            <li {%if path == '/forgot'%}class="active"{%endif%}>
+              <a href="/forgot">
+              Forgot Password
+              </a>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
