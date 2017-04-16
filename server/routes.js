@@ -203,37 +203,40 @@ module.exports = function (app, passport) {
   //   registrations.postSignup
   // );
 
+
+
+// This routes was moved to another file.
 //------------
-  app.get('/signup2',
-    setRedirect({auth: '/dashboard'}),
-    isUnauthenticated,
-    setRender('signup2'),
-    registrations.getSignup2
-  );
+  // app.get('/signup2',
+  //   setRedirect({auth: '/dashboard'}),
+  //   isUnauthenticated,
+  //   setRender('signup2'),
+  //   registrations.getSignup2
+  // );
 
 
 
-  app.post('/signup2',
-    setRedirect({auth: '/dashboard', success: '/signup2-1', failure: '/signup2'}),
-    // setRedirect({auth: '/dashboard', success: '/dashboard', failure: '/signup2'}),
-    isUnauthenticated,
-    registrations.postSignup2
-  );
+  // app.post('/signup2',
+  //   setRedirect({auth: '/dashboard', success: '/signup2-1', failure: '/signup2'}),
+  //   // setRedirect({auth: '/dashboard', success: '/dashboard', failure: '/signup2'}),
+  //   isUnauthenticated,
+  //   registrations.postSignup2
+  // );
 
 //user registration before purchase
-  app.post('/signupshort',
-    setRedirect({auth: '/dashboard', success: '/dashboard', failure: '/signup2'}),
-    isUnauthenticated,
-    registrations.postSignupFirstTime
-  );
+  // app.post('/signupshort',
+  //   setRedirect({auth: '/dashboard', success: '/dashboard', failure: '/signup2'}),
+  //   isUnauthenticated,
+  //   registrations.postSignupFirstTime
+  // );
 
 
-  app.get('/signup2-1',
-    setRedirect({auth: '/dashboard'}),
-    isUnauthenticated,
-    setRender('signup2-1'),
-    registrations.getSignup2
-  );
+  // app.get('/signup2-1',
+  //   setRedirect({auth: '/dashboard'}),
+  //   isUnauthenticated,
+  //   setRender('signup2-1'),
+  //   registrations.getSignup2
+  // );
 
 
 //---------------
@@ -347,12 +350,15 @@ module.exports = function (app, passport) {
     dashboard.updateForwardEmailAction
   );
 
-  app.post('/user/update-forward-email',
-    setRedirect({auth: '/', success: '/'}),
-    isAuthenticated,
-    users.postForwardEmailAction
-  );
+  // app.post('/user/update-forward-email',
+  //   setRedirect({auth: '/', success: '/'}),
+  //   isAuthenticated,
+  //   users.postForwardEmailAction
+  // );
   
+
+
+
   // // use this url to receive stripe webhook events
   // app.post('/stripe/events',
   //   stripeWebhook.middleware,

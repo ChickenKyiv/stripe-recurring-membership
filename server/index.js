@@ -94,7 +94,8 @@ app.use(session({
 // setup passport authentication
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(passport.authenticate('remember-me'));
+// @TODO fix it
+// app.use(passport.authenticate('remember-me'));
 
 
 // other
@@ -105,6 +106,7 @@ app.use(cors(corsOptions));
 var passportMiddleware = require('./middleware/passport');
 passportMiddleware(passport);
 
+// app.use(passport.authenticate('remember-me'));
 
 // setup view helper
 app.use(viewHelper);

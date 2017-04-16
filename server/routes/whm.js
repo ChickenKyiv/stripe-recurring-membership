@@ -1,4 +1,4 @@
-whm.js
+// whm.js
 
 
-Register domain  (using namecheap “create domain” API call)
+// Register domain  (using namecheap “create domain” API call)

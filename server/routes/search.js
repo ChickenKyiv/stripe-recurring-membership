@@ -2,22 +2,22 @@
 
 var secrets    = require('./config/secrets');
 
-module.exports = function (app, passport) {
+// module.exports = function (app, passport) {
 
-  app.post('/domain-search', {
+//   app.post('/domain-search', {
 
-  } 
-    // setRedirect({auth: '/dashboard'}),
-    isUnauthenticated,
-    setRender('search-results'),    
-    search.fetch
-  );
+//   } 
+//     // setRedirect({auth: '/dashboard'}),
+//     isUnauthenticated,
+//     setRender('search-results'),    
+//     search.fetch
+//   );
 
-  app.post('/domain-book', {
+//   app.post('/domain-book', {
   	
-  }
-  	);
+//   }
+//   	);
 
 
 
-};
+// };
