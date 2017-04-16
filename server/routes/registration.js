@@ -14,6 +14,21 @@ var registrations = require('./controllers/registrations-controller');
 
 module.exports    = function (app, passport) {
 
+  // registrations
+  // app.get('/signup',
+  //   setRedirect({auth: '/dashboard'}),
+  //   isUnauthenticated,
+  //   setRender('signup'),
+  //   registrations.getSignup
+  // );
+
+  // app.post('/signup',
+  //   setRedirect({auth: '/dashboard', success: '/dashboard', failure: '/signup2'}),
+  //   isUnauthenticated,
+  //   registrations.postSignup
+  // );
+
+
   app.get('/signup2',
     setRedirect({auth: '/dashboard'}),
     isUnauthenticated,
