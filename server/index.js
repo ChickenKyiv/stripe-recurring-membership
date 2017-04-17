@@ -29,7 +29,8 @@ var staticDir;
 
 
 // one routes version
-var allRoutes = require('./routes');
+var routes = require('./routes/routes');
+// var allRoutes = require('./routes');
 // var allRoutes = require('./routes/index');
 var forgot    = require('./routes/forgot');
 
@@ -127,8 +128,12 @@ app.use(viewHelper);
 // var allRoutes = require('./routes');
 // var allRoutes = require('./routes/index');
 // var forgot   
-app.use('/', allRoutes);
+// app.use('/', allRoutes);
 // app.use('/', forgot);
+
+forgot(app, passport);
+routes(app, passport);
+
 // setup routes
 // var routes = require('./routes');
 // routes(app, passport);

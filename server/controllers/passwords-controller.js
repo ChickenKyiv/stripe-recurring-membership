@@ -61,6 +61,35 @@ exports.getForgotPassword = function(req, res){
   });
 };
 
+exports.getForgotPassword2 = function(req, res){
+
+  // setRedirect({auth: '/dashboard'});
+  req.redirect = { auth: '/dashboard', success: '/forgot', failure: '/forgot' };
+
+  if (req.isAuthenticated()) {
+    return res.redirect(req.redirect.auth);
+  }
+
+  var form       = {},
+      error      = null,
+      formFlash  = req.flash('form'),
+      errorFlash = req.flash('error');
+
+  if (formFlash.length) {
+    form.email = formFlash[0].email;
+  }
+
+  if (errorFlash.length) {
+    error = errorFlash[0];
+  }
+
+  res.render(req.redirect.success, {
+    title: 'Forgot Password',
+    form : form,
+    error: error
+  });
+};
+
 // post forgot password will create a random token,
 // then sends an email with reset instructions
 
