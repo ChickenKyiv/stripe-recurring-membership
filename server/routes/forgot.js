@@ -12,34 +12,45 @@ var passwords     = require('../controllers/passwords-controller');
 
 module.exports    = function (app) {
 
+  app.route('/forgot')
+     .all(setRedirect({auth: '/dashboard'}))
+     .all(isUnauthenticated)
+     .get(setRender('forgot'),passwords.getForgotPassword)
+     .post(passwords.postForgotPassword);
 
-  app.get('/forgot',
-    setRedirect({auth: '/dashboard'}),
-    isUnauthenticated,
-    setRender('forgot'),
-    passwords.getForgotPassword
-  );
+  // app.get('/forgot',
+  //   setRedirect({auth: '/dashboard'}),
+  //   isUnauthenticated,
+  //   setRender('forgot'),
+  //   passwords.getForgotPassword
+  // );
 
 
-  app.post('/forgot',
-    setRedirect({auth: '/dashboard', success: '/forgot', failure: '/forgot'}),
-    isUnauthenticated,
-    passwords.postForgotPassword
-  );
+  // app.post('/forgot',
+  //   setRedirect({auth: '/dashboard', success: '/forgot', failure: '/forgot'}),
+  //   isUnauthenticated,
+  //   passwords.postForgotPassword
+  // );
 
   // reset tokens
-  app.get('/reset/:token',
-    setRedirect({auth: '/dashboard', failure: '/forgot'}),
-    isUnauthenticated,
-    setRender('reset'),
-    passwords.getToken
-  );
+  app.route('/reset/:token')
+     .all(setRedirect({auth: '/dashboard', success: '/dashboard', failure: '/forgot'}))
+     .all(isUnauthenticated)
+     .get(setRender('reset'), passwords.getToken)
+     .post(passwords.postToken);
 
-  app.post('/reset/:token',
-    setRedirect({auth: '/dashboard', success: '/dashboard', failure: 'back'}),
-    isUnauthenticated,
-    passwords.postToken
-  );
+  // app.get('/reset/:token',
+  //   setRedirect({auth: '/dashboard', failure: '/forgot'}),
+  //   isUnauthenticated,
+  //   setRender('reset'),
+  //   passwords.getToken
+  // );
+
+  // app.post('/reset/:token',
+  //   setRedirect({auth: '/dashboard', success: '/dashboard', failure: 'back'}),
+  //   isUnauthenticated,
+  //   passwords.postToken
+  // );
 
 
 };	
