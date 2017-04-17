@@ -33,7 +33,7 @@ var routes = require('./routes/routes');
 // var allRoutes = require('./routes');
 // var allRoutes = require('./routes/index');
 var forgot    = require('./routes/forgot');
-
+var stripeHooks = require('./routes/webhooks');
 
 // setup db
 mongoose.connect(secrets.db);
@@ -125,18 +125,11 @@ passportMiddleware(passport);
 app.use(viewHelper);
 
 
-// var allRoutes = require('./routes');
-// var allRoutes = require('./routes/index');
-// var forgot   
-// app.use('/', allRoutes);
-// app.use('/', forgot);
-
-forgot(app, passport);
-routes(app, passport);
-
 // setup routes
-// var routes = require('./routes');
-// routes(app, passport);
+routes(app, passport);
+forgot(app, passport);
+stripeHooks(app, passport);
+
 
 
 

@@ -1,7 +1,6 @@
 'use strict';
 
 // middleware
-// var express       = require('express');
 var 
 // StripeWebhook = require('stripe-webhook-middleware'),
 
@@ -24,20 +23,6 @@ registrations = require('../controllers/registrations-controller'),
 
 
 sessions      = require('../controllers/sessions-controller');
-
-
-//@TODO redo this. 
-
-// var stripeWebhook = new StripeWebhook({
-//   stripeApiKey: secrets.stripeNextVersion.private.stripe.testSecretKey,
-//   respond: true
-// });
-
-
-
-
-
-
 
 
 module.exports = function (app, passport) {

@@ -1,8 +1,8 @@
 'use strict';
 
 // middleware
-
-var stripeEvents      = require('./middleware/stripe-events');
+var secrets           = require('../config/secrets')
+var stripeEvents      = require('../middleware/stripe-events');
 
 
 //@TODO redo this. @TODO add wrapper for checking dev/production version
