@@ -13,7 +13,8 @@
                       <span class="required">*</span>
                     </label> -->
          <input type="text" name="first_name" id="first_name" 
-         			class="form-control input-sm" placeholder="First Name" value="{{user.profile.first_name}}">
+         			class="form-control input-sm" placeholder="First Name" 
+              value="{{user.profile.first_name}}">
          <span class="required">*</span>
       </div>
      </div>
@@ -23,7 +24,9 @@
             <!-- <label class="col-lg-12 col-sm-3 control-label">Last Name
                 <span class="required">*</span>
             </label> -->
-              <input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name" value="{{user.profile.last_name}}">
+              <input type="text" name="last_name" id="last_name" 
+              class="form-control input-sm" placeholder="Last Name" 
+              value="{{user.profile.last_name}}">
               <span class="required">*</span>
           </div>
       </div>
@@ -34,7 +37,9 @@
         <!-- <label class="col-md-4 control-label" for="State">Company name</label>   -->
         <div class="col-md-12">
           <input id="company_name" name="company_name" type="text" 
-          placeholder="Company name" class="form-control input-md" required="" value="{{user.profile.company_name}}">
+          placeholder="Company name" 
+          class="form-control input-md" required="" 
+          value="{{user.profile.company_name}}">
           <span class="required">*</span>
         </div>
       </div>
@@ -58,7 +63,8 @@
         <!-- <label class="col-md-4 control-label" for="zip">Zip/Postcode</label>   -->
         <div class="col-md-4">
           <input id="zip" name="zip" type="text" 
-          placeholder="Postcode" class="form-control input-md" required="" 
+          placeholder="Postcode" class="form-control input-md" 
+          required="" 
           value="{{user.profile.zip}}">
           <span class="required">*</span>
           
@@ -70,7 +76,8 @@
         <!-- <label class="col-md-4 control-label" for="city">City</label>   -->
         <div class="col-md-6">
           <input id="city" name="city" type="text" 
-          placeholder="City" class="form-control input-md" required="" 
+          placeholder="City" class="form-control input-md" 
+          required="" 
           value="{{user.profile.city}}">
           <span class="required">*</span>
         </div>
@@ -87,7 +94,7 @@
         </div>
       </div>
 
-      {% include "_country-field.html" %}
+      <!-- {% include "_country-field.html" %} -->
 
 
 
@@ -97,11 +104,11 @@
       <div class="form-group">
         <!-- <label class="col-md-4 control-label" for="phone">Phone number</label>   -->
         <div class="col-md-8">
-          <input id="phone" name="phone" type="text" 
-          placeholder="Phone number" class="form-control input-md" value="{{user.profile.phone}}">
-           <span class="required">*</span>
+          {% include "/fields/phone-field.html" %}
         </div>
       </div>
+
+
 
       <!-- Text input-->
       <div class="form-group">
@@ -113,6 +120,21 @@
          <!-- <span class="required">*</span> -->
         </div>
       </div>
+
+
+      <!-- @TODO Move to the right side -->
+      <div class="example">
+        <div class="pull-left margin-right-20">
+          <input type="checkbox" 
+                 id="inputBasicOff" 
+                 name="enable-whois" data-plugin="switchery"
+          />
+        </div>
+        <label class="padding-top-3" for="inputBasicOff">
+          Enable WHOIS
+        </label>
+      </div>
+
 
 
       <input type="submit" name="submit" 

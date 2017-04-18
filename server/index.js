@@ -34,6 +34,8 @@ var routes = require('./routes/routes');
 // var allRoutes = require('./routes/index');
 var forgot    = require('./routes/forgot');
 var stripeHooks = require('./routes/webhooks');
+var signup = require('./routes/registration');
+var login =  require('./routes/login');
 
 // setup db
 mongoose.connect(secrets.db);
@@ -129,7 +131,8 @@ app.use(viewHelper);
 routes(app, passport);
 forgot(app, passport);
 stripeHooks(app, passport);
-
+signup(app, passport);
+login(app, passport);
 
 
 

@@ -75,7 +75,7 @@ exports.getProfile = function(req, res, next){
     user: req.user,
     form: form,
     error: error,
-    plans: plans
+    plans: plans //@TODO check plans info. can boost an error
   });
   
 };

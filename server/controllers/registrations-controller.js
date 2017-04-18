@@ -191,6 +191,19 @@ exports.postSignupFirstTime = function(req, res, next){
 //prev version
 exports.getWhoisForm = function(req, res, next){
 
+
+// <strong>
+// </strong>
+// <div class="toast-message"></div>
+//                     </div>
+
+
+var message = { msg: {
+                      title : "Congratulations! Your email has been created.", 
+                      body  : "Please wait until your domain comes online (usually just a few minutes, but sometimes up to a couple hours)"
+                    } };
+
+
   var form  = {},
       error = null,
       formFlash  = req.flash('form'),
@@ -213,6 +226,35 @@ exports.getWhoisForm = function(req, res, next){
   
 };
 
+//signup/whois-step
+exports.getWhoisForm = function(req, res, next){
+
+  var form       = {},
+      error      = null,
+      formFlash  = req.flash('form'),
+      // plans      = '', // get plans()
+      errorFlash = req.flash('error');
+
+
+
+
+
+  if (formFlash.length) {
+    form.email = formFlash[0].email;
+  }
+
+  if (errorFlash.length) {
+    error = errorFlash[0];
+  }
+
+  res.render(req.render, {
+    user: req.user,
+    form: form,
+    error: error,
+    // plans: plans
+  });
+  
+};
 
 exports.postWhois = function(req, res, next){
 
@@ -222,10 +264,10 @@ exports.postWhois = function(req, res, next){
   // req.assert('password_confirm', 'Confirm password must be at least 6 characters long').notEmpty().len(6);
   // req.assert('password_confirm', 'Passwords must match').equals(req.body.password);
 
-  req.assert('domain',   'Please fill a domain name').notEmpty();
+  req.assert('domain',       'Please fill a domain name').notEmpty();
 
   // @TODO get email value from logged in user or put email field to hidden field
-  req.assert('email',    'Please sign up with a valid email.').isEmail();
+  req.assert('email',        'Please sign up with a valid email.').isEmail();
 
   req.assert('first_name',   'First Name field is required').notEmpty();
   req.assert('last_name',    'Last Name field is required').notEmpty();
@@ -469,4 +511,168 @@ exports.postWhois = function(req, res, next){
   //   failureFlash : true
   // })(req, res, next);
   
+};
+
+
+// Updates generic profile information
+
+exports.postWhois = function(req, res, next){
+
+
+  req.assert('email',        'Email is not valid').isEmail();
+  // req.assert('name', 'Name is required').notEmpty();
+
+  req.assert('first_name',   'First Name is required').notEmpty(); 
+
+  req.assert('last_name',    'Last Name is required').notEmpty();  
+
+  req.assert('company_name', 'Company Name is required').notEmpty();
+
+  req.assert('address',       'Name is required').notEmpty();
+  req.assert('zip',           'Name is required').notEmpty();
+  req.assert('city',          'Name is required').notEmpty();
+  req.assert('state',         'Name is required').notEmpty();
+  // req.assert('country', 'Name is required').notEmpty();
+
+  req.assert('phone', 'Name is required').notEmpty();
+
+//additional validation messages
+
+    // first_name : req.body.first_name || '',
+
+    // last_name  : req.body.last_name || '',
+
+    // company_name : req.body.company_name || '', 
+
+    // address : req.body.address || '',
+
+    // zip : req.body.zip || '',
+
+    // city : req.body.city || '',
+
+    // state : req.body.state || '',
+
+    // country : req.body.country || '', 
+
+    // phone : req.body.phone || '',
+
+    // fax : req.body.fax || '',
+
+
+  var errors = req.validationErrors();
+
+  if (errors) {
+    req.flash('errors', errors);
+    return res.redirect(req.redirect.failure);
+  }
+
+  if(req.body.email != req.user.email){
+
+    User.findOne({ email: req.body.email }, function(err, existingUser) {
+
+      if (existingUser) {
+        req.flash('errors', { msg: 'An account with that email address already exists.' });
+        return res.redirect(req.redirect.failure);
+
+      } else {
+
+        var query  = { _id : req.user.id };
+        var update = {$set:{ 
+          email: req.body.email || '', 
+          profile: {
+                first_name : req.body.first_name || '',
+
+                last_name  : req.body.last_name  || '',
+
+                company_name : req.body.company_name || '', 
+
+                address : req.body.address || '',
+
+                zip : req.body.zip         || '',
+
+                city : req.body.city       || '',
+
+                state : req.body.state     || '',
+
+                country : req.body.country || '', 
+
+                phone : req.body.phone     || '',
+
+                fax : req.body.fax         || '',
+            // name     : req.body.name || '',
+            // location : req.body.location || '',
+          }
+
+        }} ;
+        
+        User.findOneAndUpdate( query, update, {new: true}, function(err, user){
+          if (err) return next(err);
+
+          console.log(user);
+
+          user.updateStripeEmail(function(err){
+
+            if (err) return next(err);
+            req.flash('success', { msg: 'Profile information updated.' });
+            res.redirect(req.redirect.success);
+
+          });
+
+        });
+
+        
+
+      }
+    });
+
+  } else {
+
+      var query  = { _id : req.user.id };
+      var update = {$set:{ 
+        email        : req.body.email || '', 
+        profile: {
+            first_name : req.body.first_name || '',
+
+            last_name  : req.body.last_name  || '',
+
+            company_name : req.body.company_name || '', 
+
+            address : req.body.address || '',
+
+            zip : req.body.zip         || '',
+
+            city : req.body.city       || '',
+
+            state : req.body.state     || '',
+
+            country : req.body.country || '', 
+
+            phone : req.body.phone     || '',
+
+            fax : req.body.fax         || '',
+            // name     : req.body.name || '',
+            // location : req.body.location || '',
+        }
+
+      }} ;
+
+      User.findOneAndUpdate( query, update, {new: true}, function(err, user){
+        if (err) return next(err);
+
+        console.log(user);
+
+        user.updateStripeEmail(function(err){
+
+          if (err) return next(err);
+          req.flash('success', { msg: 'Profile information updated.' });
+          res.redirect(req.redirect.success);
+
+        });
+
+      });
+
+
+
+  }
+
 };

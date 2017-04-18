@@ -1,19 +1,20 @@
 'use strict';
 
 // middleware
-var StripeWebhook = require('stripe-webhook-middleware'),
-isAuthenticated   = require('./middleware/auth').isAuthenticated,
-isUnauthenticated = require('./middleware/auth').isUnauthenticated,
+var 
+isAuthenticated   = require('../middleware/auth').isAuthenticated,
+isUnauthenticated = require('../middleware/auth').isUnauthenticated,
 setRender         = require('middleware-responder').setRender,
 setRedirect       = require('middleware-responder').setRedirect,
-stripeEvents      = require('./middleware/stripe-events'),
-secrets           = require('./config/secrets');
+stripeEvents      = require('../middleware/stripe-events'),
+secrets           = require('../config/secrets');
 
 // controllers
-var registrations = require('./controllers/registrations-controller'),
+var registrations = require('../controllers/registrations-controller'),
 // @TODO split controller action's to a different place.
-users             = require('./controllers/users-controller'),
-dashboard         = require('./controllers/dashboard-controller');
+users             = require('../controllers/users-controller');
+// dashboard         = require('../controllers/dashboard-controller')
+
 
 module.exports    = function (app, passport) {
 
@@ -81,8 +82,9 @@ module.exports    = function (app, passport) {
   app.routes('/whois')
      .all(setRedirect({ auth: '/', success: '/profile', failure: '/profile' }))
      .all(isAuthenticated)
-     .get(setRender('dashboard/whois-settings'), dashboard.getWhoisForm)
-     .post(users.postWhois);
+     .get(setRender('singup/whois-settings'), registrations.getWhoisForm)
+     .post(registrations.postWhois);
+     // .post(users.postWhois);
 
   //display whois form 
   //@TODO change URL name

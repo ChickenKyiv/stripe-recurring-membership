@@ -46,22 +46,22 @@ exports.postLogin = function(req, res, next){
 
   // issue a remember me cookie if the option was checked
   // I think it wouldn't work when checkbox unchecked
-  if (!req.body.remember_me) { return next(); }
+  // if (!req.body.remember_me) { return next(); }
 
-  var token = utils.generateToken(64);
+  // var token = utils.generateToken(64);
 
-  console.log( req.user );
-  console.log( req.user.id );
+  // console.log( req.user );
+  // console.log( req.user.id );
 
-  Token.save(token, { userId: req.user.id }, function(err) {
-    if (err) { return done(err); }
-    res.cookie('remember_me', token, { 
-      path: '/', 
-      httpOnly: true, 
-      maxAge: 604800000 
-    }); // 7 days
-    return next();
-  });
+  // Token.save(token, { userId: req.user.id }, function(err) {
+  //   if (err) { return done(err); }
+  //   res.cookie('remember_me', token, { 
+  //     path: '/', 
+  //     httpOnly: true, 
+  //     maxAge: 604800000 
+  //   }); // 7 days
+  //   return next();
+  // });
 
 
   // this middleware can be found in /server/middleware/passport.js
@@ -83,7 +83,7 @@ exports.logout = function(req, res){
   req.session.cookie.maxAge = time;
   req.session.cookie.expires = new Date(Date.now() + time);
   req.session.touch();
-  req.flash('success','Successfully logged out.');
+  req.flash('success', 'Successfully logged out.');
   res.redirect(req.redirect.success);
   
 };
