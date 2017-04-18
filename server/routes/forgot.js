@@ -15,7 +15,7 @@ module.exports    = function (app) {
   app.route('/forgot')
      .all(setRedirect({auth: '/dashboard'}))
      .all(isUnauthenticated)
-     .get(setRender('forgot'),passwords.getForgotPassword)
+     .get(setRender('forgot'), passwords.getForgotPassword)
      .post(passwords.postForgotPassword);
 
   // app.get('/forgot',
