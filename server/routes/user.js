@@ -49,7 +49,7 @@ module.exports = function (app, passport) {
 	   .all(isAuthenticated)	   
 	   .get(users.deleteAccount);	
 	   
-    app.route('/user/profile/forward-email')
+  app.route('/user/profile/forward-email')
 	   .all(setRedirect({auth: '/', success: '/'}))
 	   .all(isAuthenticated)	   
 	   .get(setRender('dashboard/forward-email'), dashboard.updateForwardEmailAction)

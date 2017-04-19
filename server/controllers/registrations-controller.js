@@ -83,8 +83,8 @@ exports.postSignup2 = function(req, res, next){
   req.assert('email',    'Please sign up with a valid email.').isEmail();
   req.assert('password', 'Password must be at least 6 characters long').notEmpty().len(6);
 
-  req.assert('password_confirm', 'Confirm password must be at least 6 characters long').notEmpty().len(6);
-  req.assert('password_confirm', 'Passwords must match').equals(req.body.password);
+  req.assert('confirm', 'Confirm password must be at least 6 characters long').notEmpty().len(6);
+  req.assert('confirm', 'Passwords must match').equals(req.body.password);
 
   req.assert('domain',   'Please fill a domain name').notEmpty();
 
@@ -144,8 +144,8 @@ exports.postSignupFirstTime = function(req, res, next){
 
   // req.assert('password', 'Password must be at least 6 characters long').notEmpty().len(6);
 
-  // req.assert('password_confirm', 'Confirm password must be at least 6 characters long').notEmpty().len(6);
-  // req.assert('password_confirm', 'Passwords must match').equals(req.body.password);
+  // req.assert('confirm', 'Confirm password must be at least 6 characters long').notEmpty().len(6);
+  // req.assert('confirm', 'Passwords must match').equals(req.body.password);
 
   req.assert('domain',   'Please fill a domain name').notEmpty();
 

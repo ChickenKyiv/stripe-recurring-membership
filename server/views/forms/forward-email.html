@@ -1,4 +1,5 @@
-<form action="/user/update-forward-email" method="POST" class="form-horizontal">
+<form action="/user/update-forward-email" method="POST" 
+      class="form-horizontal">
 	<div class="form-group">
 	<label class="col-sm-3 control-label">
 	    Current Forward Email - {{forward-email}}
@@ -9,20 +10,24 @@
 
 
     <label for="password" class="col-sm-3 control-label">
-    New Password
+      New Email
     </label>
     <div class="col-sm-4">
-      <input type="password" name="password" class="form-control">
+      <!-- {% include "fields/email-field.html" %} -->
+      
+
     </div>
 
   </div>
   <div class="form-group">
 
     <label for="confirm" class="col-sm-3 control-label">
-    Confirm Password
+      Confirm Email
     </label>
     <div class="col-sm-4">
-      <input type="password" name="confirm" class="form-control">
+      {% include "fields/email-field.html" %}
+      
+
     </div>
 
   </div>
@@ -30,7 +35,7 @@
 
     <div class="col-sm-offset-3 col-sm-4">
       <button type="submit" class="btn btn-primary">
-      	Update Password
+      	Update Forward Email
       </button>
     </div>
 

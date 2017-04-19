@@ -37,6 +37,10 @@ var stripeHooks = require('./routes/webhooks');
 var signup = require('./routes/registration');
 var login =  require('./routes/login');
 
+// @TODO maybe rename to profile?
+var users = require('./routes/profile');
+
+
 // setup db
 mongoose.connect(secrets.db);
 mongoose.connection.on('error', function() {
@@ -133,7 +137,7 @@ forgot(app, passport);
 stripeHooks(app, passport);
 signup(app, passport);
 login(app, passport);
-
+users(app, passport);
 
 
 /// catch 404 and forwarding to error handler
