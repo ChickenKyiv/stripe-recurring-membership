@@ -30,6 +30,9 @@ module.exports = function (app, passport) {
 	   .all(isAuthenticated)	   
 	   .post(users.postPlan);
 
+
+
+
 	// change password
 	app.route('/user/password')
 	   .all(setRedirect({auth: '/', success: '/billing', failure: '/billing'}))

@@ -32,6 +32,7 @@ exports.postNewPassword = function(req, res, next){
       res.redirect(req.redirect.success);
     });
   });
+  
 };
 
 // show forgot password page
@@ -41,6 +42,7 @@ exports.getForgotPassword = function(req, res){
   if (req.isAuthenticated()) {
     return res.redirect(req.redirect.auth);
   }
+
   var form       = {},
       error      = null,
       formFlash  = req.flash('form'),
@@ -138,6 +140,10 @@ exports.postForgotPassword = function(req, res, next){
       });
 
     },
+
+
+
+
     function(token, user, done) {
 
       
@@ -162,6 +168,9 @@ exports.postForgotPassword = function(req, res, next){
       });
 
     }
+
+
+
   ], function(err) {
     if (err) return next(err);
     res.redirect(req.redirect.success);
@@ -248,6 +257,9 @@ exports.postToken = function(req, res, next){
         });
 
     },
+
+
+
     function(user, done) {
       var transporter = nodemailer.createTransport(secrets.emailServer);
       // var transporter = nodemailer.createTransport(mailgunApiTransport(secrets.mailgun));
@@ -266,6 +278,9 @@ exports.postToken = function(req, res, next){
       });
 
     }
+
+
+    
   ], function(err) {
     if (err) return next(err);
     res.redirect(req.redirect.success);
