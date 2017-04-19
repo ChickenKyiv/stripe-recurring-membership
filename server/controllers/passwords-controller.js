@@ -63,6 +63,7 @@ exports.getForgotPassword = function(req, res){
   });
 };
 
+// @TODO remove redirect object and place it to app.route
 exports.getForgotPassword2 = function(req, res){
 
   // setRedirect({auth: '/dashboard'});
@@ -239,20 +240,23 @@ exports.postToken = function(req, res, next){
             return res.redirect(req.redirect.failure);
           }
 
-          user.password = req.body.password;
-          user.resetPasswordToken = undefined;
+          user.password             = req.body.password;
+          user.resetPasswordToken   = undefined;
           user.resetPasswordExpires = undefined;
 
           user.save(function(err) {
+
             if (err) return next(err);
+
             var time = 14 * 24 * 3600000;
-            req.session.cookie.maxAge = time; //2 weeks
+            req.session.cookie.maxAge  = time; //2 weeks
             req.session.cookie.expires = new Date(Date.now() + time);
             req.session.touch();
 
             req.logIn(user, function(err) {
               done(err, user);
             });
+
           });
         });
 
@@ -280,7 +284,7 @@ exports.postToken = function(req, res, next){
     }
 
 
-    
+
   ], function(err) {
     if (err) return next(err);
     res.redirect(req.redirect.success);
