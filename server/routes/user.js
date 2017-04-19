@@ -8,9 +8,9 @@ setRender         = require('middleware-responder').setRender,
 setRedirect       = require('middleware-responder').setRedirect;
 
 // controllers
-var users     = require('../controllers/users-controller'),
-dashboard     = require('../controllers/dashboard-controller'),
-passwords     = require('../controllers/passwords-controller');
+var users     = require('../controllers/users-controller');
+// dashboard     = require('../controllers/dashboard-controller'),
+// passwords     = require('../controllers/passwords-controller');
 
 
 module.exports = function (app, passport) {

@@ -38,7 +38,8 @@ var signup = require('./routes/registration');
 var login =  require('./routes/login');
 
 // @TODO maybe rename to profile?
-var users = require('./routes/profile');
+var users = require('./routes/users');
+// var profile = require('./routes/profile');
 
 
 // setup db
