@@ -34,7 +34,7 @@ module.exports    = function (app, passport) {
 
 
 
-  app.routes('/signup2')
+  app.route('/signup2')
      .all(setRedirect({auth: '/dashboard', success: '/signup2-1', failure: '/signup2'}))
      .all(isUnauthenticated)
      .get(setRender('signup2'), registrations.getSignup2)
@@ -58,7 +58,7 @@ module.exports    = function (app, passport) {
 
 
 
-  app.routes('signupshort')
+  app.route('signupshort')
      .all(setRedirect({auth: '/dashboard', success: '/dashboard', failure: '/signup2'}))
      .all(isUnauthenticated)
      .get(setRender('signup2-1'), registrations.getSignup2)
@@ -79,7 +79,7 @@ module.exports    = function (app, passport) {
   //   registrations.getSignup2
   // );
 
-  app.routes('/whois')
+  app.route('/whois')
      .all(setRedirect({ auth: '/', success: '/profile', failure: '/profile' }))
      .all(isAuthenticated)
      .get(setRender('singup/whois-settings'), registrations.getWhoisForm)

@@ -29,7 +29,7 @@ var staticDir;
 
 
 // one routes version
-var routes = require('./routes/routes');
+// var routes = require('./routes/routes');
 // var allRoutes = require('./routes');
 // var allRoutes = require('./routes/index');
 var forgot    = require('./routes/forgot');
@@ -38,7 +38,7 @@ var signup = require('./routes/registration');
 var login =  require('./routes/login');
 
 // @TODO maybe rename to profile?
-var users = require('./routes/users');
+var users = require('./routes/user');
 // var profile = require('./routes/profile');
 
 var dashboard = require('./routes/dashboard');
@@ -135,7 +135,7 @@ app.use(viewHelper);
 
 
 // setup routes
-routes(app, passport);
+// routes(app, passport);
 forgot(app, passport);
 stripeHooks(app, passport);
 signup(app, passport);

@@ -36,12 +36,15 @@ module.exports = function (app, passport) {
 	   .all(isAuthenticated)	   
 	   .post(users.postPlan);
 
+
+
+
 	// cancel subscriptions
 	// working together with /user/delete router
 	app.route('/user/subscription/cancel')
 	   .all(setRedirect({auth: '/'}))
 	   .all(isAuthenticated)	   
-	   .get(setRender('dashboard/profile'), dashboard.getCancelMyAccountAction);	
+	   .get(setRender('dashboard/profile'), users.getCancelMyAccountAction);	
 
 	// delete
 	app.route('/user/delete')
@@ -52,7 +55,7 @@ module.exports = function (app, passport) {
   app.route('/user/profile/forward-email')
 	   .all(setRedirect({auth: '/', success: '/'}))
 	   .all(isAuthenticated)	   
-	   .get(setRender('dashboard/forward-email'), dashboard.updateForwardEmailAction)
+	   .get(setRender('dashboard/forward-email'), users.updateForwardEmailAction)
 	   .post(users.postForwardEmailAction); ///user/update-forward-email
 
   // router.get('/user/profile/forward-email',
