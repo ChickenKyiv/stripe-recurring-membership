@@ -12,7 +12,7 @@ var secrets    = require('../config/secrets');
 exports.postNewPassword = function(req, res, next){
 
   req.assert('password', 'Password must be at least 6 characters long.').len(6);
-  req.assert('confirm', 'Passwords must match.').equals(req.body.password);
+  req.assert('confirm',  'Passwords must match.').equals(req.body.password);
 
   var errors = req.validationErrors();
 

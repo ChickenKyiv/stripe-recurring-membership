@@ -1,9 +1,36 @@
+'use strict';
 
+// middleware
+var 
+isAuthenticated   = require('../middleware/auth').isAuthenticated,
+isUnauthenticated = require('../middleware/auth').isUnauthenticated,
+setRender         = require('middleware-responder').setRender,
+setRedirect       = require('middleware-responder').setRedirect;
 
+// controllers
+var main      = require('../controllers/main-controller'),
+    dashboard = require('../controllers/dashboard-controller');
 
-dashboard.js
+module.exports = function (app, passport) {
 
-  // homepage and dashboard
+  // dashboard
+  app.route('/dashboard')
+     .all(setRedirect({auth: '/'}))
+     .all(isUnauthenticated)     
+     .get(setRender('dashboard/index'), dashboard.getDefault);
+
+  app.route('/billing')
+     .all(setRedirect({auth: '/'}))
+     .all(isAuthenticated)     
+     .get(setRender('dashboard/billing'), dashboard.getBilling);
+
+  app.route('/profile')
+     .all(setRedirect({auth: '/'}))
+     .all(isAuthenticated)     
+     .get(setRender('dashboard/profile'), dashboard.getProfile);
+
+};
+
   // router.get('/',
   //   setRedirect({auth: '/dashboard'}),
   //   isUnauthenticated,

@@ -41,6 +41,8 @@ var login =  require('./routes/login');
 var users = require('./routes/users');
 // var profile = require('./routes/profile');
 
+var dashboard = require('./routes/dashboard');
+
 
 // setup db
 mongoose.connect(secrets.db);
@@ -139,7 +141,7 @@ stripeHooks(app, passport);
 signup(app, passport);
 login(app, passport);
 users(app, passport);
-
+dashboard(app, passport);
 
 /// catch 404 and forwarding to error handler
 app.use(errorHandler.notFound);
