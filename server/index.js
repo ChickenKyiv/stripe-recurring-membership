@@ -32,16 +32,18 @@ var staticDir;
 // var routes = require('./routes/routes');
 // var allRoutes = require('./routes');
 // var allRoutes = require('./routes/index');
-var forgot    = require('./routes/forgot');
-var stripeHooks = require('./routes/webhooks');
-var signup = require('./routes/registration');
-var login =  require('./routes/login');
+
+var index     = require('./routes/index');
+// var forgot    = require('./routes/forgot');
+// var stripeHooks = require('./routes/webhooks');
+// var signup = require('./routes/registration');
+// var login =  require('./routes/login');
 
 // @TODO maybe rename to profile?
-var users = require('./routes/user');
+// var users = require('./routes/user');
 // var profile = require('./routes/profile');
 
-var dashboard = require('./routes/dashboard');
+// var dashboard = require('./routes/dashboard');
 
 
 // setup db
@@ -135,13 +137,13 @@ app.use(viewHelper);
 
 
 // setup routes
-// routes(app, passport);
-forgot(app, passport);
-stripeHooks(app, passport);
-signup(app, passport);
-login(app, passport);
-users(app, passport);
-dashboard(app, passport);
+index(app, passport);
+// forgot(app, passport);
+// stripeHooks(app, passport);
+// signup(app, passport);
+// login(app, passport);
+// users(app, passport);
+// dashboard(app, passport);
 
 /// catch 404 and forwarding to error handler
 app.use(errorHandler.notFound);

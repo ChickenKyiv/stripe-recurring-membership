@@ -61,6 +61,9 @@ module.exports = function (app, passport) {
 	   .get(setRender('dashboard/forward-email'), users.updateForwardEmailAction)
 	   .post(users.postForwardEmailAction); ///user/update-forward-email
 
+
+
+
   // router.get('/user/profile/forward-email',
   //   setRender('dashboard/forward-email'),
   //   setRedirect({auth: '/'}),
