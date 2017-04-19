@@ -20,17 +20,14 @@
 
     <!-- Input fields -->
     <div class="form-group">
-        <input type="text" name="fast-somain" 
-        id="fast-domain" class="form-control input-lg" 
-        placeholder="Search for a name..." required>
-    </div>
+        {% include "fields/search-field.html" %}
 
-    <!-- <div class="form-group">
-        <input type="password" size="25" name="fast-password" id="fast-password" class="form-control input-lg" placeholder="Enter your Password" required>
-    </div> -->
+    </div>
+    
 
     <!-- Signup Button -->
     <button class="btn btn-color">
         Search
     </button>
+
 </form>
