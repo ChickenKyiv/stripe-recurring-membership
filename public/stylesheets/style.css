@@ -104,3 +104,16 @@ fieldset[disabled] .btn-primary.active {
   background-color: #9b59b6;
   border-color: #9b59b6;
 }
+
+
+
+
+/**  **/
+
+.fast-success {
+  display: none;
+}
+
+.fast-failed {
+  display: none;
+}
