@@ -34,6 +34,8 @@ var staticDir;
 // var allRoutes = require('./routes/index');
 
 var index     = require('./routes/index');
+var search = require('./routes/search');
+
 // var forgot    = require('./routes/forgot');
 // var stripeHooks = require('./routes/webhooks');
 // var signup = require('./routes/registration');
@@ -44,6 +46,8 @@ var index     = require('./routes/index');
 // var profile = require('./routes/profile');
 
 // var dashboard = require('./routes/dashboard');
+
+
 
 
 // setup db
@@ -138,6 +142,7 @@ app.use(viewHelper);
 
 // setup routes
 index(app, passport);
+search(app, passport);
 // forgot(app, passport);
 // stripeHooks(app, passport);
 // signup(app, passport);
