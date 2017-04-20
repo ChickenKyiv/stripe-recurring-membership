@@ -116,13 +116,13 @@ module.exports = exports = function stripeCustomer (schema, options) {
         var euro   = amount / 100;
         euro.toLocaleString("en-US", {style:"currency", currency:"EUR"});
 
-        console.log(euro);
+        // console.log(euro);
         element.amount = euro;
 
     });
 
     
-    console.log(plans);
+    // console.log(plans);
 
     return plans;
     
