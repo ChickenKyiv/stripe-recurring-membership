@@ -19,7 +19,8 @@ exports.getHome = function(req, res, next){
   res.render(req.render, {
     form: form,
     error: error,
-    plans: plans
+    plans: plans,
+    domain: ''
   });
 
 };
