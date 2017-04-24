@@ -1,7 +1,7 @@
 'use strict';
 
 // middleware
-var namecheap = require('namecheap');
+// var namecheap = require('../middleware/namecheap');
 
 exports.getSearchResults = function(req, res, next){
 

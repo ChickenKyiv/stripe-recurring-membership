@@ -1,4 +1,9 @@
 <input type="text" name="email" 
        class="form-control" 
-       placeholder="Email address" 
+       {% if emailPlaceholder %}
+         placeholder="{{emailPlaceholder}}"
+	   {% endif %}
+       
+
        value="{{form.email}}" autofocus />
+<!-- placeholder="Email address"  -->

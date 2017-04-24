@@ -27,7 +27,7 @@ var secrets    = require('../config/secrets');
 // };
 
 exports.getSignup2 = function(req, res){
-
+// console.log('2');
   var form       = {},
       error      = null,
       formFlash  = req.flash('form'),
@@ -46,7 +46,8 @@ exports.getSignup2 = function(req, res){
 
   res.render('signup2', {
     form: form, 
-    error: error
+    error: error,
+    emailPlaceholder: 'your existing email (gmail, hotmail, yahoo...)'
   });
 
 };

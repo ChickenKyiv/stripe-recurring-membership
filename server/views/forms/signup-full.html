@@ -9,12 +9,15 @@
         <div class="form-group">
           <label class="sr-only" for="inputEmail">your <u>existing</u> email</label>
 
-          <input type="email" class="form-control" id="inputEmail" 
+          <!-- <input type="email" class="form-control" id="inputEmail" 
           name="email" placeholder="your existing email" 
-          value="{{form.email}}" autofocus />
-          {% include "fields/password-field.html" %}
+          value="{{form.email}}" autofocus /> -->
 
-          <span class="help-block">All emails sent to [anything]@mydomain.me will be received here</span>
+          {% include "fields/email-field.html" %}
+
+          <span class="help-block">
+            All emails sent to [anything]@mydomain.me will be received here
+          </span>
         </div>
         
 
@@ -38,12 +41,14 @@
         <!-- pricing plans partial -->
         <!-- {% include "fields/password-field.html" %} -->
 
+        <a href='#' data-plan="quarterly" class="btn btn-primary btn-block">Quarterly</a>
+        <a href='#' data-plan="yearly" class="btn btn-primary btn-block">Yearly</a>
+        
+       <!--  <button type="submit" class="btn btn-primary btn-block" name="plan" value="quarterly">Quarterly</button>
 
-        <button type="submit" class="btn btn-primary btn-block" name="plan" value="quarterly">Quarterly</button>
+        <button type="submit" class="btn btn-primary btn-block" name="plan" value="yearly">Yearly</button> -->
 
-        <button type="submit" class="btn btn-primary btn-block" name="plan" value="yearly">Yearly</button>
-
-
+        <input type="hidden" name="plan" value="free" />
 
 
 
