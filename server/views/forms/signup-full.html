@@ -40,15 +40,26 @@
 
         <!-- pricing plans partial -->
         <!-- {% include "fields/password-field.html" %} -->
-
-        <a href='#' data-plan="quarterly" class="btn btn-primary btn-block">Quarterly</a>
-        <a href='#' data-plan="yearly" class="btn btn-primary btn-block">Yearly</a>
+        <div class="row">
+          <div class="col-md-6">
+            <a href='#' data-plan="quarterly" class="btn btn-primary btn-block btn-sign-up1">
+          Quarterly
+        </a>
+          </div>
+          <div class="col-md-6">
+            <a href='#' data-plan="yearly" class="btn btn-primary btn-block btn-sign-up2">
+              Yearly
+            </a>
+          </div>
+        </div>
         
+        
+
        <!--  <button type="submit" class="btn btn-primary btn-block" name="plan" value="quarterly">Quarterly</button>
 
         <button type="submit" class="btn btn-primary btn-block" name="plan" value="yearly">Yearly</button> -->
 
-        <input type="hidden" name="plan" value="free" />
+        <input type="hidden" name="plan" value="free" id="plan" />
 
 
 

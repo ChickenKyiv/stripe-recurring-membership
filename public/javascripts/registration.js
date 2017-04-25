@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-	console.log('123');
+	// console.log('123');
 	//case 1: user fill only 4 text fields(existing email, )+1 hidden field(domain name)
 	// and we send ajax call and store this values(and stripe.customer_id)
 	// on this case we'll assign a free plan to user. So later, we'll be able filter only 'free' users,
@@ -52,11 +52,34 @@ $( document ).ready(function() {
 	// if user pick same email, but payed before for 3,12 month - we need to fire an error/notification.
 
 
-	$("input[type='submit']").on('click', function(e){
-
-		console.log( $(this).prop() );
 
 
+	$(".btn-sign-up1").on('click', function(e){
+
+		var value = $(this).data().plan;
+		// console.log( value )
+		// console.log( $(this).data().plan )
+		$('#plan').prop( 'value', value );
+
+		// console.log( $('#plan').prop('value') );
+		// console.log( $(this).data().plan )
+		// console.log( $(this).prop() );
+		$('#payment-form').submit();
+		return false;
+
+	});
+
+	$(".btn-sign-up2").on('click', function(e){
+
+		var value = $(this).data().plan;
+		// console.log( value )
+		// console.log( $(this).data().plan )
+		$('#plan').prop( 'value', value );
+
+		// console.log( $('#plan').prop('value') );
+
+		$('#payment-form').submit();
+		return false;
 
 	});
 
@@ -64,6 +87,10 @@ $( document ).ready(function() {
 
         //prevent Default functionality
         e.preventDefault();
+
+        console.log('true');
+
+        
 
 	})
 
