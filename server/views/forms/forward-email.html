@@ -1,8 +1,9 @@
 <form action="/user/update-forward-email" method="POST" 
       class="form-horizontal">
+      
 	<div class="form-group">
 	<label class="col-sm-3 control-label">
-	    Current Forward Email - {{forward-email}}
+	    Current Forward Email - {{currentEmail}}
     </label>	
 	</div>
   <div class="form-group">
@@ -13,7 +14,7 @@
       New Email
     </label>
     <div class="col-sm-4">
-      <!-- {% include "fields/email-field.html" %} -->
+      {% include "fields/email-field.html" %}
       
 
     </div>
@@ -25,8 +26,7 @@
       Confirm Email
     </label>
     <div class="col-sm-4">
-      <!-- {% include "fields/email-field.html" %} -->
-      
+      {% include "fields/confirm-email.html" %}      
 
     </div>
 

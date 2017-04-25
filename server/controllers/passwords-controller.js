@@ -89,7 +89,8 @@ exports.getForgotPassword2 = function(req, res){
   res.render(req.redirect.success, {
     title: 'Forgot Password',
     form : form,
-    error: error
+    error: error,
+    emailPlaceholder: 'Email Address'
   });
 };
 
