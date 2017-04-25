@@ -6,7 +6,7 @@
 var passport = require('passport');
 
 //old version
-exports.postLoginOld = function(req, res, next){
+exports.postLogin = function(req, res, next){
 
   req.assert('email',    'Please sign up with a valid email.').isEmail();
   req.assert('password', 'Password must be at least 4 characters long').len(4);
@@ -29,7 +29,7 @@ exports.postLoginOld = function(req, res, next){
 
 
 //new
-exports.postLogin = function(req, res, next){
+exports.postLoginNew = function(req, res, next){
 
   req.assert('email',    'Please sign up with a valid email.').isEmail();
   req.assert('password', 'Password must be at least 4 characters long').len(4);
@@ -74,6 +74,26 @@ exports.postLogin = function(req, res, next){
 
 };
 
+
+exports.getLogin = function(req, res, next){
+  
+var form = {},
+    error = null,
+    formFlash = req.flash('form'),
+    errorFlash = req.flash('error');
+
+    if (formFlash.length) {
+      form.email = formFlash[0].email;
+    }
+    if (errorFlash.length) {
+      error = errorFlash[0];
+    }
+    res.render(req.render, {
+      form: form,
+      error: error,
+      // plans: plans
+    });
+};
 
 exports.logout = function(req, res){
 

@@ -19,20 +19,12 @@ users             = require('../controllers/users-controller');
 module.exports    = function (app, passport) {
 
   // registrations
-  // app.get('/signup',
-  //   setRedirect({auth: '/dashboard'}),
-  //   isUnauthenticated,
-  //   setRender('signup'),
-  //   registrations.getSignup
-  // );
 
-  // app.post('/signup',
-  //   setRedirect({auth: '/dashboard', success: '/dashboard', failure: '/signup2'}),
-  //   isUnauthenticated,
-  //   registrations.postSignup
-  // );
-
-
+  // app.route('/signup')
+  //    .all(setRedirect({auth: '/dashboard', success: '/signup2-1', failure: '/signup2'}))
+  //    .all(isUnauthenticated)
+  //    .get(setRender('signup'), registrations.getSignup)
+  //    .post(registrations.postSignup2);
 
   app.route('/signup2')
      .all(setRedirect({auth: '/dashboard', success: '/signup2-1', failure: '/signup2'}))

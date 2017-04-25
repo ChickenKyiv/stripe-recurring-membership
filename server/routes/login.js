@@ -16,6 +16,7 @@ module.exports    = function (app, passport) {
   app.route('/login')
      .all(setRedirect({auth: '/dashboard', success: '/dashboard', failure: '/'}))
      .all(isUnauthenticated)
+     .get(setRender('login'), sessions.getLogin)
      .post(sessions.postLogin);
 
 	app.route('/logout')
@@ -23,15 +24,4 @@ module.exports    = function (app, passport) {
      .all(isAuthenticated)     
      .get(sessions.logout);
 
-  // router.post('/login',
-  //   setRedirect({auth: '/dashboard', success: '/dashboard', failure: '/'}),
-  //   isUnauthenticated,
-  //   sessions.postLogin
-  // );
-
-  // router.get('/logout',
-  //   setRedirect({auth: '/', success: '/'}),
-  //   isAuthenticated,
-  //   sessions.logout
-  // );
 };

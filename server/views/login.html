@@ -1,0 +1,25 @@
+{% extends 'layouts/application.html' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+  <div class="container" style="max-width: 400px;">
+    <h2>
+      Login Page
+    </h2>
+
+    {% include "forms/login.html" %}
+
+    
+    <hr>
+    <p class="text-center">
+      <a href="/signup2">
+        sign up here
+      </a> or 
+
+      <a href="/forgot">
+        forgot password?
+      </a>
+    </p>
+  </div>
+{% endblock %}

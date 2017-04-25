@@ -38,8 +38,8 @@ var search = require('./routes/search');
 
 var forgot    = require('./routes/forgot');
 // var stripeHooks = require('./routes/webhooks');
-var signup = require('./routes/registration');
-// var login =  require('./routes/login');
+var registration = require('./routes/registration');
+var login =  require('./routes/login');
 
 // @TODO maybe rename to profile?
 // var users = require('./routes/user');
@@ -145,8 +145,8 @@ index(app, passport);
 search(app, passport);
 forgot(app, passport);
 // stripeHooks(app, passport);
-signup(app, passport);
-// login(app, passport);
+registration(app, passport);
+login(app, passport);
 // users(app, passport);
 // dashboard(app, passport);
 
