@@ -158,7 +158,7 @@ module.exports = exports = function stripeCustomer (schema, options) {
       
       user.stripe.last4 = card.last4;
 
-      console.log( user.stripe );
+      // console.log( user.stripe );
 
       user.save(function(err){
         if (err) return cb(err);
@@ -168,7 +168,11 @@ module.exports = exports = function stripeCustomer (schema, options) {
 
     if(user.stripe.customerId){
 
-      stripe.customers.update(user.stripe.customerId, {card: stripe_token}, cardHandler);
+      stripe.customers.update(
+        user.stripe.customerId,
+        {card: stripe_token},
+        cardHandler
+      );
 
     } else {
 
@@ -244,8 +248,11 @@ module.exports = exports = function stripeCustomer (schema, options) {
 
     if(!user.stripe.customerId) return cb();
 
-    stripe.customers.update(user.stripe.customerId, {email: user.email}, function(err, customer) {
-      cb(err);
+    stripe.customers.update(
+      user.stripe.customerId,
+      {email: user.email},
+      function(err, customer) {
+        cb(err);
     });
 
   };

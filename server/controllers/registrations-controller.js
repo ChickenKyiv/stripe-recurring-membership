@@ -45,7 +45,7 @@ exports.getSignup2 = function(req, res){
   // console.log('123');
 
   res.render('signup2', {
-    form: form, 
+    form : form, 
     error: error,
     emailPlaceholder: 'your existing email (gmail, hotmail, yahoo...)'
   });

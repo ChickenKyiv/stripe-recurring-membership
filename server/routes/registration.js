@@ -33,28 +33,14 @@ module.exports    = function (app, passport) {
      .post(registrations.postSignup2);
 
 
-  // app.get('/signup2',
-  //   setRedirect({auth: '/dashboard'}),
-  //   isUnauthenticated,
-  //   setRender('signup2'),
-  //   registrations.getSignup2
-  // );
-
-
-  // app.post('/signup2',
-  //   setRedirect({auth: '/dashboard', success: '/signup2-1', failure: '/signup2'}),
-  //   // setRedirect({auth: '/dashboard', success: '/dashboard', failure: '/signup2'}),
-  //   isUnauthenticated,
-  //   registrations.postSignup2
-  // );
 
 
 
-  app.route('signupshort')
-     .all(setRedirect({auth: '/dashboard', success: '/dashboard', failure: '/signup2'}))
-     .all(isUnauthenticated)
-     .get(setRender('signup2-1'), registrations.getSignup2)
-     .post(registrations.postSignupFirstTime);
+  // app.route('signupshort')
+  //    .all(setRedirect({auth: '/dashboard', success: '/dashboard', failure: '/signup2'}))
+  //    .all(isUnauthenticated)
+  //    .get(setRender('signup2-1'), registrations.getSignup2)
+  //    .post(registrations.postSignupFirstTime);
 
 //user registration before purchase
   // app.post('/signupshort',
@@ -76,6 +62,7 @@ module.exports    = function (app, passport) {
      .all(isAuthenticated)
      .get(setRender('singup/whois-settings'), registrations.getWhoisForm)
      .post(registrations.postWhois);
+     
      // .post(users.postWhois);
 
   //display whois form 
