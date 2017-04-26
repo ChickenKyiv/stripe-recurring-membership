@@ -1,14 +1,22 @@
 'use strict';
 
-var Stripe = require('stripe'),
-    stripe = {};
+var Stripe  = require('stripe'),
+    stripe  = {};
 
+var express = require('express'),
+    app     = express();
 // var stripe = require("stripe")(options.apiKey);
 
 module.exports = exports = function stripeCustomer (schema, options) {
   
+  if (app.get('env') === 'production') {
 
-  var secretKey = options.private.stripe.testSecretKey;
+    var secretKey = options.private.stripe.liveSecretKey;
+  } else {
+
+    var secretKey = options.private.stripe.testSecretKey;  
+  }
+  // var secretKey = options.private.stripe.testSecretKey;
   // var secret = options.private.stripe.liveSecretKey;
   
   if( !secretKey ){ //error handler if we have empty plans
@@ -94,6 +102,7 @@ module.exports = exports = function stripeCustomer (schema, options) {
 
   };
 
+
   schema.statics.getPlans = function () {
 
     // @todo add checking that all data placed at planData object
@@ -128,6 +137,7 @@ module.exports = exports = function stripeCustomer (schema, options) {
     
   };
 
+
   schema.methods.createCustomer = function(cb) {
     var user = this;
 
@@ -141,6 +151,7 @@ module.exports = exports = function stripeCustomer (schema, options) {
       return cb();
     });
   };
+
 
   schema.methods.setCard = function(stripe_token, cb) {
     var user = this;

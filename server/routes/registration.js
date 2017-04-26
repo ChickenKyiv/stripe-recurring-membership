@@ -27,7 +27,7 @@ module.exports    = function (app, passport) {
   //    .post(registrations.postSignup2);
 
   app.route('/signup2')
-     .all(setRedirect({auth: '/dashboard', success: '/signup2-1', failure: '/signup2'}))
+     .all(setRedirect({ auth: '/whois', success: '/whois', failure: '/signup2' }))
      .all(isUnauthenticated)
      .get(setRender('signup2'), registrations.getSignup2)
      .post(registrations.postSignup2);
@@ -58,12 +58,13 @@ module.exports    = function (app, passport) {
   // );
 
   app.route('/whois')
-     .all(setRedirect({ auth: '/', success: '/profile', failure: '/profile' }))
+     .all(setRedirect({ auth: '/', success: '/billing-form', failure: '/profile' }))
      .all(isAuthenticated)
-     .get(setRender('singup/whois-settings'), registrations.getWhoisForm)
+     .get(setRender('signup/whois'), registrations.getWhoisForm2)
      .post(registrations.postWhois);
-     
-     // .post(users.postWhois);
+
+
+
 
   //display whois form 
   //@TODO change URL name
@@ -81,6 +82,11 @@ module.exports    = function (app, passport) {
   //   users.postWhois
   // );
 
-
+  //billing form
+  // app.route('/')
+  // .all()
+  // .all(isAuthenticated)
+  // .get()
+  // .post()
 
 };

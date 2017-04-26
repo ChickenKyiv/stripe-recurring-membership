@@ -106,8 +106,11 @@ exports.postSignup2 = function(req, res, next){
       domain : req.body.domain
 
     });
-    return res.redirect('/signup2');
+    
+    return res.redirect(req.redirect.failure);
+    // return res.redirect('/signup2');
   } 
+
   // else {
   //   req.flash('info', {msg:'zaebok'});
   // }
@@ -117,8 +120,10 @@ exports.postSignup2 = function(req, res, next){
   // calls next middleware to authenticate with passport
   // this middleware can be found in /server/middleware/passport.js
   passport.authenticate('signup2', {
-    successRedirect: '/signup2-1',
-    failureRedirect: '/signup2',
+    successRedirect: req.redirect.success,
+    // successRedirect: '/signup2-1',
+    failureRedirect: req.redirect.failure,
+    // failureRedirect: '/signup2',
     failureFlash : true
   })(req, res, next);
 
@@ -134,11 +139,11 @@ exports.postSignupFirstTime = function(req, res, next){
 
 
 
-// !important - check if this email was registered before. 
-// But take less attention, than to registration with purchase.
+  // !important - check if this email was registered before. 
+  // But take less attention, than to registration with purchase.
 
-//if fields, that we've posted to this method don't apply to our rules - we need to do something.
-// maybe return error or something like it  
+  //if fields, that we've posted to this method don't apply to our rules - we need to do something.
+  // maybe return error or something like it  
 
 
   req.assert('email',    'Please sign up with a valid email.').isEmail();
@@ -190,16 +195,16 @@ exports.postSignupFirstTime = function(req, res, next){
 // @TODO create controller for WHOIS settings or rename and use getProfile.
 
 //prev version
-exports.getWhoisForm = function(req, res, next){
+exports.getWhoisForm2 = function(req, res, next){
 
 
-// <strong>
-// </strong>
-// <div class="toast-message"></div>
-//                     </div>
+  // <strong>
+  // </strong>
+  // <div class="toast-message"></div>
+  //                     </div>
 
 
-var message = { msg: {
+  var message = { msg: {
                       title : "Congratulations! Your email has been created.", 
                       body  : "Please wait until your domain comes online (usually just a few minutes, but sometimes up to a couple hours)"
                     } };
@@ -257,7 +262,7 @@ exports.getWhoisForm = function(req, res, next){
   
 };
 
-exports.postWhois = function(req, res, next){
+exports.postWhois2 = function(req, res, next){
 
   // req.assert('email',    'Please sign up with a valid email.').isEmail();
   // req.assert('password', 'Password must be at least 6 characters long').notEmpty().len(6);
@@ -563,6 +568,7 @@ exports.postWhois = function(req, res, next){
   var errors = req.validationErrors();
 
   if (errors) {
+
     req.flash('errors', errors);
     return res.redirect(req.redirect.failure);
   }
@@ -572,12 +578,14 @@ exports.postWhois = function(req, res, next){
     User.findOne({ email: req.body.email }, function(err, existingUser) {
 
       if (existingUser) {
+
         req.flash('errors', { msg: 'An account with that email address already exists.' });
         return res.redirect(req.redirect.failure);
 
       } else {
 
         var query  = { _id : req.user.id };
+
         var update = {$set:{ 
           email: req.body.email || '', 
           profile: {
@@ -611,9 +619,10 @@ exports.postWhois = function(req, res, next){
 
           console.log(user);
 
-          user.updateStripeEmail(function(err){
+          user.updateStripeEmail( function(err){
 
             if (err) return next(err);
+
             req.flash('success', { msg: 'Profile information updated.' });
             res.redirect(req.redirect.success);
 
@@ -662,9 +671,10 @@ exports.postWhois = function(req, res, next){
 
         console.log(user);
 
-        user.updateStripeEmail(function(err){
+        user.updateStripeEmail( function(err){
 
           if (err) return next(err);
+
           req.flash('success', { msg: 'Profile information updated.' });
           res.redirect(req.redirect.success);
 
