@@ -19,13 +19,6 @@ module.exports = function (app, passport) {
 
   // });
 
-    // router.get('/',
-  //   setRedirect({auth: '/dashboard'}),
-  //   isUnauthenticated,
-  //   setRender('index'),
-  //   main.getHome
-  // );
-
   app.route('/')
      .all(setRedirect({auth: '/dashboard', search: '/domain-search'}))
      .all(isUnauthenticated)

@@ -8,7 +8,8 @@ setRender         = require('middleware-responder').setRender,
 setRedirect       = require('middleware-responder').setRedirect;
 
 // controllers
-var main      = require('../controllers/main-controller'),
+var 
+// main      = require('../controllers/main-controller'),
     dashboard = require('../controllers/dashboard-controller');
 
 module.exports = function (app, passport) {
@@ -16,18 +17,18 @@ module.exports = function (app, passport) {
   // dashboard
   app.route('/dashboard')
      .all(setRedirect({auth: '/'}))
-     .all(isUnauthenticated)     
+     .all(isAuthenticated)     
      .get(setRender('dashboard/index'), dashboard.getDefault);
 
-  app.route('/billing')
-     .all(setRedirect({auth: '/'}))
-     .all(isAuthenticated)     
-     .get(setRender('dashboard/billing'), dashboard.getBilling);
+  // app.route('/billing')
+  //    .all(setRedirect({auth: '/'}))
+  //    .all(isAuthenticated)     
+  //    .get(setRender('dashboard/billing'), dashboard.getBilling);
 
-  app.route('/profile')
-     .all(setRedirect({auth: '/'}))
-     .all(isAuthenticated)     
-     .get(setRender('dashboard/profile'), dashboard.getProfile);
+  // app.route('/profile')
+  //    .all(setRedirect({auth: '/'}))
+  //    .all(isAuthenticated)     
+  //    .get(setRender('dashboard/profile'), dashboard.getProfile);
 
 };
 

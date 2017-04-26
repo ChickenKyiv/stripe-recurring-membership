@@ -83,15 +83,15 @@ $( document ).ready(function() {
 
 	});
 
-	$('#payment-form').on('submit', function(e){
+	// $('#payment-form').on('submit', function(e){
 
-        //prevent Default functionality
-        e.preventDefault();
+ //        //prevent Default functionality
+ //        e.preventDefault();
 
-        console.log('true');
+ //        console.log('true');
 
         
 
-	})
+	// })
 
 });

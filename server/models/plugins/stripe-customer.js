@@ -8,7 +8,8 @@ var express = require('express'),
 // var stripe = require("stripe")(options.apiKey);
 
 module.exports = exports = function stripeCustomer (schema, options) {
-  
+
+
   if (app.get('env') === 'production') {
 
     var secretKey = options.private.stripe.liveSecretKey;
@@ -16,8 +17,6 @@ module.exports = exports = function stripeCustomer (schema, options) {
 
     var secretKey = options.private.stripe.testSecretKey;  
   }
-  // var secretKey = options.private.stripe.testSecretKey;
-  // var secret = options.private.stripe.liveSecretKey;
   
   if( !secretKey ){ //error handler if we have empty plans
     throw new Error('Please configure your Stripe API keys on https://dashboard.stripe.com/account/apikeys');

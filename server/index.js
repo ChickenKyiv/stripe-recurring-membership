@@ -45,7 +45,7 @@ var login =  require('./routes/login');
 // var users = require('./routes/user');
 // var profile = require('./routes/profile');
 
-// var dashboard = require('./routes/dashboard');
+var dashboard = require('./routes/dashboard');
 
 
 
@@ -61,16 +61,20 @@ var corsOptions = { origin: '*' };
 // express setup
 var app = express();
 
+
 if (app.get('env') === 'production') {
   app.locals.production = true;
   swig.setDefaults({ cache: 'memory' });
   staticDir = path.join(__dirname + '/../public');
+  app.locals.stripePubKey = secrets.stripeNextVersion.public.stripe.livePublishableKey;
 
 } else {
 
   app.locals.production = false;
   swig.setDefaults({ cache: false });
   staticDir = path.join(__dirname + '/../public');
+  //dev
+  app.locals.stripePubKey = secrets.stripeNextVersion.public.stripe.testPublishableKey;
 
 }
 
@@ -82,13 +86,14 @@ app.set('view engine', 'html');
 app.locals._ = lodash;
 //@TODO change this
 
+// app.locals.stripePubKey = secrets.stripeNextVersion.public.stripe.testPublishableKey;
+// console.log( app.locals.stripePubKey );
 
-if (app.get('env') === 'production') {
-  app.locals.stripePubKey = secrets.stripeNextVersion.public.stripe.livePublishableKey;
-} else {
-  //dev
-  app.locals.stripePubKey = secrets.stripeNextVersion.public.stripe.testPublishableKey;
-}
+// if (app.get('env') === 'production') {
+  
+// } else {
+  
+// }
 
 
 app.use(favicon(path.join(__dirname + '/../public/favicon.ico')));
@@ -148,7 +153,8 @@ forgot(app, passport);
 registration(app, passport);
 login(app, passport);
 // users(app, passport);
-// dashboard(app, passport);
+dashboard(app, passport);
+
 
 /// catch 404 and forwarding to error handler
 app.use(errorHandler.notFound);
