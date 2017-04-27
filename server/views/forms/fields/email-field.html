@@ -1,5 +1,10 @@
-<input type="text" name="email" 
+<input type="text" 
        class="form-control" 
+       {% if name %}
+         name="{{name}}"	
+       {% else %}  	
+         name="email"	
+       {% endif %}
 
 	   {% if placeholder %}
          placeholder="{{placeholder}}"

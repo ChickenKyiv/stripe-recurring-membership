@@ -397,11 +397,15 @@ exports.updateForwardEmailAction = function (req, res, next){
     user: req.user, 
     form: form, 
     error: error,
+
     //email
+    email: req.user.email,
     placeholder: 'New Email Address',
+
+    currentEmail: 'Current.Email.Com', //@TODO change this
     confirmEmailPlaceholder: 'Confrim Email Address',
 
-    currentEmail: 'Current.Email.Com' //@TODO change this
+    
   })
 };
 

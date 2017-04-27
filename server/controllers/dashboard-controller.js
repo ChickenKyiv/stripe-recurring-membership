@@ -78,7 +78,11 @@ exports.getProfile = function(req, res, next){
     placeholder: '',
     value: req.user.email,
 
+    //forward email
+    forwardEmail: req.user.profile.forwardEmail,
+
     domain: req.user.profile.domain,
+
     form: form,
     error: error,
     plans: plans //@TODO check plans info. can boost an error
