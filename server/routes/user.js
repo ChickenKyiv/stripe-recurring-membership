@@ -15,10 +15,10 @@ var users     = require('../controllers/users-controller');
 
 module.exports = function (app, passport) {
 	
-	app.route('/user')
-	   .all(setRedirect({auth: '/', success: '/profile', failure: '/profile'}))
-	   .all(isAuthenticated)	   
-	   .post(users.postProfile);
+	// app.route('/user') //@TODO check this route
+	//    .all(setRedirect({auth: '/', success: '/profile', failure: '/profile'}))
+	//    .all(isAuthenticated)	   
+	//    .post(users.postProfile); 
 
 	app.route('/user/billing')
 	   .all(setRedirect({auth: '/', success: '/billing', failure: '/billing'}))
