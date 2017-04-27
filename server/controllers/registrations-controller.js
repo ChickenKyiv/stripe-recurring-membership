@@ -47,7 +47,8 @@ exports.getSignup2 = function(req, res){
   res.render('signup2', {
     form : form, 
     error: error,
-    emailPlaceholder: 'your existing email (gmail, hotmail, yahoo...)'
+    //email
+    placeholder: 'your existing email (gmail, hotmail, yahoo...)'
   });
 
 };

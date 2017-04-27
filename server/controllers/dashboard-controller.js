@@ -74,6 +74,11 @@ exports.getProfile = function(req, res, next){
 
   res.render(req.render, {
     user: req.user,
+    //email
+    placeholder: '',
+    value: req.user.email,
+
+    domain: req.user.profile.domain,
     form: form,
     error: error,
     plans: plans //@TODO check plans info. can boost an error

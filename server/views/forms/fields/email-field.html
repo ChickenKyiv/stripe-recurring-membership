@@ -1,6 +1,12 @@
 <input type="text" name="email" 
        class="form-control" 
-       {% if emailPlaceholder %}
-         placeholder="{{emailPlaceholder}}"
-	   {% endif %}       
-       value="{{form.email}}" autofocus />
+
+	   {% if placeholder %}
+         placeholder="{{placeholder}}"
+	   {% endif %}
+
+	   {% if value %}
+	    value="{{value}}"
+	   {% endif %}	 
+	            
+       autofocus />

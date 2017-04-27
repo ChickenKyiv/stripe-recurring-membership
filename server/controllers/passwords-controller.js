@@ -90,7 +90,8 @@ exports.getForgotPassword2 = function(req, res){
     title: 'Forgot Password',
     form : form,
     error: error,
-    emailPlaceholder: 'Email Address'
+    //email
+    placeholder: 'Email Address'
   });
 };
 

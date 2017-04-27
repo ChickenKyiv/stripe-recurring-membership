@@ -28,7 +28,7 @@ module.exports = function (app, passport) {
   app.route('/profile')
      .all(setRedirect({auth: '/'}))
      .all(isAuthenticated)     
-     .get(setRender('profile/index'), dashboard.getDefault);
+     .get(setRender('profile/index'), dashboard.getDefault); //@TODO move to routes/profile.js
 
 // dashboard.getProfile
   // router.get('/profile',
