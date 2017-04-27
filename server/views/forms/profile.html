@@ -26,7 +26,7 @@
     </label>
     <div class="col-sm-4">
       <div class="form-control-static">
-        {{user.stripe.customerId}}
+        <!-- {{user.stripe.customerId}} -->
       </div>
     </div>
   </div>
@@ -37,7 +37,7 @@
     </label>
     <div class="col-sm-4">
       <p class="form-control-static">
-      	{{plans[user.stripe.plan].name}} - ${{plans[user.stripe.plan].price}}
+      	<!-- {{plans[user.stripe.plan].name}} - ${{plans[user.stripe.plan].price}} -->
       </p>
     </div>
   </div>
@@ -48,7 +48,7 @@
     </label>
     <div class="col-sm-4">
       <p class="form-control-static">
-        {{user.stripe.last4}}
+        <!-- {{user.stripe.last4}} -->
       </p>
     </div>
   </div>
@@ -68,8 +68,11 @@
     </label>
     <div class="col-sm-4">
       <input type="text" name="domain" id="domain" 
-      value="{{user.profile.domain}}" class="form-control" disabled="">
+      
+      value="{{domain}}"
+      class="form-control" disabled="">
     </div>
+    <!-- value="{{user.profile.domain}}"  -->
   </div>
 
   <div class="form-group">

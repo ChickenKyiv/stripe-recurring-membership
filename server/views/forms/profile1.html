@@ -1,0 +1,99 @@
+<form action="/user" method="POST" class="form-horizontal">
+
+	<div class="form-group">
+		<label for="email" class="col-sm-3 control-label">
+		  Email
+		</label>
+		<div class="col-sm-4">
+		  <!-- <input type="email" name="email" 
+		  id="email" value="{{user.email}}" class="form-control"> -->
+		  {% include "fields/email-field.html" %}
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="name" class="col-sm-3 control-label">
+		Name
+		</label>
+		<div class="col-sm-4">
+			<input type="text" 
+			name="name" id="name" 
+			value=""
+			class="form-control">
+		</div>
+		
+	</div>
+	<div class="form-group">
+		<label for="name" class="col-sm-3 control-label">
+		  Customer ID
+		</label>
+		<div class="col-sm-4">
+		  <div class="form-control-static">
+		    
+		  </div>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="name" class="col-sm-3 control-label">
+		  Plan
+		</label>
+		<div class="col-sm-4">
+		  <p class="form-control-static">
+		  	
+		  </p>
+		</div>
+	</div>	
+
+	<div class="form-group">
+		<label for="name" class="col-sm-3 control-label">
+		  Last 4
+		</label>
+		<div class="col-sm-4">
+		  <p class="form-control-static">
+		    
+		  </p>
+		</div>
+	</div>	
+
+	<div class="form-group">
+		<label for="domain" class="col-sm-3 control-label">
+		  Domain name
+		</label>
+		<div class="col-sm-4">
+		  <input type="text" name="domain" id="domain" 
+		  
+		  value="{{domain}}"
+		  class="form-control" disabled="">
+		</div>
+	<!-- value="{{user.profile.domain}}"  -->
+	</div>
+
+	<div class="form-group">
+		<label for="forward_email" class="col-sm-3 control-label">
+		  Forward email
+		</label>
+		<div class="col-sm-4">
+
+		  <!-- <input type="text" name="forward_email" 
+		  id="forward_email" 
+		       value="{{user.profile.forwardEmail}}" 
+		       class="form-control"> -->
+
+		   <!-- {% include "fields/email-field.html" %} -->
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-sm-offset-3 col-sm-4">
+			<button type="submit" class="btn btn-primary">
+			  <span class="ion-edit"></span>
+			  Update Profile
+			</button>
+		</div>
+	</div>
+
+
+
+
+
+</form>
