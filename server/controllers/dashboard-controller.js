@@ -44,6 +44,7 @@ exports.getBilling = function(req, res, next){
 
   res.render(req.render, {
     user: req.user,
+    domain : user.profile.domain || '',
     form: form,
     error: error,
     plans: plans
@@ -53,7 +54,7 @@ exports.getBilling = function(req, res, next){
 
 //dashboard/profile
 exports.getProfile = function(req, res, next){
-
+// console.log('123');
   var form       = {},
       error      = null,
       formFlash  = req.flash('form'),

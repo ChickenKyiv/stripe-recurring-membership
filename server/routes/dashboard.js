@@ -20,15 +20,23 @@ module.exports = function (app, passport) {
      .all(isAuthenticated)     
      .get(setRender('dashboard/index'), dashboard.getDefault);
 
-  // app.route('/billing')
-  //    .all(setRedirect({auth: '/'}))
-  //    .all(isAuthenticated)     
-  //    .get(setRender('dashboard/billing'), dashboard.getBilling);
+  app.route('/billing')
+     .all(setRedirect({auth: '/'}))
+     .all(isAuthenticated)     
+     .get(setRender('dashboard/billing'), dashboard.getBilling);
 
-  // app.route('/profile')
-  //    .all(setRedirect({auth: '/'}))
-  //    .all(isAuthenticated)     
-  //    .get(setRender('dashboard/profile'), dashboard.getProfile);
+  app.route('/profile')
+     .all(setRedirect({auth: '/'}))
+     .all(isAuthenticated)     
+     .get(setRender('profile/index'), dashboard.getDefault);
+
+// dashboard.getProfile
+  // router.get('/profile',
+  //   setRender('dashboard/profile'),
+  //   setRedirect({auth: '/'}),
+  //   isAuthenticated,
+  //   dashboard.getProfile
+  // );
 
 };
 
@@ -56,12 +64,7 @@ module.exports = function (app, passport) {
 
 
 
-  // router.get('/profile',
-  //   setRender('dashboard/profile'),
-  //   setRedirect({auth: '/'}),
-  //   isAuthenticated,
-  //   dashboard.getProfile
-  // );
+
 
 
 
