@@ -1,0 +1,20 @@
+{% extends '../layouts/dashboard.html' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+  <div class="container-fluid container-max">
+    <div class="page-header">
+      Edit details 
+      <small>/views/dashboard/profile</small>
+    </div>
+
+    <h3>
+      Profile
+    </h3>
+    
+    {% include "../forms/profile.html" %}
+	<hr>
+
+  </div> 
+{% endblock %}
