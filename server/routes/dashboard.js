@@ -20,32 +20,16 @@ module.exports = function (app, passport) {
      .all(isAuthenticated)     
      .get(setRender('dashboard/index'), dashboard.getDefault);
 
+
   app.route('/billing')
      .all(setRedirect({auth: '/'}))
      .all(isAuthenticated)     
+     // .get(setRender('dashboard/index'), dashboard.getDefault);
      .get(setRender('dashboard/billing'), dashboard.getBilling);
 
-  app.route('/profile')
-     .all(setRedirect({auth: '/'}))
-     .all(isAuthenticated)     
-     .get(setRender('profile/index'), dashboard.getDefault); //@TODO move to routes/profile.js
-
-// dashboard.getProfile
-  // router.get('/profile',
-  //   setRender('dashboard/profile'),
-  //   setRedirect({auth: '/'}),
-  //   isAuthenticated,
-  //   dashboard.getProfile
-  // );
 
 };
 
-  // router.get('/',
-  //   setRedirect({auth: '/dashboard'}),
-  //   isUnauthenticated,
-  //   setRender('index'),
-  //   main.getHome
-  // );
 
   // router.get('/dashboard',
   //   setRender('dashboard/index'),
