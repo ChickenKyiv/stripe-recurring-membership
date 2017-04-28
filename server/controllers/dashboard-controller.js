@@ -54,7 +54,7 @@ exports.getBilling = function(req, res, next){
 
 //dashboard/profile
 exports.getProfile = function (req, res, next){
-console.log('123');
+// console.log('123');
   var form       = {},
       error      = null,
       formFlash  = req.flash('form'),
