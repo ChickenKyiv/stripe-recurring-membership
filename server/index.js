@@ -43,7 +43,7 @@ var login =  require('./routes/login');
 
 // @TODO maybe rename to profile?
 // var users = require('./routes/user');
-// var profile = require('./routes/profile');
+var profile = require('./routes/profile');
 
 var dashboard = require('./routes/dashboard');
 
@@ -154,6 +154,7 @@ registration(app, passport);
 login(app, passport);
 // users(app, passport);
 dashboard(app, passport);
+profile(app, passport);
 
 
 /// catch 404 and forwarding to error handler

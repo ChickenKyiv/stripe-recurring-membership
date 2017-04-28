@@ -22,7 +22,7 @@ exports.getDefault = function(req, res, next){
     user: req.user, 
     form: form, 
     error: error, 
-    plans: plans
+    // plans: plans
   });
 
 };
@@ -53,8 +53,8 @@ exports.getBilling = function(req, res, next){
 };
 
 //dashboard/profile
-exports.getProfile = function(req, res, next){
-// console.log('123');
+exports.getProfile = function (req, res, next){
+console.log('123');
   var form       = {},
       error      = null,
       formFlash  = req.flash('form'),
@@ -85,7 +85,7 @@ exports.getProfile = function(req, res, next){
 
     form: form,
     error: error,
-    plans: plans //@TODO check plans info. can boost an error
+    // plans: plans //@TODO check plans info. can boost an error
   });
   
 };
@@ -251,6 +251,3 @@ exports.postProfile = function (req, res, next){
   }
 
 };
-
-
-

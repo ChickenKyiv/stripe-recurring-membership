@@ -18,12 +18,7 @@ module.exports = function (app, passport) {
   app.route('/profile')
      .all(setRedirect({auth: '/', success: '/profile', failure: '/profile'}))
      .all(isAuthenticated)     
-     .get(setRender('profile/index'), dashboard.getDefault) //@TODO move to different controller  
+     .get(setRender('profile/index'), dashboard.getProfile) //@TODO move to different controller  
      .post(dashboard.postProfile);
-
-	// app.route('/user') //@TODO check this route
-	//    .all(setRedirect({auth: '/', success: '/profile', failure: '/profile'}))
-	//    .all(isAuthenticated)	   
-	//    .post(users.postProfile); 
 
 };
