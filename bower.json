@@ -1,0 +1,27 @@
+{
+  "name": "node-stripe-membership-saas",
+  "description": "",
+  "main": "",
+  "authors": [
+    "[object Object]"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "stripe",
+    "subscription",
+    "membership",
+    "saas",
+    "plan"
+  ],
+  "homepage": "https://github.com/atherdon/repo-repo",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sweetalert": "^1.0.1"
+  }
+}
