@@ -7,7 +7,7 @@ setRedirect       = require('middleware-responder').setRedirect,
 isUnauthenticated = require('../middleware/auth').isUnauthenticated;
 
 //controllers
-var main      = require('../controllers/main-controller');
+var homepage      = require('../controllers/homepage-controller');
 
 module.exports = function (app, passport) {
 
@@ -22,7 +22,7 @@ module.exports = function (app, passport) {
   app.route('/')
      .all(setRedirect({auth: '/dashboard', search: '/domain-search'}))
      .all(isUnauthenticated)
-     .get(setRender('homepage'), main.getHome);
+     .get(setRender('homepage'), homepage.getHome);
 
 
 

@@ -1,22 +1,29 @@
 'use strict';
 
-// middleware
-var 
-isAuthenticated   = require('../middleware/auth').isAuthenticated,
-isUnauthenticated = require('../middleware/auth').isUnauthenticated,
-setRender         = require('middleware-responder').setRender,
-setRedirect       = require('middleware-responder').setRedirect;
+var User = require('../models/user'),
+plans = User.getPlans();
 
-// controllers
-var main      = require('../controllers/main-controller');
+exports.getHome = function(req, res, next){
 
-module.exports = function (app, passport) {
+  var form = {},
+  error = null,
+  formFlash = req.flash('form'),
+  errorFlash = req.flash('error');
 
+  if (formFlash.length) {
+    form.email = formFlash[0].email;
+  }
+  if (errorFlash.length) {
+    error = errorFlash[0];
+  }
 
-// homepage
-  app.route('/')
-     .all(setRedirect({auth: '/dashboard'}))
-     .all(isUnauthenticated)     
-     .get(setRender('index'), main.getHome); 
+      const renderObject = {
+      form: form,
+    error: error,
+    plans: plans,
+    domain: ''
+    };
+
+  res.render(req.render, renderObject);
 
 };

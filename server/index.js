@@ -33,7 +33,7 @@ var staticDir;
 // var allRoutes = require('./routes');
 // var allRoutes = require('./routes/index');
 
-var index     = require('./routes/index');
+var homepage     = require('./routes/homepage');
 var search = require('./routes/search');
 
 var forgot    = require('./routes/forgot');
@@ -146,7 +146,7 @@ app.use(viewHelper);
 
 
 // setup routes
-index(app, passport);
+homepage(app, passport);
 search(app, passport);
 forgot(app, passport);
 // stripeHooks(app, passport);

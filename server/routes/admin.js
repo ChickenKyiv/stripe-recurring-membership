@@ -3,6 +3,16 @@
 // middleware
 var secrets           = require('./config/secrets');
 
+var 
+isAuthenticated   = require('../middleware/auth').isAuthenticated,
+isUnauthenticated = require('../middleware/auth').isUnauthenticated,
+setRender         = require('middleware-responder').setRender,
+setRedirect       = require('middleware-responder').setRedirect;
+
+// controllers
+//var dashboard = require('../controllers/dashboard-controller');
+
+
 module.exports    = function (app, passport) {
 
 
