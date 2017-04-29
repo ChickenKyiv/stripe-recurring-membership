@@ -160,7 +160,7 @@ userSchema.methods.fetch = function() {
 
 
   // 2 queries
-User.find({}, {limit:10, skip:20} function (err, users) {            
+User.find({}, {limit:10, skip:20}, function (err, users) {            
     if (err) {
         return next(err);
     }
