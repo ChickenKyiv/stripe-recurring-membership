@@ -22,33 +22,11 @@ module.exports = function (app, passport) {
   app.route('/billing')
      .all(setRedirect({auth: '/'}))
      .all(isAuthenticated)     
-     // .get(setRender('dashboard/index'), dashboard.getDefault);
      .get(setRender('dashboard/billing'), dashboard.getBilling);
 
+  app.route('/update-card')
+     .all(setRedirect({auth: '/'}))
+     .all(isAuthenticated)
+     .get(setRender('dashboard/update-card'), dashboard.getBilling)   
 
 };
-
-
-  // router.get('/dashboard',
-  //   setRender('dashboard/index'),
-  //   setRedirect({auth: '/'}),
-  //   isAuthenticated,
-  //   dashboard.getDefault
-  // );
-
-
-  // router.get('/billing',
-  //   setRender('dashboard/billing'),
-  //   setRedirect({auth: '/'}),
-  //   isAuthenticated,
-  //   dashboard.getBilling
-  // );
-
-
-
-
-
-
-
-
-

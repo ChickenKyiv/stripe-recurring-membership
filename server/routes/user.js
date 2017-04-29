@@ -9,7 +9,8 @@ setRedirect       = require('middleware-responder').setRedirect;
 
 // controllers
 var users     = require('../controllers/users-controller');
-// dashboard     = require('../controllers/dashboard-controller'),
+
+// var dashboard     = require('../controllers/dashboard-controller');
 // passwords     = require('../controllers/passwords-controller');
 
 
@@ -29,8 +30,6 @@ module.exports = function (app, passport) {
 	   .all(setRedirect({auth: '/', success: '/billing', failure: '/billing'}))
 	   .all(isAuthenticated)	   
 	   .post(users.postPlan);
-
-
 
 
 	// change password
@@ -55,9 +54,10 @@ module.exports = function (app, passport) {
 	   .all(isAuthenticated)	   
 	   .get(users.deleteAccount);	
 	   
-  app.route('/user/profile/forward-email')
+
+  app.route('/user/forward-email')
 	   .all(setRedirect({auth: '/', success: '/'}))
-	   .all(isAuthenticated)	   
+	   .all(isAuthenticated)	
 	   .get(setRender('dashboard/forward-email'), users.updateForwardEmailAction)
 	   .post(users.postForwardEmailAction); ///user/update-forward-email
 
@@ -83,25 +83,10 @@ module.exports = function (app, passport) {
 
 
   // user api stuff
-  // router.post('/user',
-  //   setRedirect({auth: '/', success: '/profile', failure: '/profile'}),
-  //   isAuthenticated,
-  //   users.postProfile
-  // );
 
 
-  // router.post('/user/billing',
-  //   setRedirect({auth: '/', success: '/billing', failure: '/billing'}),
-  //   isAuthenticated,
-  //   users.postBilling
-  // );
 
 
-  // router.post('/user/plan',
-  //   setRedirect({auth: '/', success: '/billing', failure: '/billing'}),
-  //   isAuthenticated,
-  //   users.postPlan
-  // );
 
   // change password
   // router.post('/user/password',
@@ -125,20 +110,4 @@ module.exports = function (app, passport) {
   //   setRedirect({auth: '/', success: '/'}),
   //   isAuthenticated,
   //   users.deleteAccount
-  // );
-
-
-  // router.get('/user/profile/forward-email',
-  //   setRender('dashboard/forward-email'),
-  //   setRedirect({auth: '/'}),
-  //   isAuthenticated,
-  //   dashboard.updateForwardEmailAction
-  // );
-
-
-
-  // router.post('/user/update-forward-email',
-  //   setRedirect({auth: '/', success: '/'}),
-  //   isAuthenticated,
-  //   users.postForwardEmailAction
   // );

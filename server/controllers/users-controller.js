@@ -209,8 +209,9 @@ exports.updateForwardEmailAction = function (req, res, next){
   if (errorFlash.length) {
     error = errorFlash[0];
   }
-    const renderObject = {
-      user: req.user, 
+
+  const renderObject = {
+    user: req.user, 
     form: form, 
     error: error,
 
@@ -223,7 +224,8 @@ exports.updateForwardEmailAction = function (req, res, next){
 
       // messages: req.flash('messages')
     };
-                res.render(req.render, renderObject);
+
+    res.render(req.render, renderObject);
 
 };
 
