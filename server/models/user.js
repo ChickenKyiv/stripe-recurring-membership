@@ -154,6 +154,36 @@ userSchema.methods.reactivate = function() {
 
 };
 
+userSchema.methods.fetch = function() {
+
+  var information = {};
+
+
+  // 2 queries
+User.find({}, {limit:10, skip:20} function (err, users) {            
+    if (err) {
+        return next(err);
+    }
+
+    // information[] = {
+       //   user.email
+  //   user.profile.domain
+  //   user.profile.first_name
+  //   user.profile.last_name
+    // }
+
+
+    User.count({}, function (err, count) {
+        if (err) {
+            return next(err);
+        }
+
+        res.send({count: count, users: users});
+    });
+});
+
+}
+
 
 
 

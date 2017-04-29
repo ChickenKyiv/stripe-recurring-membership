@@ -23,7 +23,9 @@
     "url": ""
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "nodemon": "nodemon server.js",
+    "watch": "nodemon server.js"
   },
   "dependencies": {
     "async": "^2.3.0",
