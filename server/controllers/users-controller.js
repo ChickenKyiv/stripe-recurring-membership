@@ -209,7 +209,7 @@ exports.updateForwardEmailAction = function (req, res, next){
   if (errorFlash.length) {
     error = errorFlash[0];
   }
-
+  console.log( req.route.path )
   const renderObject = {
     user: req.user, 
     form: form, 
@@ -223,6 +223,8 @@ exports.updateForwardEmailAction = function (req, res, next){
     confirmEmailPlaceholder: 'Confrim Email Address',
 
       // messages: req.flash('messages')
+
+    route: 'forward-email',  
     };
 
     res.render(req.render, renderObject);

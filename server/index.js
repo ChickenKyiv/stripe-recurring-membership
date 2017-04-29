@@ -74,6 +74,8 @@ if (app.get('env') === 'production') {
   app.locals.production = false;
   swig.setDefaults({ cache: false });
   staticDir = path.join(__dirname + '/../public');
+  console.log(__dirname + '/bower_components');
+  app.use('/bower_components',  express.static(__dirname + '/../bower_components'));
   //dev
   app.locals.stripePubKey = secrets.stripeNextVersion.public.stripe.testPublishableKey;
 
@@ -106,8 +108,20 @@ app.use(expressValidator());
 app.use(cookieParser());
 
 app.use(express.static(staticDir));
+
+// app.use('/', function(req, res, next) {  // GET 'http://www.example.com/admin/new'
+//   // console.log(req.originalUrl); // '/admin/new'
+//   // console.log(req.baseUrl); // '/admin'
+//   console.log(req.path); // '/new'
+//   next();
+// });
+
+// app.use('/bower_components',  express.static(__dirname + '/bower_components'));
+
+
 if(app.get('env') !== 'production'){
   app.use('/styles', express.static(__dirname + '/../.tmp/styles'));
+
   // app.use('/', routes.styleguide);
 }
 

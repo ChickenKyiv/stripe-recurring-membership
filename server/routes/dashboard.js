@@ -18,7 +18,6 @@ module.exports = function (app, passport) {
      .all(isAuthenticated)     
      .get(setRender('dashboard/index'), dashboard.getDefault);
 
-
   app.route('/billing')
      .all(setRedirect({auth: '/'}))
      .all(isAuthenticated)     
