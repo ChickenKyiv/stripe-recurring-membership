@@ -27,6 +27,7 @@ exports.postNewPassword = function(req, res, next){
     user.password = req.body.password;
 
     user.save(function(err) {
+
       if (err) return next(err);
       req.flash('success', { msg: 'Success! Your password has been changed.' });
       res.redirect(req.redirect.success);
@@ -39,7 +40,7 @@ exports.postNewPassword = function(req, res, next){
 
 exports.getForgotPassword = function(req, res){
 
-  if (req.isAuthenticated()) {
+  if (req.isAuthenticated()) { //@TODO change this
     return res.redirect(req.redirect.auth);
   }
 
@@ -70,6 +71,7 @@ exports.getForgotPassword = function(req, res){
 exports.getForgotPassword2 = function(req, res){
 
   // setRedirect({auth: '/dashboard'});
+  //@TODO change this
   req.redirect = { auth: '/dashboard', success: '/forgot', failure: '/forgot' };
 
   if (req.isAuthenticated()) {
