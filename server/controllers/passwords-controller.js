@@ -1,11 +1,15 @@
 'use strict';
 
-var nodemailer = require('nodemailer');
-// var mailgunApiTransport = require('nodemailer-mailgunapi-transport');
+// var nodemailer = require('nodemailer');
+// // var mailgunApiTransport = require('nodemailer-mailgunapi-transport');
+
 var async      = require('async');
 var crypto     = require('crypto');
 var User       = require('../models/user');
-var secrets    = require('../config/secrets');
+
+var resetPassword        = require('../middleware/email-helper').resetPasswordEmail; 
+var resetPasswordConfirm = require('../middleware/email-helper').resetPasswordConfirmationEmail;
+// var secrets    = require('../config/secrets');
 
 // edit password
 
@@ -153,33 +157,33 @@ exports.postForgotPassword = function(req, res, next){
 
     },
 
+    resetPassword()
 
 
-
-    function(token, user, done) {
+    // function(token, user, done) {
 
       
-      var transporter = nodemailer.createTransport(secrets.emailServer);
-      // var transporter = nodemailer.createTransport(mailgunApiTransport(secrets.mailgun));
+    //   var transporter = nodemailer.createTransport(secrets.emailServer);
+    //   // var transporter = nodemailer.createTransport(mailgunApiTransport(secrets.mailgun));
       
-      // req.get('host')
+    //   // req.get('host')
       
-      var mailOptions = {
-        to: user.email,
-        from   : '"EasyMail support" <admin@easymail.io>', // sender address
-        subject: 'Reset your password on stripe-a.herokuapp.com',
-        text: 'You are receiving this email because you (or someone else) have requested the reset of the password for your account.\n\n' +
-          'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-          'http://' + req.headers.host + '/reset/' + token + '\n\n' +
-          'If you did not request this, please ignore this email and your password will remain unchanged.\n'
-      };
+    //   var mailOptions = {
+    //     to: user.email,
+    //     from   : '"EasyMail support" <admin@easymail.io>', // sender address
+    //     subject: 'Reset your password on stripe-a.herokuapp.com',
+    //     text: 'You are receiving this email because you (or someone else) have requested the reset of the password for your account.\n\n' +
+    //       'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+    //       'http://' + req.headers.host + '/reset/' + token + '\n\n' +
+    //       'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+    //   };
 
-      transporter.sendMail(mailOptions, function(err) {
-        req.flash('info', { msg: 'An e-mail has been sent to ' + user.email + ' with further instructions.' });
-        done(err, 'done');
-      });
+    //   transporter.sendMail(mailOptions, function(err) {
+    //     req.flash('info', { msg: 'An e-mail has been sent to ' + user.email + ' with further instructions.' });
+    //     done(err, 'done');
+    //   });
 
-    }
+    // }
 
 
 
@@ -277,26 +281,26 @@ exports.postToken = function(req, res, next){
 
     },
 
+    resetPasswordConfirm()
 
+    // function(user, done) {
+    //   var transporter = nodemailer.createTransport(secrets.emailServer);
+    //   // var transporter = nodemailer.createTransport(mailgunApiTransport(secrets.mailgun));
 
-    function(user, done) {
-      var transporter = nodemailer.createTransport(secrets.emailServer);
-      // var transporter = nodemailer.createTransport(mailgunApiTransport(secrets.mailgun));
+    //   var mailOptions = {
+    //     to: user.email,
+    //     from   : '"EasyMail support" <admin@easymail.io>', // sender address
+    //     subject: 'Your stripe-a.herokuapp.com password has been changed',
+    //     text: 'Hello,\n\n' +
+    //       'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
+    //   };
 
-      var mailOptions = {
-        to: user.email,
-        from   : '"EasyMail support" <admin@easymail.io>', // sender address
-        subject: 'Your stripe-a.herokuapp.com password has been changed',
-        text: 'Hello,\n\n' +
-          'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
-      };
+    //   transporter.sendMail(mailOptions, function(err) {
+    //     req.flash('success', { msg: 'Success! Your password has been changed.' });
+    //     done(err);
+    //   });
 
-      transporter.sendMail(mailOptions, function(err) {
-        req.flash('success', { msg: 'Success! Your password has been changed.' });
-        done(err);
-      });
-
-    }
+    // }
 
 
 

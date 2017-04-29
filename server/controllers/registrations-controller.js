@@ -1,11 +1,11 @@
 'use strict';
 
-var nodemailer = require('nodemailer');
+// var nodemailer = require('nodemailer');
 var async      = require('async');
 var crypto     = require('crypto');
 var passport   = require('passport');
 var User       = require('../models/user');
-var secrets    = require('../config/secrets');
+// var secrets    = require('../config/secrets');
 
 // Show Registration Page
 
