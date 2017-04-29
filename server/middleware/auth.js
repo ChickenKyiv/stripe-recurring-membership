@@ -1,6 +1,6 @@
 'use strict';
 
-function isAuthenticated = function(req, res, next) {
+function isAuthenticated (req, res, next) {
   if (req.isAuthenticated()){
     return next();
   }
@@ -8,7 +8,7 @@ function isAuthenticated = function(req, res, next) {
   res.redirect(req.redirect.auth);
 };
 
-function isUnauthenticated = function(req, res, next) {
+function isUnauthenticated (req, res, next) {
   if (!req.isAuthenticated()){
     return next();
   }
