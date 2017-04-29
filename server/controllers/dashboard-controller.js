@@ -18,12 +18,15 @@ exports.getDefault = function(req, res, next){
     error = errorFlash[0];
   }
 
-  res.render(req.render, {
-    user: req.user, 
+    const renderObject = {
+      user: req.user, 
     form: form, 
     error: error, 
     // plans: plans
-  });
+      // messages: req.flash('messages')
+    };
+
+  res.render(req.render, renderObject);
 
 };
 
@@ -41,14 +44,15 @@ exports.getBilling = function(req, res, next){
   if (errorFlash.length) {
     error = errorFlash[0];
   }
-
-  res.render(req.render, {
+    const renderObject = {
     user: req.user,
     domain : req.user.profile.domain || '',
     form: form,
     error: error,
     plans: plans
-  });
+  };
+  
+  res.render(req.render, renderObject);
 
 };
 
@@ -71,9 +75,8 @@ exports.getProfile = function (req, res, next){
   if (errorFlash.length) {
     error = errorFlash[0];
   }
-
-  res.render(req.render, {
-    user: req.user,
+    const renderObject = {
+      user: req.user,
     //email
     placeholder: '',
     value: req.user.email,
@@ -86,7 +89,9 @@ exports.getProfile = function (req, res, next){
     form: form,
     error: error,
     // plans: plans //@TODO check plans info. can boost an error
-  });
+    };
+
+  res.render(req.render, renderObject);
   
 };
 

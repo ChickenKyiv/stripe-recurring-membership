@@ -88,11 +88,14 @@ var form = {},
     if (errorFlash.length) {
       error = errorFlash[0];
     }
-    res.render(req.render, {
+
+        const renderObject = {
       form: form,
       error: error,
       // plans: plans
-    });
+    };
+    res.render(req.render, renderObject);
+
 };
 
 exports.logout = function(req, res){

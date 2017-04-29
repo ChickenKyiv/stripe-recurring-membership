@@ -179,7 +179,12 @@ exports.getCancelMyAccountAction = function (req, res, next){
   // if (errorFlash.length) {
   //   error = errorFlash[0];
   // }
-
+    // const renderObject = {
+    //   title: 'user profile',
+    //   user: req.user,
+    //   transactions: transactions,
+    //   messages: req.flash('messages')
+    // };
   // res.render(req.render,{
   //   user: req.user, 
   //   form: form, 
@@ -204,9 +209,8 @@ exports.updateForwardEmailAction = function (req, res, next){
   if (errorFlash.length) {
     error = errorFlash[0];
   }
-
-  res.render(req.render,{
-    user: req.user, 
+    const renderObject = {
+      user: req.user, 
     form: form, 
     error: error,
 
@@ -217,8 +221,10 @@ exports.updateForwardEmailAction = function (req, res, next){
     currentEmail: 'Current.Email.Com', //@TODO change this
     confirmEmailPlaceholder: 'Confrim Email Address',
 
-    
-  })
+      // messages: req.flash('messages')
+    };
+                res.render(req.render, renderObject);
+
 };
 
 exports.postForwardEmailAction = function (req, res, next){
@@ -235,10 +241,12 @@ exports.postForwardEmailAction = function (req, res, next){
   if (errorFlash.length) {
     error = errorFlash[0];
   }
-
-  res.render(req.render,{
-    user: req.user, 
+    const renderObject = {
+      user: req.user, 
     form: form, 
     error: error,
-  });
+      // messages: req.flash('messages')
+    };
+            res.render(req.render, renderObject);
+
 };

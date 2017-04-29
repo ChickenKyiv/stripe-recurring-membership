@@ -16,12 +16,17 @@ exports.getAdminPage = function(req, res, next){
   // if (errorFlash.length) {
   //   error = errorFlash[0];
   // }
-  // res.render(req.render, {
-  //   form: form,
+
+    const renderObject = {
+
+      // messages: req.flash('messages')
+      // form: form,
   //   error: error,
   //   plans: plans,
   //   domain: ''
-  // });
+    };
+
+  // res.render(req.render, renderObject);
 
 };
 
@@ -56,12 +61,19 @@ exports.getAdminPage = function(req, res, next){
 
   // }
 
-  // res.render(req.render, {
-  //   form: form,
+    // const renderObject = {
+
+      // messages: req.flash('messages')
+      // form: form,
   //   error: error,
   //   plans: plans,
   //   domain: ''
-  // });
+    // };
+
+  // res.render(req.render, renderObject);
+
+
+  
 
 };
 

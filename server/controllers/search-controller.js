@@ -31,7 +31,12 @@ exports.getSearchResults = function(req, res, next){
 	// namecheap.fetchMe()
 
 
-
+    const renderObject = {
+      title: 'user profile',
+      user: req.user,
+      transactions: transactions,
+      messages: req.flash('messages')
+    };
 	res.render(req.render, {
 		title  : 'Search Results',
 		form   : form,
@@ -54,12 +59,14 @@ exports.fetch = function(req, res, next){
 	// console.log( req.body.fastDomain );
   
 	// return false;
-
-  res.render(req.render, {
-    title: 'Search Results',
+    const renderObject = {
+      title: 'Search Results',
     form : form,
     error: error
-  });
+      // messages: req.flash('messages')
+    };
+        res.render(req.render, renderObject);
+
 };
 
 exports.book  = function(req, res, next){

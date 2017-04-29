@@ -43,13 +43,20 @@ exports.getSignup2 = function(req, res){
     error = errorFlash[0];
   }
   // console.log('123');
-
-  res.render('signup2', {
-    form : form, 
+    const renderObject = {
+      form : form, 
     error: error,
     //email
     placeholder: 'your existing email (gmail, hotmail, yahoo...)'
-  });
+      // messages: req.flash('messages')
+    };
+     res.render(req.render, renderObject);
+  // res.render('signup2', {
+  //   form : form, 
+  //   error: error,
+  //   //email
+  //   placeholder: 'your existing email (gmail, hotmail, yahoo...)'
+  // });
 
 };
 
@@ -224,12 +231,15 @@ exports.getWhoisForm2 = function(req, res, next){
     error = errorFlash[0];
   }
 
-  res.render(req.render, {
-    user: req.user, 
+    const renderObject = {
+      user: req.user, 
     form: form, 
     error: error, 
     plans: plans
-  });
+      // messages: req.flash('messages')
+    };
+res.render(req.render, renderObject);
+
   
 };
 
@@ -253,13 +263,15 @@ exports.getWhoisForm = function(req, res, next){
   if (errorFlash.length) {
     error = errorFlash[0];
   }
-
-  res.render(req.render, {
-    user: req.user,
+    const renderObject = {
+      user: req.user,
     form: form,
     error: error,
     // plans: plans
-  });
+      // messages: req.flash('messages')
+    };
+    res.render(req.render, renderObject);
+
   
 };
 

@@ -56,11 +56,14 @@ exports.getForgotPassword = function(req, res){
     error = errorFlash[0];
   }
 
-  res.render(req.render, {
-    title: 'Forgot Password',
+
+    const renderObject = {
+       title: 'Forgot Password',
     form : form,
     error: error
-  });
+      // messages: req.flash('messages')
+    };
+ res.render(req.render, renderObject);
 };
 
 // @TODO remove redirect object and place it to app.route
@@ -86,13 +89,17 @@ exports.getForgotPassword2 = function(req, res){
     error = errorFlash[0];
   }
 
-  res.render(req.redirect.success, {
-    title: 'Forgot Password',
+
+    const renderObject = {
+      title: 'Forgot Password',
     form : form,
     error: error,
     //email
     placeholder: 'Email Address'
-  });
+      // messages: req.flash('messages')
+    };
+
+   res.render(req.render, renderObject);
 };
 
 // post forgot password will create a random token,
@@ -207,12 +214,16 @@ exports.getToken = function(req, res){
         return res.redirect(req.redirect.failure);
       }
 
-      res.render(req.render, {
-        title: 'Password Reset',
+
+    const renderObject = {
+      title: 'Password Reset',
         token: req.params.token,
         form: form,
         error: error
-      });
+      // messages: req.flash('messages')
+    };
+       res.render(req.render, renderObject);
+
 
     });
 
