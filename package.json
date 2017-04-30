@@ -23,8 +23,7 @@
     "url": ""
   },
   "scripts": {
-    "start": "node server.js",
-    
+    "start": "node server.js",    
     "watch": "nodemon server.js"
   },
   "dependencies": {
@@ -54,7 +53,7 @@
     "nodemailer-mailgunapi-transport": "0.0.3",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "passport-remember-me": "0.0.1",
+    
     "serve-favicon": "~2.4.2",
     "stripe": "^4.18.0",
     "stripe-webhook-middleware": "^0.2.0",
