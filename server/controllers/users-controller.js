@@ -241,10 +241,10 @@ exports.postForwardEmail = function (req, res, next){
 
 
 
-req.assert('email',    'Please sign up with a valid email.').isEmail();
-req.assert('confirm', 'Passwords must match').equals(req.body.password);
+  req.assert('email',    'Please sign up with a valid email.').isEmail();
+  req.assert('confirm', 'Passwords must match').equals(req.body.password);
 
-var errors = req.validationErrors();
+  var errors = req.validationErrors();
 
   // console.log( req.body );
   // console.log( errors );
@@ -256,24 +256,25 @@ var errors = req.validationErrors();
   
 // req.user.id
 
-User.findOneAndUpdate({_id: req.user.id}, {$set:{name:"Naomi"}}, {new: true}, function(err, user){
+  User.findOneAndUpdate({_id: req.user.id}, {$set:{name:"Naomi"}}, {new: true}, 
+    function(err, user){
 
-    if(err){
-        console.log("Something wrong when updating data!");
+      if(err){
+          console.log("Something wrong when updating data!");
 
-        // req.flash('errors', {
-    //      msg:  msg
-    //    });
-    //     return res.redirect(req.redirect.failure);
-    }
+          // req.flash('errors', {
+      //      msg:  msg
+      //    });
+      //     return res.redirect(req.redirect.failure);
+      }
 
-    console.log(user);
-// req.flash('success', { 
-    //     msg: 'Plan has been updated.' 
-    //   });
-    //   res.redirect(req.redirect.success);
+      console.log(user);
+  // req.flash('success', { 
+      //     msg: 'Plan has been updated.' 
+      //   });
+      //   res.redirect(req.redirect.success);
 
-// })
+  });
 
 
 

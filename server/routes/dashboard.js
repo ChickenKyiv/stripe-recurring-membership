@@ -28,4 +28,6 @@ module.exports = function (app, passport) {
      .all(isAuthenticated)
      .get(setRender('dashboard/update-card'), dashboard.getBilling)   
 
+     
+
 };

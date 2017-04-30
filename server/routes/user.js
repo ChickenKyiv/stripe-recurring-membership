@@ -35,8 +35,9 @@ module.exports = function (app, passport) {
 	// change password
 	app.route('/user/password')
 	   .all(setRedirect({auth: '/', success: '/billing', failure: '/billing'}))
-	   .all(isAuthenticated)	   
-	   .post(users.postPlan);
+	   .all(isAuthenticated)
+	   .get()	   
+	   .post(users.postPlan); //@TODO move to profile or to dashboard routers
 
 
 
@@ -58,8 +59,8 @@ module.exports = function (app, passport) {
   app.route('/user/forward-email')
 	   .all(setRedirect({auth: '/', success: '/'})) //@TODO change redirect object
 	   .all(isAuthenticated)	
-	   .get(setRender('dashboard/forward-email'), users.updateForwardEmailAction)
-	   .post(users.postForwardEmailAction); ///user/update-forward-email
+	   .get(setRender('dashboard/forward-email'), users.updateForwardEmail)
+	   .post(users.postForwardEmail); ///user/update-forward-email
 
 
 

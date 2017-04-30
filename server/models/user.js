@@ -10,13 +10,11 @@ var secrets  = require('../config/secrets');
 // var timestamps = require('mongoose-timestamp');
 
 var options = {
-          timestamps: { 
-               createdAt: 'created_at',
-               updatedAt: 'updated_at' 
-          },   
-
-          { _id: false }
-     };
+        timestamps: { 
+             createdAt: 'created_at',
+             updatedAt: 'updated_at' 
+        }        
+};
 
 var userSchema = new mongoose.Schema({
 
