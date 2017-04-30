@@ -2,7 +2,7 @@
       class="form-horizontal">
       
 	<div class="form-group">
-	<label class="col-sm-3 control-label">
+	<label class="col-sm-6 control-label">
 	    Current Forward Email - {{currentEmail}}
     </label>	
 	</div>
@@ -14,6 +14,7 @@
       New Email
     </label>
     <div class="col-sm-4">
+
       {% include "fields/email-field.html" %}
       
 
@@ -26,7 +27,8 @@
       Confirm Email
     </label>
     <div class="col-sm-4">
-      {% include "fields/confirm-email.html" %}      
+      {% include "fields/email-field.html" with {'name':'confirm', 'placeholder':'Confirm New Email Address'} %}
+      <!-- {% include "fields/confirm-email.html" %}       -->
 
     </div>
 
