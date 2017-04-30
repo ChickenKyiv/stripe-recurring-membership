@@ -36,8 +36,8 @@ module.exports = function (app, passport) {
 	app.route('/user/password')
 	   .all(setRedirect({auth: '/', success: '/billing', failure: '/billing'}))
 	   .all(isAuthenticated)
-	   .get()	   
-	   .post(users.postPlan); //@TODO move to profile or to dashboard routers
+	   .get(users.getPasswordPage)	   
+	   .post(users.postPassword); //@TODO move to profile or to dashboard routers
 
 
 

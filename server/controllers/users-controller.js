@@ -277,7 +277,13 @@ exports.postForwardEmail = function (req, res, next){
   });
 
 
+exports.getPasswordPage = function (req, res, next){
+  
+};
 
+exports.postPassword = function (req, res, next){
+
+};
 
 
 };
