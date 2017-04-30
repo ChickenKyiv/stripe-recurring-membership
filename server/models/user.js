@@ -7,7 +7,16 @@ var secrets  = require('../config/secrets');
 
 
 
-var timestamps = require('mongoose-timestamp');
+// var timestamps = require('mongoose-timestamp');
+
+var options = {
+          timestamps: { 
+               createdAt: 'created_at',
+               updatedAt: 'updated_at' 
+          },   
+
+          { _id: false }
+     };
 
 var userSchema = new mongoose.Schema({
 
@@ -89,13 +98,13 @@ var userSchema = new mongoose.Schema({
 
   resetPasswordToken: String,
   resetPasswordExpires: Date
-});
+}, options);
 
 // var stripeOptions = secrets.stripeOptions;
 var stripeOptions = secrets.stripeNextVersion;
 
 
-userSchema.plugin(timestamps);
+// userSchema.plugin(timestamps);
 userSchema.plugin(stripeCustomer, stripeOptions);
 
 
