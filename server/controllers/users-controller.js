@@ -195,7 +195,7 @@ exports.getCancelMyAccountAction = function (req, res, next){
 
 
 //@TODO finish and test
-exports.updateForwardEmailAction = function (req, res, next){
+exports.updateForwardEmail = function (req, res, next){
 
   var form       = {},
       error      = null,
@@ -209,7 +209,11 @@ exports.updateForwardEmailAction = function (req, res, next){
   if (errorFlash.length) {
     error = errorFlash[0];
   }
-  console.log( req.route.path )
+
+  //flag variable responsible for showing
+  var flag = true;
+
+  // console.log( req.route.path )
   const renderObject = {
     user: req.user, 
     form: form, 
@@ -224,33 +228,55 @@ exports.updateForwardEmailAction = function (req, res, next){
 
       // messages: req.flash('messages')
 
-    route: 'forward-email',  
-    };
+    route: 'forward-email',
+    sweetAlertShow: flag || false,
+  };
 
     res.render(req.render, renderObject);
 
 };
 
-exports.postForwardEmailAction = function (req, res, next){
+exports.postForwardEmail = function (req, res, next){
 
-  var form       = {},
-      error      = null,
-      formFlash  = req.flash('form'),
-      errorFlash = req.flash('error');
 
-  if (formFlash.length) {
-    form.email = formFlash[0].email;
-  }
 
-  if (errorFlash.length) {
-    error = errorFlash[0];
-  }
-    const renderObject = {
-      user: req.user, 
-    form: form, 
-    error: error,
-      // messages: req.flash('messages')
-    };
-            res.render(req.render, renderObject);
+
+req.assert('email',    'Please sign up with a valid email.').isEmail();
+req.assert('confirm', 'Passwords must match').equals(req.body.password);
+
+var errors = req.validationErrors();
+
+  // console.log( req.body );
+  // console.log( errors );
+
+  console.log( req.body );
+  // console.log( plan );
+  console.log( req.user );
+  console.log( req.user.id );
+  
+// req.user.id
+
+User.findOneAndUpdate({_id: req.user.id}, {$set:{name:"Naomi"}}, {new: true}, function(err, user){
+
+    if(err){
+        console.log("Something wrong when updating data!");
+
+        // req.flash('errors', {
+    //      msg:  msg
+    //    });
+    //     return res.redirect(req.redirect.failure);
+    }
+
+    console.log(user);
+// req.flash('success', { 
+    //     msg: 'Plan has been updated.' 
+    //   });
+    //   res.redirect(req.redirect.success);
+
+// })
+
+
+
+
 
 };

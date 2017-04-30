@@ -19,12 +19,12 @@ module.exports = function (app, passport) {
 	// app.route('/user') //@TODO check this route
 	//    .all(setRedirect({auth: '/', success: '/profile', failure: '/profile'}))
 	//    .all(isAuthenticated)	   
-	//    .post(users.postProfile); 
+	//    .post(users.postProfile); //@TODO remove this method from user controller 
 
-	app.route('/user/billing')
-	   .all(setRedirect({auth: '/', success: '/billing', failure: '/billing'}))
-	   .all(isAuthenticated)	   
-	   .post(users.postBilling);
+	// app.route('/user/billing')
+	//    .all(setRedirect({auth: '/', success: '/billing', failure: '/billing'}))
+	//    .all(isAuthenticated)	   
+	//    .post(users.postBilling); //@TODO remove this method from user controller
 
 	app.route('/user/plan')
 	   .all(setRedirect({auth: '/', success: '/billing', failure: '/billing'}))
@@ -56,7 +56,7 @@ module.exports = function (app, passport) {
 	   
 
   app.route('/user/forward-email')
-	   .all(setRedirect({auth: '/', success: '/'}))
+	   .all(setRedirect({auth: '/', success: '/'})) //@TODO change redirect object
 	   .all(isAuthenticated)	
 	   .get(setRender('dashboard/forward-email'), users.updateForwardEmailAction)
 	   .post(users.postForwardEmailAction); ///user/update-forward-email
