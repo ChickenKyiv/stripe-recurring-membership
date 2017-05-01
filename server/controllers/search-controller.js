@@ -59,13 +59,13 @@ exports.fetch = function(req, res, next){
 	// console.log( req.body.fastDomain );
   
 	// return false;
-    const renderObject = {
-      title: 'Search Results',
-    form : form,
-    error: error
-      // messages: req.flash('messages')
-    };
-        res.render(req.render, renderObject);
+	const renderObject = {
+		title: 'Search Results',
+		form : form,
+	    error: error
+	      // messages: req.flash('messages')
+	};
+    res.render(req.render, renderObject);
 
 };
 

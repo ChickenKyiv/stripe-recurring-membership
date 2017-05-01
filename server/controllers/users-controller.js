@@ -167,29 +167,29 @@ exports.postPlan = function(req, res, next){
 //@TODO finish and test
 exports.getCancelMyAccountAction = function (req, res, next){
 
-  // var form       = {},
-  //     error      = null,
-  //     formFlash  = req.flash('form'),
-  //     errorFlash = req.flash('error');
+  var form       = {},
+      error      = null,
+      formFlash  = req.flash('form'),
+      errorFlash = req.flash('error');
 
-  // if (formFlash.length) {
-  //   form.email = formFlash[0].email;
-  // }
+  if (formFlash.length) {
+    form.email = formFlash[0].email;
+  }
 
-  // if (errorFlash.length) {
-  //   error = errorFlash[0];
-  // }
-    // const renderObject = {
-    //   title: 'user profile',
-    //   user: req.user,
-    //   transactions: transactions,
-    //   messages: req.flash('messages')
-    // };
-  // res.render(req.render,{
-  //   user: req.user, 
-  //   form: form, 
-  //   error: error,
-  // })
+  if (errorFlash.length) {
+    error = errorFlash[0];
+  }
+
+  const renderObject = {
+    title: 'user profile',
+    user: req.user,
+    form: form, 
+    transactions: transactions,
+    messages: req.flash('messages')
+  };
+
+  res.render(req.render, renderObject);
+
 };
 
 
@@ -236,6 +236,7 @@ exports.updateForwardEmail = function (req, res, next){
 
 };
 
+
 exports.postForwardEmail = function (req, res, next){
 
 
@@ -277,13 +278,9 @@ exports.postForwardEmail = function (req, res, next){
   });
 
 
-exports.getPasswordPage = function (req, res, next){
-  
-};
-
-exports.postPassword = function (req, res, next){
 
 };
 
 
-};
+
+

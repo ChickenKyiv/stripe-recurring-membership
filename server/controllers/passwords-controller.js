@@ -11,6 +11,33 @@ var resetPassword        = require('../middleware/email-helper').resetPasswordEm
 var resetPasswordConfirm = require('../middleware/email-helper').resetPasswordConfirmationEmail;
 // var secrets    = require('../config/secrets');
 
+// new password page
+exports.getPasswordPage = function (req, res, next){
+  
+  var form       = {},
+      error      = null,
+      formFlash  = req.flash('form'),
+      errorFlash = req.flash('error');
+
+  if (formFlash.length) {
+    form.email = formFlash[0].email;
+  }
+
+  if (errorFlash.length) {
+    error = errorFlash[0];
+  }
+
+  const renderObject = {
+    user: req.user, 
+    form: form, 
+    error: error,
+  };
+
+  res.render(req.render, renderObject);
+
+};
+
+
 // edit password
 
 exports.postNewPassword = function(req, res, next){

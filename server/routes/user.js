@@ -11,7 +11,7 @@ setRedirect       = require('middleware-responder').setRedirect;
 var users     = require('../controllers/users-controller');
 
 // var dashboard     = require('../controllers/dashboard-controller');
-// passwords     = require('../controllers/passwords-controller');
+var passwords     = require('../controllers/passwords-controller');
 
 
 module.exports = function (app, passport) {
@@ -36,8 +36,8 @@ module.exports = function (app, passport) {
 	app.route('/user/password')
 	   .all(setRedirect({auth: '/', success: '/billing', failure: '/billing'}))
 	   .all(isAuthenticated)
-	   .get(users.getPasswordPage)	   
-	   .post(users.postPassword); //@TODO move to profile or to dashboard routers
+	   .get(setRender('profile/change-password'), passwords.getPasswordPage)	   
+	   .post(passwords.postNewPassword); //@TODO move to profile or to dashboard routers
 
 
 
