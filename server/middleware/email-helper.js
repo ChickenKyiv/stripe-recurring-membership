@@ -83,7 +83,9 @@ function resetPasswordEmail (token, user, done) {
 
 
   transporter.sendMail(mailOptions, function(err) {
-    req.flash('info', { msg: 'An e-mail has been sent to ' + user.email + ' with further instructions.' });
+    req.flash('info', { 
+      msg: 'An e-mail has been sent to ' + user.email + ' with further instructions.' 
+    });
     done(err, 'done');
   });
 
@@ -99,7 +101,9 @@ function resetPasswordConfirmationEmail (user, done) {
 
 
   transporter.sendMail(mailOptions, function(err) {
-    req.flash('success', { msg: 'Success! Your password has been changed.' });
+    req.flash('success', { 
+      msg: 'Success! Your password has been changed.' 
+    });
     done(err);
   });
 
@@ -114,7 +118,9 @@ function updateForwardEmailConfirmation( user, done ){
 
 
   transporter.sendMail(mailOptions, function(err) {
-    req.flash('success', { msg: 'Success! Your forward email has been changed.' });
+    req.flash('success', { 
+      msg: 'Success! Your forward email has been changed.' 
+    });
     done(err);
   });
 }

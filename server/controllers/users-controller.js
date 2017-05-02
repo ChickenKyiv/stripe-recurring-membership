@@ -37,43 +37,6 @@ exports.deleteAccount = function(req, res, next){
 
 
 
-// Adds or updates a users card.
-// Maybe we can simplify this controller.
-// Because a lot of things will be handled by stripe server side
-// we need only get error messages if we'll have it and display.
-// if request goes well - we just update our database row.
-exports.postBilling = function(req, res, next){
-
-  var stripeToken = req.body.stripeToken;
-
-  console.log( req.body );
-
-  // if(!stripeToken){
-  //   req.flash('errors', { msg: 'Please provide a valid card.' });
-  //   return res.redirect(req.redirect.failure);
-  // }
-
-  User.findById(req.user.id, function(err, user) {
-    if (err) return next(err);
-
-    console.log( user );
-
-    // user.setCard(stripeToken, function (err) {
-    //   if (err) {
-    //     if(err.code && err.code == 'card_declined'){
-    //       req.flash('errors', { msg: 'Your card was declined. Please provide a valid card.' });
-    //       return res.redirect(req.redirect.failure);
-    //     }
-    //     req.flash('errors', { msg: 'An unexpected error occurred.' });
-    //     return res.redirect(req.redirect.failure);
-    //   }
-    //   req.flash('success', { msg: 'Billing has been updated.' });
-    //   res.redirect(req.redirect.success);
-    // });
-
-  });
-
-};
 
 
 

@@ -21,7 +21,8 @@ module.exports = function (app, passport) {
   app.route('/billing')
      .all(setRedirect({auth: '/'}))
      .all(isAuthenticated)     
-     .get(setRender('dashboard/billing'), dashboard.getBilling);
+     .get(setRender('dashboard/billing'), dashboard.getBilling)
+     .post(dashboard.postBilling); // this must be replaced by post user/plan
 
   app.route('/update-card')
      .all(setRedirect({auth: '/'}))

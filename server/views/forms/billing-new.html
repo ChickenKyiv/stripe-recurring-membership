@@ -1,7 +1,8 @@
 <form {% if !user.stripe.last4 %}id="cardForm"{% endif %} 
-      action="/user/plan" method="POST" 
+      action="/subscription/switch" 
+      method="POST" 
       class="form-horizontal"
-      id="billing2" >
+      id="billing" >
 
   <div class="form-group">
     <label for="plan" class="col-sm-3 control-label">

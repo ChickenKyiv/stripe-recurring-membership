@@ -119,7 +119,7 @@ exports.postProfile = function (req, res, next){
 
   req.assert('phone', 'Name is required').notEmpty();
 
-//additional validation messages
+  //additional validation messages
 
     // first_name : req.body.first_name || '',
 
@@ -258,4 +258,80 @@ exports.postProfile = function (req, res, next){
 
   }
 
+};
+
+
+// Adds or updates a users card.
+// Maybe we can simplify this controller.
+// Because a lot of things will be handled by stripe server side
+// we need only get error messages if we'll have it and display.
+// if request goes well - we just update our database row.
+
+exports.postBilling = function(req, res, next){
+
+  var stripeToken = req.body.stripeToken;
+
+  console.log( req.body );
+
+  // if(!stripeToken){
+  //   req.flash('errors', { msg: 'Please provide a valid card.' });
+  //   return res.redirect(req.redirect.failure);
+  // }
+
+  User.findById(req.user.id, function(err, user) {
+    if (err) return next(err);
+
+    console.log( user );
+
+    // user.setCard(stripeToken, function (err) {
+    //   if (err) {
+    //     if(err.code && err.code == 'card_declined'){
+    //       req.flash('errors', { msg: 'Your card was declined. Please provide a valid card.' });
+    //       return res.redirect(req.redirect.failure);
+    //     }
+    //     req.flash('errors', { msg: 'An unexpected error occurred.' });
+    //     return res.redirect(req.redirect.failure);
+    //   }
+    //   req.flash('success', { msg: 'Billing has been updated.' });
+    //   res.redirect(req.redirect.success);
+    // });
+
+  });
+
+};
+
+exports.getSwitchAccountPage = function (req, res, next){
+
+  var form       = {},
+      error      = null,
+      formFlash  = req.flash('form'),
+      errorFlash = req.flash('error');
+
+  if (formFlash.length) {
+    form.email = formFlash[0].email;
+  }
+
+  if (errorFlash.length) {
+    error = errorFlash[0];
+  }
+
+  const renderObject = {
+
+    user: req.user,
+    
+
+    form: form,
+    error: error,
+    // plans: plans //@TODO check plans info. can boost an error
+  };
+
+  res.render(req.render, renderObject);
+
+
+};
+
+//duplicated from post plan page. @TODO add a similar to previous billing version - when user can switch from free plan to payed plan by adding credit card information and subscribe on Stripe
+
+exports.switchSubscriptionPlan = function (){
+  
 };

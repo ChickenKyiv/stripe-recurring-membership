@@ -9,8 +9,6 @@ setRedirect       = require('middleware-responder').setRedirect;
 
 // controllers
 var users     = require('../controllers/users-controller');
-
-// var dashboard     = require('../controllers/dashboard-controller');
 var passwords     = require('../controllers/passwords-controller');
 
 
@@ -21,20 +19,17 @@ module.exports = function (app, passport) {
 	//    .all(isAuthenticated)	   
 	//    .post(users.postProfile); //@TODO remove this method from user controller 
 
-	// app.route('/user/billing')
+
+	// not removeb because of future improvements. but right now it's duplicated on dashboard controller - 'switch' feature
+	// app.route('/user/plan')
 	//    .all(setRedirect({auth: '/', success: '/billing', failure: '/billing'}))
 	//    .all(isAuthenticated)	   
-	//    .post(users.postBilling); //@TODO remove this method from user controller
+	//    .post(users.postPlan);
 
-	app.route('/user/plan')
-	   .all(setRedirect({auth: '/', success: '/billing', failure: '/billing'}))
-	   .all(isAuthenticated)	   
-	   .post(users.postPlan);
-
-
-	// change password
+ 
+	// change password - maybe move this to profile or passwords routes.
 	app.route('/user/password')
-	   .all(setRedirect({auth: '/', success: '/billing', failure: '/billing'}))
+	   .all(setRedirect({auth: '/', success: '/dashboard', failure: '/dashboard'}))
 	   .all(isAuthenticated)
 	   .get(setRender('profile/change-password'), passwords.getPasswordPage)	   
 	   .post(passwords.postNewPassword); //@TODO move to profile or to dashboard routers
@@ -63,59 +58,6 @@ module.exports = function (app, passport) {
 	   .post(users.postForwardEmail); ///user/update-forward-email
 
 
-  app.route('/user/switch-account')
-	   .all(setRedirect({auth: '/', success: '/'})) //@TODO change redirect object
-	   .all(isAuthenticated)	
-	   // .get(setRender('dashboard/forward-email'), users.updateForwardEmail)
-	   // .post(users.switchSubscriptionPlan)
-	   ;
 
-
-
-  // router.get('/user/profile/forward-email',
-  //   setRender('dashboard/forward-email'),
-  //   setRedirect({auth: '/'}),
-  //   isAuthenticated,
-  //   dashboard.updateForwardEmailAction
-  // );
-
-
-
-  // router.post('/user/update-forward-email',
-  //   setRedirect({auth: '/', success: '/'}),
-  //   isAuthenticated,
-  //   users.postForwardEmailAction
-  // );
 
 };
-
-
-  // user api stuff
-
-
-
-
-
-  // change password
-  // router.post('/user/password',
-  //   setRedirect({auth: '/', success: '/profile', failure: '/profile'}),
-  //   isAuthenticated,
-  //   passwords.postNewPassword
-  // );
-
-
-
-  //cancel subscriptions
-  // working together with /user/delete router
-  // router.get('/user/subscription/cancel',
-  //   setRender('dashboard/profile'),
-  //   setRedirect({auth: '/'}),
-  //   isAuthenticated,
-  //   dashboard.getCancelMyAccountAction
-  // );
-
-  // router.post('/user/delete',
-  //   setRedirect({auth: '/', success: '/'}),
-  //   isAuthenticated,
-  //   users.deleteAccount
-  // );

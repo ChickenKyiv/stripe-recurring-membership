@@ -15,7 +15,7 @@ module.exports    = function (app, passport) {
 
   // sessions
   app.route('/login')
-     .all(setRedirect({auth: '/dashboard', success: '/dashboard', failure: '/'}))
+     .all(setRedirect({auth: '/dashboard', success: '/dashboard', failure: '/login'}))
      .all(isUnauthenticated)
      .get(setRender('login'), loginController.getLogin)
      .post(loginController.postLogin);
