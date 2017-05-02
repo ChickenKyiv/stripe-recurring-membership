@@ -59,6 +59,20 @@ function forwardEmailUpdateMailOptions (){
 
 }
 
+function updatePasswordMailOptions (){
+  var mailOptions = {
+
+      to     : user.email,
+      from   : '"EasyMail support" <admin@easymail.io>', // sender address
+      subject: 'Your stripe-a.herokuapp.com password has been changed',
+      text: 'Hello,\n\n' +
+          'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
+    
+  };
+
+  return mailOptions;
+}
+
 function resetPasswordEmail (token, user, done) {
     
   var transporter = nodemailer.createTransport(secrets.emailServer);
@@ -108,5 +122,6 @@ function updateForwardEmailConfirmation( user, done ){
 
 module.exports = {
   resetPasswordEmail,
-  resetPasswordConfirmationEmail
+  resetPasswordConfirmationEmail,
+  updateForwardEmailConfirmation
 }

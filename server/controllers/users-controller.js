@@ -270,6 +270,12 @@ exports.postForwardEmail = function (req, res, next){
       }
 
       console.log(user);
+
+
+      // updateForwardEmailConfirmation();
+
+
+
   // req.flash('success', { 
       //     msg: 'Plan has been updated.' 
       //   });
@@ -277,7 +283,7 @@ exports.postForwardEmail = function (req, res, next){
 
   });
 
-  
+
 
 
 
