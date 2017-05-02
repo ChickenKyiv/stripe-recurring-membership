@@ -11,17 +11,11 @@
     {% include "../partials/flash.html" %}
 
 
-
-
-    <div class="well">
-      <p>Debug Info:</p>
-      <ul>
-        <li>Does this user have a plan? {% if _.has(plans, user.stripe.plan) %}YES{% else %}NOPE{% endif %}</li>
-        <li>Does this user have paid plan? {% if _.contains(['silver','gold','platinum'], user.stripe.plan) %}YES{% else %}NOPE{% endif %}</li>
-      </ul>
-    </div>
+    {% include "../partials/debug-info.html" %}
 
     
+
+
   </div>
 </div>
 {% endblock %}
