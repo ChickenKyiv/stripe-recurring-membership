@@ -101,6 +101,10 @@ module.exports = exports = function stripeCustomer (schema, options) {
 
   };
 
+  //return array like [ 'free', 'quarterly', 'yearly' ]
+  schema.statics.getPlansNames = function () {
+    
+  };
 
   schema.statics.getPlans = function () {
 
@@ -118,19 +122,24 @@ module.exports = exports = function stripeCustomer (schema, options) {
 
     var plans = options.public.plans;
 
-    plans.forEach(function(element){
+    
+    //@TODO move this to separate function
+    plans.forEach(function(item, i, arr) {
+    
+      var amount = item.amount;
+      if( amount ){
 
-        var amount = element.amount;
-        var euro   = amount / 100;
+        var euro = amount / 100;
         euro.toLocaleString("en-US", {style:"currency", currency:"EUR"});
-
-        // console.log(euro);
-        element.amount = euro;
-
+    
+        arr[i].amount = euro;
+        
+      }
+      
+      
     });
 
-    
-    // console.log(plans);
+    // console.log( plans );    
 
     return plans;
     

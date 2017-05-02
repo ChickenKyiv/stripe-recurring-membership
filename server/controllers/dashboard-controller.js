@@ -1,7 +1,7 @@
 'use strict';
 
-var User  = require('../models/user'),
-    plans = User.getPlans();
+var User  = require('../models/user');
+
 
 exports.getDefault = function(req, res, next){
 
@@ -17,12 +17,15 @@ exports.getDefault = function(req, res, next){
   if (errorFlash.length) {
     error = errorFlash[0];
   }
+// plans = User.getPlans()
+
+  // console.log( req.user.stripe.plan )
 
     const renderObject = {
       user: req.user, 
     form: form, 
     error: error, 
-    // plans: plans
+    plans: User.getPlans()
       // messages: req.flash('messages')
     };
 

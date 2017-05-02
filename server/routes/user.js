@@ -63,6 +63,13 @@ module.exports = function (app, passport) {
 	   .post(users.postForwardEmail); ///user/update-forward-email
 
 
+  app.route('/user/switch-account')
+	   .all(setRedirect({auth: '/', success: '/'})) //@TODO change redirect object
+	   .all(isAuthenticated)	
+	   // .get(setRender('dashboard/forward-email'), users.updateForwardEmail)
+	   // .post(users.switchSubscriptionPlan)
+	   ;
+
 
 
   // router.get('/user/profile/forward-email',

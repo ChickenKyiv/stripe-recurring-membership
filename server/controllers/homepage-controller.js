@@ -1,7 +1,6 @@
 'use strict';
 
-var User = require('../models/user'),
-plans = User.getPlans();
+var User = require('../models/user');
 
 exports.getHome = function(req, res, next){
 
@@ -20,7 +19,7 @@ exports.getHome = function(req, res, next){
       const renderObject = {
       form: form,
     error: error,
-    plans: plans,
+    // plans: plans,
     domain: ''
     };
 
