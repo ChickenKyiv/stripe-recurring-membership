@@ -13,71 +13,32 @@
 
     My domain - {{user.profile.domain}}
     <hr>
-    Forward email to {{user.profile.forwardEmail}} 
+    Forward email to {{user.profile.forwardEmail}}  <br />
     (all emails sent to [anything]@{{user.profile.domain}} are being sent there)
 
 
-    My plan: {{user.plan}}
+    My plan: {{user.plan}} <br />
     (per month)
-    <span>(renews on May 21, 2017)</span>
+    <span>(renews on May 21, 2017)</span> <br>
 
-    <!-- Single button -->
-    <div class="btn-group">
-      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        edit subscription <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu">
-        <li>
-        <a href="#">
-        change to yearly after current period
-        </a>
-        </li>
-        <li>
-        <a href="/update-card">
-        edit payment method
-        </a>
-        </li>
-        <li>
-        <a href="/user/profile/forward-email">
-        change forward email
-        </a>
-        </li> 
-        <li>
-        <a href="/user/subscription/cancel">
-        cancel my subscription
-        </a>
-        </li>
-        <li>
-        <a href="/user/delete">
-        delete my account
-        </a>
-        </li>        
-        <!-- <li role="separator" class="divider"></li> -->
-        <!-- <li><a href="#">Separated link</a></li> -->
-      </ul>
-    </div>
+
+    {% include "manage-account-dropdown.html" %}
+<br />
 
 <a href="#">
 Login to Webmail
 </a>
-
-View instructions to send email from your current email account:
-[Gmail]
-[Hotmail]
-[Yahoo]
-[Aol]
-[Others]
-
-
+<br />
+View instructions to send email from your current email account:<br />
+[Gmail]<br />
+[Hotmail]<br />
+[Yahoo]<br />
+[Aol]<br />
+[Others]<br />
 
 
-<!--     <div class="well">
-      <p>Debug Info:</p>
-      <ul>
-        <li>Does this user have a plan? {% if _.has(plans, user.stripe.plan) %}YES{% else %}NOPE{% endif %}</li>
-        <li>Does this user have paid plan? {% if _.contains(['silver','gold','platinum'], user.stripe.plan) %}YES{% else %}NOPE{% endif %}</li>
-      </ul>
-    </div> -->
+
+
 
   </div>
 </div>
