@@ -25,6 +25,7 @@ var userSchema = new mongoose.Schema({
   },
 
   
+
   //@todo add validation messages
     
   password: String,
@@ -51,8 +52,9 @@ var userSchema = new mongoose.Schema({
 
     forwardEmail: { //second email
       type      : String,
-      unique    : true,
-      lowercase : true 
+      default   : ''
+      // unique    : true,
+      // lowercase : true 
     }, 
 
 
@@ -88,7 +90,10 @@ var userSchema = new mongoose.Schema({
     fax : { 
         type: String, default: '' },
 
-        
+
+    plan: {
+      type: String, default: '' },      
+    
 
   },
 
@@ -106,41 +111,59 @@ var stripeOptions = secrets.stripeNextVersion;
 userSchema.plugin(stripeCustomer, stripeOptions);
 
 
-/**
- * Hash the password for security.
- * "Pre" is a Mongoose middleware that executes before each user.save() call.
- */
+// methods ======================
+// generating a hash
+userSchema.methods.generateHash = function(password) {
 
-userSchema.pre('save', function(next) {
-  var user = this;
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
 
-  if (!user.isModified('password')) return next();
-
-  bcrypt.genSalt(10, function(err, salt) {
-    if (err) return next(err);
-
-    bcrypt.hash(user.password, salt, null, function(err, hash) {
-      if (err) return next(err);
-      user.password = hash;
-      next();
-    });
-
-  });
-});
 
 /**
  * Validate user's password.
  * Used by Passport-Local Strategy for password validation.
  */
+userSchema.methods.validPassword = function(password) {
 
-userSchema.methods.comparePassword = function(candidatePassword, cb) {
-
-  bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-    if (err) return cb(err);
-    cb(null, isMatch);
-  });
-
+  return bcrypt.compareSync(password, this.password);
 };
+
+
+/**
+ * Hash the password for security.
+ * "Pre" is a Mongoose middleware that executes before each user.save() call.
+ */
+
+
+// userSchema.pre('save', function(next) {
+//   var user = this;
+
+//   if (!user.isModified('password')) return next();
+
+//   bcrypt.genSalt(10, function(err, salt) {
+//     if (err) return next(err);
+
+//     bcrypt.hash(user.password, salt, null, function(err, hash) {
+//       if (err) return next(err);
+//       user.password = hash;
+//       next();
+//     });
+
+//   });
+// });
+
+
+
+// userSchema.methods.comparePassword = function(candidatePassword, cb) {
+
+//   bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+//     if (err) return cb(err);
+//     cb(null, isMatch);
+//   });
+
+// };
+
+
 
 userSchema.methods.deleteDomain = function() {
 
@@ -167,27 +190,28 @@ userSchema.methods.fetch = function() {
 
 
   // 2 queries
-User.find({}, {limit:10, skip:20}, function (err, users) {            
-    if (err) {
-        return next(err);
-    }
+  User.find({}, {limit:10, skip:20}, function (err, users) {            
+      if (err) {
+          return next(err);
+      }
 
-    // information[] = {
-       //   user.email
-  //   user.profile.domain
-  //   user.profile.first_name
-  //   user.profile.last_name
-    // }
+      // information[] = {
+         //   user.email
+    //   user.profile.domain
+    //   user.profile.first_name
+    //   user.profile.last_name
+      // }
 
 
-    User.count({}, function (err, count) {
-        if (err) {
-            return next(err);
-        }
+      User.count({}, function (err, count) {
+          if (err) {
+              return next(err);
+          }
 
-        res.send({count: count, users: users});
-    });
-});
+          res.send({count: count, users: users});
+      });
+      
+  });
 
 }
 

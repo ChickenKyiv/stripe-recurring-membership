@@ -93,13 +93,8 @@ exports.postSignup2 = function(req, res, next){
 
   var errors = req.validationErrors();
 
-
-
   // console.log( req.body );
-  console.log( errors );
-
-  // var plans  = User.getPlans();
-  // console.log(plans);
+  // console.log( errors );
 
   if (errors) {
 
@@ -111,23 +106,18 @@ exports.postSignup2 = function(req, res, next){
     
     return res.redirect(req.redirect.failure);
   } 
-
-  // else {
-  //   req.flash('info', {msg:'zaebok'});
-  // }
-
-  // res.redirect('/signup2-1');
+ 
 
 
   // calls next middleware to authenticate with passport
   // this middleware can be found in /server/middleware/passport.js
-  // passport.authenticate('signup2', {
-  //   successRedirect: req.redirect.success,
-  //   // successRedirect: '/signup2-1',
-  //   failureRedirect: req.redirect.failure,
-  //   // failureRedirect: '/signup2',
-  //   failureFlash : true
-  // })(req, res, next);
+  passport.authenticate('signup2', {
+    successRedirect: req.redirect.success,
+    // successRedirect: '/signup2-1',
+    failureRedirect: req.redirect.failure,
+    // failureRedirect: '/signup2',
+    failureFlash : true
+  })(req, res, next);
 
 
   // passport.authenticate('signup2', {
@@ -138,6 +128,7 @@ exports.postSignup2 = function(req, res, next){
   
 };
 
+//@TODO remove later
 exports.postSignupFirstTime = function(req, res, next){
 
 
