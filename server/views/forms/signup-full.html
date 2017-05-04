@@ -1,12 +1,12 @@
-      <form action="/signup2" method="post" role="payment-form" id="payment-form">
+      <form action="/signup2" method="post" 
+      role="payment-form" id="payment-form">
 
         <div class="form-group">
           <label class="sr-only" for="inputDomain">
           Domain name
           </label>
-          <input type="text" class="form-control" id="inputDomain" 
-          name="domain" placeholder="www.domain.net" value="{{form.domain}}" autofocus />
-          <!-- <span class="help-block">All emails sent to [anything]@mydomain.me will be received here</span> -->
+          {% include "fields/domain-name.html" %}          
+          
         </div>
 
         <div class="form-group">
@@ -14,11 +14,7 @@
           your <u>existing</u> email
           </label>
 
-          <!-- <input type="email" class="form-control" id="inputEmail" 
-          name="email" placeholder="your existing email" 
-          value="{{form.email}}" autofocus /> -->
-
-          {% include "fields/email-field.html" %}
+          {% include "fields/email-field.html" with {'value':form.email} %}
 
           <span class="help-block">
             All emails sent to [anything]@mydomain.me will be received here
@@ -30,9 +26,9 @@
           <label class="sr-only" for="inputPassword">
           choose a password
           </label>
-          <!-- <input type="password" class="form-control" id="inputPassword" name="password" placeholder="choose a password"> -->
 
-              {% include "fields/password-field.html" %}
+
+          {% include "fields/password-field.html" with {'placeholder':'choose a password'}%}
 
         </div>
 
@@ -41,21 +37,23 @@
           <label class="sr-only" for="inputPasswordCheck">
           repeat password
           </label>
-          <!-- <input type="password" class="form-control" id="inputPasswordCheck" name="password_confirm" placeholder="repeat password"> -->
-          {% include "fields/confirm-password.html" %}
+
+          {% include "fields/password-field.html" with {'name':'confirm', 'placeholder':'repeat password'} %}
+          
         </div>
 
 
 
         <!-- pricing plans partial -->
         <!-- {% include "fields/password-field.html" %} -->
+
         <div class="row">
           <div class="col-md-6">
             <a href='#' data-plan="quarterly" class="btn btn-primary btn-block btn-sign-up1">
               Quarterly
             </a>
           </div>
-          
+
           <div class="col-md-6">
             <a href='#' data-plan="yearly" class="btn btn-primary btn-block btn-sign-up2">
               Yearly
@@ -64,10 +62,6 @@
         </div>
         
         
-
-       <!--  <button type="submit" class="btn btn-primary btn-block" name="plan" value="quarterly">Quarterly</button>
-
-        <button type="submit" class="btn btn-primary btn-block" name="plan" value="yearly">Yearly</button> -->
 
         <input type="hidden" name="plan" value="free" id="plan" />
 
