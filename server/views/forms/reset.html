@@ -5,16 +5,16 @@
 
 	<p>
 	  New Password
-	  <!-- <input type="password" name="password" class="form-control" 
-	         placeholder="New Password" autofocus /> -->
+
 	  {% include "fields/password-field.html" %}       
 	</p>
 
 	<p>
 	  Confirm Password
-	  <!-- <input type="password" name="confirm" class="form-control" 
-	         placeholder="Confirm Password" /> -->
-     	{% include "fields/confirm-password.html" %}
+
+	  {% include "fields/password-field.html" with {'name':'confirm', 'placeholder':'Confirm Password'} %}       
+     	
+     	
 	</p>
 	
 	<button class="btn btn-lg btn-primary btn-block" type="submit">
