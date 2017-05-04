@@ -26,14 +26,14 @@ var User       = require('../models/user');
 
 // };
 
-exports.getSignup2 = function(req, res){
-// console.log('2');
+exports.getSignup = function(req, res){
+
   var form       = {},
       error      = null,
       formFlash  = req.flash('form'),
       errorFlash = req.flash('error');
 
-  // console.log( req );
+
 
   if (formFlash.length) {
     form.email = formFlash[0].email;
@@ -42,21 +42,15 @@ exports.getSignup2 = function(req, res){
   if (errorFlash.length) {
     error = errorFlash[0];
   }
-  // console.log('123');
-    const renderObject = {
-      form : form, 
+  
+  const renderObject = {
+    form : form, 
     error: error,
     //email
     placeholder: 'your existing email (gmail, hotmail, yahoo...)'
       // messages: req.flash('messages')
     };
-     res.render(req.render, renderObject);
-  // res.render('signup2', {
-  //   form : form, 
-  //   error: error,
-  //   //email
-  //   placeholder: 'your existing email (gmail, hotmail, yahoo...)'
-  // });
+    res.render(req.render, renderObject);  
 
 };
 
@@ -91,32 +85,31 @@ exports.postSignup2 = function(req, res, next){
 
   req.assert('email',    'Please sign up with a valid email.').isEmail();
   req.assert('password', 'Password must be at least 6 characters long').notEmpty().len(6);
-
-  req.assert('confirm', 'Confirm password must be at least 6 characters long').notEmpty().len(6);
-  req.assert('confirm', 'Passwords must match').equals(req.body.password);
+ 
+  req.assert('confirm',  'Confirm password must be at least 6 characters long').notEmpty().len(6);
+  req.assert('confirm',  'Password and confirm password fields must match').equals(req.body.password);
 
   req.assert('domain',   'Please fill a domain name').notEmpty();
 
   var errors = req.validationErrors();
 
-  // console.log( 'submit' );
+
 
   // console.log( req.body );
-  // console.log( errors );
+  console.log( errors );
 
   // var plans  = User.getPlans();
   // console.log(plans);
 
   if (errors) {
+
     req.flash('errors', errors);
     req.flash('form', {
       email  : req.body.email,
-      domain : req.body.domain
-
+      domain : req.body.domain      
     });
     
     return res.redirect(req.redirect.failure);
-    // return res.redirect('/signup2');
   } 
 
   // else {
@@ -125,15 +118,17 @@ exports.postSignup2 = function(req, res, next){
 
   // res.redirect('/signup2-1');
 
+
   // calls next middleware to authenticate with passport
   // this middleware can be found in /server/middleware/passport.js
-  passport.authenticate('signup2', {
-    successRedirect: req.redirect.success,
-    // successRedirect: '/signup2-1',
-    failureRedirect: req.redirect.failure,
-    // failureRedirect: '/signup2',
-    failureFlash : true
-  })(req, res, next);
+  // passport.authenticate('signup2', {
+  //   successRedirect: req.redirect.success,
+  //   // successRedirect: '/signup2-1',
+  //   failureRedirect: req.redirect.failure,
+  //   // failureRedirect: '/signup2',
+  //   failureFlash : true
+  // })(req, res, next);
+
 
   // passport.authenticate('signup2', {
   //   successRedirect: '/dashboard',

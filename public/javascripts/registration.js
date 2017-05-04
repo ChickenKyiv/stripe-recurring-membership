@@ -57,13 +57,12 @@ $( document ).ready(function() {
 	$(".btn-sign-up1").on('click', function(e){
 
 		var value = $(this).data().plan;
-		// console.log( value )
-		// console.log( $(this).data().plan )
+
 		$('#plan').prop( 'value', value );
 
 		// console.log( $('#plan').prop('value') );
-		// console.log( $(this).data().plan )
-		// console.log( $(this).prop() );
+
+
 		$('#payment-form').submit();
 		return false;
 
@@ -72,11 +71,8 @@ $( document ).ready(function() {
 	$(".btn-sign-up2").on('click', function(e){
 
 		var value = $(this).data().plan;
-		// console.log( value )
-		// console.log( $(this).data().plan )
-		$('#plan').prop( 'value', value );
 
-		// console.log( $('#plan').prop('value') );
+		$('#plan').prop( 'value', value );
 
 		$('#payment-form').submit();
 		return false;

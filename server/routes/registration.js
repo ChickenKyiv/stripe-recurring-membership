@@ -26,14 +26,11 @@ module.exports    = function (app, passport) {
   //    .get(setRender('signup'), registrations.getSignup)
   //    .post(registrations.postSignup2);
 
-  app.route('/signup2')
+  app.route('/signup2') //@TODO change this path and redirect and render
      .all(setRedirect({ auth: '/whois', success: '/whois', failure: '/signup2' }))
      .all(isUnauthenticated)
-     .get(setRender('signup2'), registrations.getSignup2)
+     .get(setRender('signup2'), registrations.getSignup)
      .post(registrations.postSignup2);
-
-
-
 
 
   // app.route('signupshort')
@@ -49,13 +46,6 @@ module.exports    = function (app, passport) {
   //   registrations.postSignupFirstTime
   // );
 
-
-  // app.get('/signup2-1',
-  //   setRedirect({auth: '/dashboard'}),
-  //   isUnauthenticated,
-  //   setRender('signup2-1'),
-  //   registrations.getSignup2
-  // );
 
   app.route('/whois')
      .all(setRedirect({ auth: '/', success: '/billing-form', failure: '/profile' }))
