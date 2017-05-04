@@ -112,6 +112,7 @@ userSchema.plugin(stripeCustomer, stripeOptions);
 
 
 // methods ======================
+
 // generating a hash
 userSchema.methods.generateHash = function(password) {
 
@@ -210,7 +211,7 @@ userSchema.methods.fetch = function() {
 
           res.send({count: count, users: users});
       });
-      
+
   });
 
 }

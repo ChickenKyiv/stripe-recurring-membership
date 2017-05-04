@@ -217,14 +217,14 @@ exports.getWhoisForm2 = function(req, res, next){
     error = errorFlash[0];
   }
 
-    const renderObject = {
+  const renderObject = {
       user: req.user, 
     form: form, 
     error: error, 
     plans: plans
       // messages: req.flash('messages')
-    };
-res.render(req.render, renderObject);
+  };
+  res.render(req.render, renderObject);
 
   
 };

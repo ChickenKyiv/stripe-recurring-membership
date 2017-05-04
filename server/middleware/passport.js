@@ -94,7 +94,8 @@ module.exports = function(passport){
           // edit this portion to accept other properties when creating a user.
           var user = new User({
 
-            email   : req.body.email,
+            email   : email,
+            // email   : req.body.email,
             //@TODO set password empty, because we have a first version
             // password: req.body.password, // user schema pre save task hashes this password
             password : User.generateHash(password), // or User.generateHash(req.body.password)

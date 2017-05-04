@@ -20,11 +20,6 @@ module.exports    = function (app, passport) {
 
   // registrations
 
-  // app.route('/signup')
-  //    .all(setRedirect({auth: '/dashboard', success: '/signup2-1', failure: '/signup2'}))
-  //    .all(isUnauthenticated)
-  //    .get(setRender('signup'), registrations.getSignup)
-  //    .post(registrations.postSignup2);
 
   app.route('/signup2') //@TODO change this path and redirect and render
      .all(setRedirect({ auth: '/whois', success: '/whois', failure: '/signup2' }))
