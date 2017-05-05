@@ -45,7 +45,7 @@ module.exports    = function (app, passport) {
   app.route('/whois')
      .all(setRedirect({ auth: '/', success: '/billing-form', failure: '/profile' }))
      .all(isAuthenticated)
-     .get(setRender('signup/whois'), registrations.getWhoisForm2)
+     .get(setRender('signup/whois'), registrations.getWhoisForm2) // @TODO - must be registered and logged in
      .post(registrations.postWhois);
 
 

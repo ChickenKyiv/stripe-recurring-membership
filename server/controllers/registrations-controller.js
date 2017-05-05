@@ -197,7 +197,7 @@ exports.getWhoisForm2 = function(req, res, next){
   // <div class="toast-message"></div>
   //                     </div>
 
-
+// @TODO - must be registered
   var message = { msg: {
                       title : "Congratulations! Your email has been created.", 
                       body  : "Please wait until your domain comes online (usually just a few minutes, but sometimes up to a couple hours)"
@@ -216,12 +216,13 @@ exports.getWhoisForm2 = function(req, res, next){
   if (errorFlash.length) {
     error = errorFlash[0];
   }
-
+  
+  console.log( req.user );
   const renderObject = {
-      user: req.user, 
+    user: req.user, 
     form: form, 
     error: error, 
-    plans: plans
+    // plans: plans
       // messages: req.flash('messages')
   };
   res.render(req.render, renderObject);
