@@ -27,21 +27,6 @@ module.exports    = function (app, passport) {
      .get(setRender('signup2'), registrations.getSignup)
      .post(registrations.postSignup2);
 
-
-  // app.route('signupshort')
-  //    .all(setRedirect({auth: '/dashboard', success: '/dashboard', failure: '/signup2'}))
-  //    .all(isUnauthenticated)
-  //    .get(setRender('signup2-1'), registrations.getSignup2)
-  //    .post(registrations.postSignupFirstTime);
-
-//user registration before purchase
-  // app.post('/signupshort',
-  //   setRedirect({auth: '/dashboard', success: '/dashboard', failure: '/signup2'}),
-  //   isUnauthenticated,
-  //   registrations.postSignupFirstTime
-  // );
-
-
   app.route('/whois')
      .all(setRedirect({ auth: '/', success: '/billing-form', failure: '/profile' }))
      .all(isAuthenticated)
@@ -54,18 +39,7 @@ module.exports    = function (app, passport) {
   //display whois form 
   //@TODO change URL name
   // app.get('/whois',
-  //   setRender('dashboard/whois-settings'),
-  //   setRedirect({auth: '/'}),
-  //   isAuthenticated,
-  //   dashboard.getWhoisForm
-  // );
 
-//@TODO replace redirect rules
-  // app.post('/whois-settings',
-  //   setRedirect({ auth: '/', success: '/profile', failure: '/profile' }),
-  //   isAuthenticated,
-  //   users.postWhois
-  // );
 
   //billing form
   // app.route('/')
