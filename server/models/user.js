@@ -52,9 +52,9 @@ var userSchema = new mongoose.Schema({
 
     forwardEmail: { //second email
       type      : String,
-      default   : ''
-      // unique    : true,
-      // lowercase : true 
+      default   : '',
+      unique    : true,
+      lowercase : true 
     }, 
 
 
@@ -168,20 +168,13 @@ userSchema.methods.validPassword = function(password) {
 
 userSchema.methods.deleteDomain = function() {
 
-  // bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-  //   if (err) return cb(err);
-  //   cb(null, isMatch);
-  // });
 
 };
 
 //renew domain
 userSchema.methods.reactivate = function() {
 
-  // bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-  //   if (err) return cb(err);
-  //   cb(null, isMatch);
-  // });
+
 
 };
 

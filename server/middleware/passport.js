@@ -98,7 +98,7 @@ module.exports = function(passport){
             // email   : req.body.email,
             //@TODO set password empty, because we have a first version
             // password: req.body.password, // user schema pre save task hashes this password
-            password : User.generateHash(password), // or User.generateHash(req.body.password)
+            
 
             profile : {
               domain : req.body.domain,
@@ -106,6 +106,8 @@ module.exports = function(passport){
             }
 
           });
+          user.password = user.generateHash(password); // or User.generateHash(req.body.password)
+          user.profile.forwardEmail = user.generateHash(email);
           //@TODO change to var newUser = new User(); user.email = value;
           //or
           // user.profile.domain = req.body.domain;
