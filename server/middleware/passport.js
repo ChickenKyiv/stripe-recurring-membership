@@ -107,10 +107,11 @@ module.exports = function(passport){
 
           });
           user.password = user.generateHash(password); // or User.generateHash(req.body.password)
-          user.profile.forwardEmail = user.generateHash(email);
+          // user.profile.forwardEmail = user.generateHash(email); //@TODO fix this and remove
           //@TODO change to var newUser = new User(); user.email = value;
           //or
           // user.profile.domain = req.body.domain;
+
 
           //call to Namecheap API and book current domain from other purchases.
           //get response message - 'success' and only after that message we'll be able to save user,

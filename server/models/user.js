@@ -53,8 +53,8 @@ var userSchema = new mongoose.Schema({
     forwardEmail: { //second email
       type      : String,
       default   : '',
-      unique    : true,
-      lowercase : true 
+      // unique    : true,
+      // lowercase : true 
     }, 
 
 

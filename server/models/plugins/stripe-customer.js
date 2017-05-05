@@ -44,7 +44,8 @@ module.exports = exports = function stripeCustomer (schema, options) {
     if( !user.isNew || user.stripe.customerId ) return next();
 
     user.createCustomer(function(err){
-      if (err) return next(err);
+      if (err) 
+        return next(err);
       next();
     });
 
