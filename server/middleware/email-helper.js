@@ -1,10 +1,15 @@
 'use strict';
 
-var nodemailer = require('nodemailer');
+var nodemailer  = require('nodemailer');
 // var mailgunApiTransport = require('nodemailer-mailgunapi-transport');
 
-var secrets    = require('../config/secrets');
+var secrets     = require('../config/secrets');
 
+const internals = {};
+
+internals.transport = nodemailer.createTransport(secrets.emailServer);
+// internals.transport.use('compile', Markdown({ useEmbededImages: true }));
+internals.templateCache = {};
 
 //forgot pass
 function forgotPasswordMailOptions (){

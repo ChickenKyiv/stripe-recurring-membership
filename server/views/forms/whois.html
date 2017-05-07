@@ -1,4 +1,5 @@
-<form action="/whois-settings" method="POST" class="form-horizontal">
+<form action="/whois" method="POST" 
+      class="form-horizontal">
   <fieldset>
 
     <!-- Form Name -->
@@ -6,12 +7,19 @@
       Source address
     </legend>
 
+<!--     <div class="row">
+      <div class="col-xs-6 col-sm-12 col-md-6">
+        
+      </div>      
+      <div class="col-xs-6 col-sm-12 col-md-6">
+        
+      </div>      
+    </div> -->
 
-    <div class="col-xs-12 col-sm-12 col-md-12">
+
+    <div class="col-xs-7 col-sm-7 col-md-7">
       <div class="form-group">
-      <!-- <label class="col-lg-12 col-sm-3 control-label">First Name
-                      <span class="required">*</span>
-                    </label> -->
+
          <input type="text" name="first_name" id="first_name" 
          			class="form-control input-sm" 
               placeholder="First Name" 
@@ -21,11 +29,9 @@
       </div>
      </div>
 
-      <div class="col-xs-12 col-sm-12 col-md-12">
+      <div class="col-xs-7 col-sm-7 col-md-7">
           <div class="form-group">
-            <!-- <label class="col-lg-12 col-sm-3 control-label">Last Name
-                <span class="required">*</span>
-            </label> -->
+
               <input type="text" name="last_name" id="last_name" 
               class="form-control input-sm" 
               placeholder="Last Name" 
@@ -38,8 +44,8 @@
 
       <!-- Text input-->
       <div class="form-group">
-        <!-- <label class="col-md-4 control-label" for="State">Company name</label>   -->
-        <div class="col-md-12">
+
+        <div class="col-md-7">
           <input id="company_name" name="company_name" 
           type="text" 
           placeholder="Company name" 
@@ -53,10 +59,10 @@
 
       <!-- Text input-->
       <div class="form-group">
-        <!-- <label class="col-md-4 control-label" for="address1">address</label>   -->
-        <div class="col-md-8">
+        
+        <div class="col-md-7">
           <input id="address1" name="address1" 
-          type="text" placeholder="address" 
+          type="text" placeholder="Address" 
           class="form-control input-md" 
           value="{{user.profile.address}}">
 
@@ -68,8 +74,8 @@
 
       <!-- Text input-->
       <div class="form-group">
-        <!-- <label class="col-md-4 control-label" for="zip">Zip/Postcode</label>   -->
-        <div class="col-md-4">
+        
+        <div class="col-md-7">
           <input id="zip" name="zip" type="text" 
           placeholder="Postcode" 
           class="form-control input-md" 
@@ -83,8 +89,8 @@
 
       <!-- Text input-->
       <div class="form-group">
-        <!-- <label class="col-md-4 control-label" for="city">City</label>   -->
-        <div class="col-md-6">
+        
+        <div class="col-md-7">
           <input id="city" name="city" type="text" 
           placeholder="City" 
           class="form-control input-md" 
@@ -97,9 +103,9 @@
 
       <!-- Text input-->
       <div class="form-group">
-        <!-- <label class="col-md-4 control-label" for="State">State / Province</label>   -->
-        <div class="col-md-6">
-          <input id="state" name="State" type="text" 
+        
+        <div class="col-md-7">
+          <input id="state" name="state" type="text" 
                  placeholder="State / Province" 
                  class="form-control input-md" 
                  required="" value="{{user.profile.state}}">
@@ -116,8 +122,8 @@
 
       <!-- Text input-->
       <div class="form-group">
-        <!-- <label class="col-md-4 control-label" for="phone">Phone number</label>   -->
-        <div class="col-md-8">
+        
+        <div class="col-md-7">
           {% include "fields/phone-field.html" %}
         </div>
       </div>
@@ -126,8 +132,8 @@
 
       <!-- Text input-->
       <div class="form-group">
-        <!-- <label class="col-md-4 control-label" for="fax">Fax number</label>   -->
-        <div class="col-md-8">
+        
+        <div class="col-md-7">
           <input id="fax" name="fax" type="text" 
                  placeholder="Fax number" 
                  class="form-control input-md" 
@@ -155,6 +161,7 @@
       <input type="submit" name="submit" 
              value="Save and go to my account" 
              class="btn btn-raised btn-primary btn-block active" />
+
 
   </fieldset>
 </form>
