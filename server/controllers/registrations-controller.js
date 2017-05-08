@@ -492,26 +492,17 @@ exports.postWhois2 = function(req, res, next){
     return res.redirect('/signup2');
 
   } 
-  // else {
-  //   req.flash('info', {msg:'zaebok'});
-  // }
-
-  // res.redirect('/signup2-1');
+  ;
 
 
   // calls next middleware to authenticate with passport
   // this middleware can be found in /server/middleware/passport.js
-  passport.authenticate('signup2', {
-    successRedirect: '/signup2-1',
-    failureRedirect: '/signup2',
-    failureFlash : true
-  })(req, res, next);
-
   // passport.authenticate('signup2', {
-  //   successRedirect: '/dashboard',
+  //   successRedirect: '/signup2-1',
   //   failureRedirect: '/signup2',
   //   failureFlash : true
   // })(req, res, next);
+
   
 };
 

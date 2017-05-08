@@ -13,7 +13,8 @@ secrets           = require('../config/secrets');
 var registrations = require('../controllers/registrations-controller'),
 // @TODO split controller action's to a different place.
 users             = require('../controllers/users-controller');
-// dashboard         = require('../controllers/dashboard-controller')
+
+var  dashboard         = require('../controllers/dashboard-controller');
 
 
 module.exports    = function (app, passport) {
@@ -40,12 +41,12 @@ module.exports    = function (app, passport) {
   //@TODO change URL name
   // app.get('/whois',
 
-
   //billing form
-  // app.route('/')
-  // .all()
-  // .all(isAuthenticated)
-  // .get()
-  // .post()
-
+app.route('/billing-form')
+  .all(setRedirect({ auth: '/', success: '/dashboard', failure: '/billing-form' }))
+  .all(isAuthenticated)
+  .get(setRender('dashboard/billing'), dashboard.getBilling)
+  .post(dashboard.postBilling);
+  
+  ;
 };
