@@ -101,23 +101,46 @@ exports.getProfile = function (req, res, next){
 // Updates generic profile information
 exports.postProfile = function (req, res, next){
 
+  console.log( req.body );
 
   req.assert('email',        'Email is not valid').isEmail();
   // req.assert('name', 'Name is required').notEmpty();
 
   req.assert('first_name',   'First Name is required').notEmpty(); 
-
   req.assert('last_name',    'Last Name is required').notEmpty();  
-
   req.assert('company_name', 'Company Name is required').notEmpty();
-
   req.assert('address',       'Name is required').notEmpty();
   req.assert('zip',           'Name is required').notEmpty();
   req.assert('city',          'Name is required').notEmpty();
   req.assert('state',         'Name is required').notEmpty();
   // req.assert('country', 'Name is required').notEmpty();
-
   req.assert('phone', 'Name is required').notEmpty();
+
+
+  var userAdditionalData = {
+
+    
+    first_name : req.body.first_name || '',
+
+    last_name  : req.body.last_name  || '',
+
+    company_name : req.body.company_name || '', 
+
+    address : req.body.address1 || '',
+
+    zip : req.body.zip          || '',
+
+    city : req.body.city        || '',
+
+    state : req.body.state      || '',
+
+    country : req.body.country  || '', 
+
+    phone : req.body.phone      || '',
+
+    fax : req.body.fax          || '',
+
+  };
 
   //additional validation messages
 
@@ -162,29 +185,30 @@ exports.postProfile = function (req, res, next){
         var query  = { _id : req.user.id };
         var update = {$set:{ 
           email: req.body.email || '', 
-          profile: {
-                first_name : req.body.first_name || '',
+          profile: userAdditionalData 
+          // {
+          //       first_name : req.body.first_name || '',
 
-                last_name  : req.body.last_name  || '',
+          //       last_name  : req.body.last_name  || '',
 
-                company_name : req.body.company_name || '', 
+          //       company_name : req.body.company_name || '', 
 
-                address : req.body.address || '',
+          //       address : req.body.address || '',
 
-                zip : req.body.zip         || '',
+          //       zip : req.body.zip         || '',
 
-                city : req.body.city       || '',
+          //       city : req.body.city       || '',
 
-                state : req.body.state     || '',
+          //       state : req.body.state     || '',
 
-                country : req.body.country || '', 
+          //       country : req.body.country || '', 
 
-                phone : req.body.phone     || '',
+          //       phone : req.body.phone     || '',
 
-                fax : req.body.fax         || '',
-            // name     : req.body.name || '',
-            // location : req.body.location || '',
-          }
+          //       fax : req.body.fax         || '',
+          //   // name     : req.body.name || '',
+          //   // location : req.body.location || '',
+          // }
 
         }} ;
         
@@ -213,29 +237,30 @@ exports.postProfile = function (req, res, next){
       var query  = { _id : req.user.id };
       var update = {$set:{ 
         email        : req.body.email || '', 
-        profile: {
-            first_name : req.body.first_name || '',
+        profile: userAdditionalData
+        // {
+        //     first_name : req.body.first_name || '',
 
-            last_name  : req.body.last_name  || '',
+        //     last_name  : req.body.last_name  || '',
 
-            company_name : req.body.company_name || '', 
+        //     company_name : req.body.company_name || '', 
 
-            address : req.body.address || '',
+        //     address : req.body.address || '',
 
-            zip : req.body.zip         || '',
+        //     zip : req.body.zip         || '',
 
-            city : req.body.city       || '',
+        //     city : req.body.city       || '',
 
-            state : req.body.state     || '',
+        //     state : req.body.state     || '',
 
-            country : req.body.country || '', 
+        //     country : req.body.country || '', 
 
-            phone : req.body.phone     || '',
+        //     phone : req.body.phone     || '',
 
-            fax : req.body.fax         || '',
-            // name     : req.body.name || '',
-            // location : req.body.location || '',
-        }
+        //     fax : req.body.fax         || '',
+        //     // name     : req.body.name || '',
+        //     // location : req.body.location || '',
+        // }
 
       }} ;
 

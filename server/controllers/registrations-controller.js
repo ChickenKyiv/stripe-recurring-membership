@@ -1,11 +1,10 @@
 'use strict';
 
-// var nodemailer = require('nodemailer');
 var async      = require('async');
 var crypto     = require('crypto');
 var passport   = require('passport');
 var User       = require('../models/user');
-// var secrets    = require('../config/secrets');
+
 
 // Show Registration Page
 
@@ -26,6 +25,7 @@ var User       = require('../models/user');
 
 // };
 
+// Show Registration Page
 exports.getSignup = function(req, res){
 
   var form       = {},
@@ -197,7 +197,7 @@ exports.getWhoisForm2 = function(req, res, next){
   // <div class="toast-message"></div>
   //                     </div>
 
-// @TODO - must be registered
+  // @TODO - must be registered
   var message = { msg: {
                       title : "Congratulations! Your email has been created.", 
                       body  : "Please wait until your domain comes online (usually just a few minutes, but sometimes up to a couple hours)"
@@ -217,12 +217,11 @@ exports.getWhoisForm2 = function(req, res, next){
     error = errorFlash[0];
   }
   
-  console.log( req.user );
   const renderObject = {
     user: req.user, 
     form: form, 
     error: error, 
-    // plans: plans
+
       // messages: req.flash('messages')
   };
   res.render(req.render, renderObject);
@@ -239,10 +238,6 @@ exports.getWhoisForm = function(req, res, next){
       // plans      = '', // get plans()
       errorFlash = req.flash('error');
 
-
-
-
-
   if (formFlash.length) {
     form.email = formFlash[0].email;
   }
@@ -250,14 +245,15 @@ exports.getWhoisForm = function(req, res, next){
   if (errorFlash.length) {
     error = errorFlash[0];
   }
-    const renderObject = {
+
+  const renderObject = {
       user: req.user,
     form: form,
     error: error,
     // plans: plans
       // messages: req.flash('messages')
-    };
-    res.render(req.render, renderObject);
+  };
+  res.render(req.render, renderObject);
 
   
 };
@@ -287,18 +283,18 @@ exports.postWhois2 = function(req, res, next){
 
   var errors = req.validationErrors();
 
-// DomainName  String  70  Yes Domain name to register
-// Years Number  2 Yes Number of years to register
-// Default Value: 2
+  // DomainName  String  70  Yes Domain name to register
+  // Years Number  2 Yes Number of years to register
+  // Default Value: 2
 
-// AddFreeWhoisguard String  10  No  Adds free WhoisGuard for the domain
-// Default Value: no
-// WGEnabled String  10  No  Enables free WhoisGuard for the domain 
-// Default Value: no
+  // AddFreeWhoisguard String  10  No  Adds free WhoisGuard for the domain
+  // Default Value: no
+  // WGEnabled String  10  No  Enables free WhoisGuard for the domain 
+  // Default Value: no
 
-//check whois checkbox
-//output( req.body.whois-flag )
-// var flag = req.body.whois-flag;
+  //check whois checkbox
+  //output( req.body.whois-flag )
+  // var flag = req.body.whois-flag;
   var data = {
     DomainName : domain,
     Years      : years, //by default we need to set 1 value
@@ -306,19 +302,19 @@ exports.postWhois2 = function(req, res, next){
     WGEnabled : flag,
   };
 
-// RegistrantFirstName String  255 Yes First name of the Registrant user
-// RegistrantLastName  String  255 Yes Second name of the Registrant user
-// RegistrantAddress1  String  255 Yes Address1 of the Registrant user
+  // RegistrantFirstName String  255 Yes First name of the Registrant user
+  // RegistrantLastName  String  255 Yes Second name of the Registrant user
+  // RegistrantAddress1  String  255 Yes Address1 of the Registrant user
 
-// RegistrantCity  String  50  Yes City of the Registrant user
-// RegistrantStateProvince String  50  Yes State/Province of the Registrant user
+  // RegistrantCity  String  50  Yes City of the Registrant user
+  // RegistrantStateProvince String  50  Yes State/Province of the Registrant user
 
-// RegistrantPostalCode  String  50  Yes PostalCode of the Registrant user
-// RegistrantCountry String  50  Yes Country of the Registrant user
+  // RegistrantPostalCode  String  50  Yes PostalCode of the Registrant user
+  // RegistrantCountry String  50  Yes Country of the Registrant user
 
-// RegistrantPhone String  50  Yes Phone number in the format +NNN.NNNNNNNNNN
+  // RegistrantPhone String  50  Yes Phone number in the format +NNN.NNNNNNNNNN
 
-// RegistrantEmailAddress  String  255 Yes Email address of the Registrant user
+  // RegistrantEmailAddress  String  255 Yes Email address of the Registrant user
 
 
   var registrantData = {
@@ -338,18 +334,18 @@ exports.postWhois2 = function(req, res, next){
   };
 
 
-//   TechFirstName String  255 Yes First name of the Tech user
-// TechLastName  String  255 Yes Second name of the Tech user
-// TechAddress1  String  255 Yes Address1 of the Tech user
+  //   TechFirstName String  255 Yes First name of the Tech user
+  // TechLastName  String  255 Yes Second name of the Tech user
+  // TechAddress1  String  255 Yes Address1 of the Tech user
 
-// TechCity  String  50  Yes City of the Tech user
-// TechStateProvince String  50  Yes State/Province of the Tech user
+  // TechCity  String  50  Yes City of the Tech user
+  // TechStateProvince String  50  Yes State/Province of the Tech user
 
-// TechPostalCode  String  50  Yes PostalCode of the Tech user
-// TechCountry String  50  Yes Country of the Tech user
-// TechPhone String  50  Yes Phone number in the format +NNN.NNNNNNNNNN
+  // TechPostalCode  String  50  Yes PostalCode of the Tech user
+  // TechCountry String  50  Yes Country of the Tech user
+  // TechPhone String  50  Yes Phone number in the format +NNN.NNNNNNNNNN
 
-// TechEmailAddress  String  255 Yes Email address of the Tech user
+  // TechEmailAddress  String  255 Yes Email address of the Tech user
 
   var techPersonData = {
     TechFirstName : '',
@@ -366,18 +362,18 @@ exports.postWhois2 = function(req, res, next){
     TechEmailAddress : ''
   };
 
-//   AdminFirstName  String  255 Yes First name of the Admin user
-// AdminLastName String  255 Yes Second name of the Admin user
-// AdminAddress1 String  255 Yes Address1 of the Admin user
+  //   AdminFirstName  String  255 Yes First name of the Admin user
+  // AdminLastName String  255 Yes Second name of the Admin user
+  // AdminAddress1 String  255 Yes Address1 of the Admin user
 
-// AdminCity String  50  Yes City of the Admin user
-// AdminStateProvince  String  50  Yes State/Province of the Admin user
+  // AdminCity String  50  Yes City of the Admin user
+  // AdminStateProvince  String  50  Yes State/Province of the Admin user
 
-// AdminPostalCode String  50  Yes PostalCode of the Admin user
-// AdminCountry  String  50  Yes Country of the Admin user
-// AdminPhone  String  50  Yes Phone number in the format +NNN.NNNNNNNNNN
+  // AdminPostalCode String  50  Yes PostalCode of the Admin user
+  // AdminCountry  String  50  Yes Country of the Admin user
+  // AdminPhone  String  50  Yes Phone number in the format +NNN.NNNNNNNNNN
 
-// AdminEmailAddress String  255 Yes Email address of the Admin user
+  // AdminEmailAddress String  255 Yes Email address of the Admin user
   var adminData      = {
     AdminFirstName:'',
     AdminLastName:'',
@@ -393,18 +389,18 @@ exports.postWhois2 = function(req, res, next){
     AdminEmailAddress:'',
   };
 
-// AuxBillingFirstName String  255 Yes First name of the AuxBilling user
-// AuxBillingLastName  String  255 Yes Second name of the AuxBilling user
-// AuxBillingAddress1  String  255 Yes Address1 of the AuxBilling user
+  // AuxBillingFirstName String  255 Yes First name of the AuxBilling user
+  // AuxBillingLastName  String  255 Yes Second name of the AuxBilling user
+  // AuxBillingAddress1  String  255 Yes Address1 of the AuxBilling user
 
-// AuxBillingCity  String  50  Yes City of the AuxBilling user
-// AuxBillingStateProvince String  50  Yes State/Province of the AuxBilling user
+  // AuxBillingCity  String  50  Yes City of the AuxBilling user
+  // AuxBillingStateProvince String  50  Yes State/Province of the AuxBilling user
 
-// AuxBillingPostalCode  String  50  Yes PostalCode of the AuxBilling user
-// AuxBillingCountry String  50  Yes Country of the AuxBilling user
-// AuxBillingPhone String  50  Yes Phone number in the format +NNN.NNNNNNNNNN
+  // AuxBillingPostalCode  String  50  Yes PostalCode of the AuxBilling user
+  // AuxBillingCountry String  50  Yes Country of the AuxBilling user
+  // AuxBillingPhone String  50  Yes Phone number in the format +NNN.NNNNNNNNNN
 
-// AuxBillingEmailAddress  String  255 Yes Email address of the AuxBilling user
+  // AuxBillingEmailAddress  String  255 Yes Email address of the AuxBilling user
 
   var auxData = {
     AuxBillingFirstName:'',
@@ -524,22 +520,18 @@ exports.postWhois2 = function(req, res, next){
 
 exports.postWhois = function(req, res, next){
 
-  // console.log( req.body );
-
   req.assert('first_name',   'First Name is required').notEmpty(); 
-
   req.assert('last_name',    'Last Name is required').notEmpty();  
-
   req.assert('company_name', 'Company Name is required').notEmpty();
-
   req.assert('address1',     'Address is required').notEmpty();
   req.assert('zip',          'Zip is required').notEmpty();
   req.assert('city',         'City is required').notEmpty();
   req.assert('state',        'State is required').notEmpty();
   req.assert('phone',        'Phone Number is required').notEmpty();
 
-//additional validation messages
+
   var userAdditionalData = {
+
     first_name : req.body.first_name || '',
 
     last_name  : req.body.last_name  || '',
@@ -560,10 +552,15 @@ exports.postWhois = function(req, res, next){
 
     fax : req.body.fax          || '',
 
+    //@TODO check Do we need to pass this values too?
+    plan         : req.user.profile.plan,
+    forwardEmail :  req.user.profile.forwardEmail,
+    domain       :  req.user.profile.domain,
+
   };
 
-  console.log(userAdditionalData);
-
+  // console.log(userAdditionalData);
+// 
   var errors = req.validationErrors();
 
   if (errors) {
@@ -572,117 +569,32 @@ exports.postWhois = function(req, res, next){
     return res.redirect(req.redirect.failure);
   }
 
-  if(req.body.email != req.user.email){
 
-    User.findOne({ email: req.body.email }, function(err, existingUser) {
+  var query  = { _id : req.user.id };
 
-  //     if (existingUser) {
-
-  //       req.flash('errors', { msg: 'An account with that email address already exists.' });
-  //       return res.redirect(req.redirect.failure);
-
-  //     } else {
-
-        var query  = { _id : req.user.id };
-
-        var update = {$set:{ 
-          email: req.body.email || '', 
-          profile: {
-                first_name : req.body.first_name || '',
-
-                last_name  : req.body.last_name  || '',
-
-                company_name : req.body.company_name || '', 
-
-                address : req.body.address || '',
-
-                zip : req.body.zip         || '',
-
-                city : req.body.city       || '',
-
-                state : req.body.state     || '',
-
-                country : req.body.country || '', 
-
-                phone : req.body.phone     || '',
-
-                fax : req.body.fax         || '',
-            // name     : req.body.name || '',
-            // location : req.body.location || '',
-          }
-
-        }} ;
+  var update = {$set:{ 
         
-  //       // User.findOneAndUpdate( query, update, {new: true}, function(err, user){
-  //       //   if (err) return next(err);
-
-  //       //   console.log(user);
-
-  //       //   user.updateStripeEmail( function(err){
-
-  //       //     if (err) return next(err);
-
-  //       //     req.flash('success', { msg: 'Profile information updated.' });
-  //       //     res.redirect(req.redirect.success);
-
-  //       //   });
-
-  //       // });
-
-        
-
-  //     }
-    });
-
-  } else {
-
-      var query  = { _id : req.user.id };
-      var update = {$set:{ 
-        email        : req.body.email || '', 
-        profile: {
-            first_name : req.body.first_name || '',
-
-            last_name  : req.body.last_name  || '',
-
-            company_name : req.body.company_name || '', 
-
-            address : req.body.address || '',
-
-            zip : req.body.zip         || '',
-
-            city : req.body.city       || '',
-
-            state : req.body.state     || '',
-
-            country : req.body.country || '', 
-
-            phone : req.body.phone     || '',
-
-            fax : req.body.fax         || '',
-            // name     : req.body.name || '',
-            // location : req.body.location || '',
-        }
+        profile:  userAdditionalData 
 
       }} ;
 
-      // User.findOneAndUpdate( query, update, {new: true}, function(err, user){
-      //   if (err) return next(err);
 
-      //   console.log(user);
+  // process.exit();
 
-      //   user.updateStripeEmail( function(err){
 
-      //     if (err) return next(err);
+  User.findOneAndUpdate( query, update, {new: true}, function(err, user){
+    if (err) return next(err);
 
-      //     req.flash('success', { msg: 'Profile information updated.' });
-      //     res.redirect(req.redirect.success);
+    // console.log(user);
 
-      //   });
 
-      // });
+    req.flash('success', { msg: 'Profile information updated.' });
+
+    res.redirect(req.redirect.success);
 
 
 
-  }
+  });
+
 
 };
