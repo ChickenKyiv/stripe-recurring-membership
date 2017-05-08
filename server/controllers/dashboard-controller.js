@@ -47,7 +47,7 @@ exports.getBilling = function(req, res, next){
   if (errorFlash.length) {
     error = errorFlash[0];
   }
-    const renderObject = {
+  const renderObject = {
     user: req.user,
     domain : req.user.profile.domain || '',
     form: form,
@@ -119,7 +119,7 @@ exports.postProfile = function (req, res, next){
 
   var userAdditionalData = {
 
-    
+
     first_name : req.body.first_name || '',
 
     last_name  : req.body.last_name  || '',
