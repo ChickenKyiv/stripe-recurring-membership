@@ -524,11 +524,7 @@ exports.postWhois2 = function(req, res, next){
 
 exports.postWhois = function(req, res, next){
 
-  console.log( req.body );
-
-
-  // req.assert('email',        'Email is not valid').isEmail();
-  // req.assert('name', 'Name is required').notEmpty();
+  // console.log( req.body );
 
   req.assert('first_name',   'First Name is required').notEmpty(); 
 
@@ -536,48 +532,49 @@ exports.postWhois = function(req, res, next){
 
   req.assert('company_name', 'Company Name is required').notEmpty();
 
-  req.assert('address1',       'Name is required').notEmpty();
-  req.assert('zip',           'Name is required').notEmpty();
-  req.assert('city',          'Name is required').notEmpty();
-  req.assert('state',         'Name is required').notEmpty();
-  // req.assert('country', 'Name is required').notEmpty();
-
-  req.assert('phone', 'Name is required').notEmpty();
+  req.assert('address1',     'Address is required').notEmpty();
+  req.assert('zip',          'Zip is required').notEmpty();
+  req.assert('city',         'City is required').notEmpty();
+  req.assert('state',        'State is required').notEmpty();
+  req.assert('phone',        'Phone Number is required').notEmpty();
 
 //additional validation messages
+  var userAdditionalData = {
+    first_name : req.body.first_name || '',
 
-    // first_name : req.body.first_name || '',
+    last_name  : req.body.last_name  || '',
 
-    // last_name  : req.body.last_name || '',
+    company_name : req.body.company_name || '', 
 
-    // company_name : req.body.company_name || '', 
+    address : req.body.address1 || '',
 
-    // address : req.body.address || '',
+    zip : req.body.zip          || '',
 
-    // zip : req.body.zip || '',
+    city : req.body.city        || '',
 
-    // city : req.body.city || '',
+    state : req.body.state      || '',
 
-    // state : req.body.state || '',
+    country : req.body.country  || '', 
 
-    // country : req.body.country || '', 
+    phone : req.body.phone      || '',
 
-    // phone : req.body.phone || '',
+    fax : req.body.fax          || '',
 
-    // fax : req.body.fax || '',
+  };
 
+  console.log(userAdditionalData);
 
-  // var errors = req.validationErrors();
+  var errors = req.validationErrors();
 
-  // if (errors) {
+  if (errors) {
 
-  //   req.flash('errors', errors);
-  //   return res.redirect(req.redirect.failure);
-  // }
+    req.flash('errors', errors);
+    return res.redirect(req.redirect.failure);
+  }
 
   if(req.body.email != req.user.email){
 
-  //   User.findOne({ email: req.body.email }, function(err, existingUser) {
+    User.findOne({ email: req.body.email }, function(err, existingUser) {
 
   //     if (existingUser) {
 
@@ -586,35 +583,35 @@ exports.postWhois = function(req, res, next){
 
   //     } else {
 
-  //       var query  = { _id : req.user.id };
+        var query  = { _id : req.user.id };
 
-  //       var update = {$set:{ 
-  //         email: req.body.email || '', 
-  //         profile: {
-  //               first_name : req.body.first_name || '',
+        var update = {$set:{ 
+          email: req.body.email || '', 
+          profile: {
+                first_name : req.body.first_name || '',
 
-  //               last_name  : req.body.last_name  || '',
+                last_name  : req.body.last_name  || '',
 
-  //               company_name : req.body.company_name || '', 
+                company_name : req.body.company_name || '', 
 
-  //               address : req.body.address || '',
+                address : req.body.address || '',
 
-  //               zip : req.body.zip         || '',
+                zip : req.body.zip         || '',
 
-  //               city : req.body.city       || '',
+                city : req.body.city       || '',
 
-  //               state : req.body.state     || '',
+                state : req.body.state     || '',
 
-  //               country : req.body.country || '', 
+                country : req.body.country || '', 
 
-  //               phone : req.body.phone     || '',
+                phone : req.body.phone     || '',
 
-  //               fax : req.body.fax         || '',
-  //           // name     : req.body.name || '',
-  //           // location : req.body.location || '',
-  //         }
+                fax : req.body.fax         || '',
+            // name     : req.body.name || '',
+            // location : req.body.location || '',
+          }
 
-  //       }} ;
+        }} ;
         
   //       // User.findOneAndUpdate( query, update, {new: true}, function(err, user){
   //       //   if (err) return next(err);
@@ -635,38 +632,38 @@ exports.postWhois = function(req, res, next){
         
 
   //     }
-  //   });
+    });
 
   } else {
 
-      // var query  = { _id : req.user.id };
-      // var update = {$set:{ 
-      //   email        : req.body.email || '', 
-      //   profile: {
-      //       first_name : req.body.first_name || '',
+      var query  = { _id : req.user.id };
+      var update = {$set:{ 
+        email        : req.body.email || '', 
+        profile: {
+            first_name : req.body.first_name || '',
 
-      //       last_name  : req.body.last_name  || '',
+            last_name  : req.body.last_name  || '',
 
-      //       company_name : req.body.company_name || '', 
+            company_name : req.body.company_name || '', 
 
-      //       address : req.body.address || '',
+            address : req.body.address || '',
 
-      //       zip : req.body.zip         || '',
+            zip : req.body.zip         || '',
 
-      //       city : req.body.city       || '',
+            city : req.body.city       || '',
 
-      //       state : req.body.state     || '',
+            state : req.body.state     || '',
 
-      //       country : req.body.country || '', 
+            country : req.body.country || '', 
 
-      //       phone : req.body.phone     || '',
+            phone : req.body.phone     || '',
 
-      //       fax : req.body.fax         || '',
-      //       // name     : req.body.name || '',
-      //       // location : req.body.location || '',
-      //   }
+            fax : req.body.fax         || '',
+            // name     : req.body.name || '',
+            // location : req.body.location || '',
+        }
 
-      // }} ;
+      }} ;
 
       // User.findOneAndUpdate( query, update, {new: true}, function(err, user){
       //   if (err) return next(err);
