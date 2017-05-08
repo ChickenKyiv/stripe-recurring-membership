@@ -1,22 +1,22 @@
-  * {
+/** {
   font-family: "Helvetica Neue", Helvetica;
   font-size: 15px;
   font-variant: normal;
   padding: 0;
   margin: 0;
-}
+}*/
 
-html {
+/*html {
   height: 100%;
-}
+}*/
 
-body {
+/*body {
   background: #E6EBF1;
   align-items: center;
   min-height: 100%;
   display: flex;
   width: 100%;
-}
+}*/
 
 form {
   width: 480px;

@@ -1,29 +1,53 @@
 $( document ).ready(function() {
     
-	var stripe   = Stripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
-	var elements = stripe.elements();
+	// var stripe   = Stripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
+  // console.log( stripe );
+  // console.log( stripe.elements() );
+	
+  var card = elements.create('card', {
+    hidePostalCode: true,
+    style: {
+      base: {
+        iconColor: '#666EE8',
+        color: '#31325F',
+        lineHeight: '40px',
+        fontWeight: 300,
+        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+        fontSize: '15px',
 
-});
-
-
-var card = elements.create('card', {
-	hidePostalCode: true,
-  style: {
-    base: {
-      iconColor: '#666EE8',
-      color: '#31325F',
-      lineHeight: '40px',
-      fontWeight: 300,
-      fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-      fontSize: '15px',
-
-      '::placeholder': {
-        color: '#CFD7E0',
+        '::placeholder': {
+          color: '#CFD7E0',
+        },
       },
-    },
-  }
+    }
+  });
+  card.mount('#card-element');
+
+
+  card.on('change', function(event) {
+    setOutcome(event);
+  });
+
+
+
+  $('#payment-form').submit(function(e){
+
+    e.preventDefault();
+    var form = this;
+    var extraDetails = {
+        name: form.find('input[name=cardholder-name]').prop(),
+    };
+    console.log( extraDetails );
+
+    stripe.createToken(card, extraDetails).then(setOutcome);        
+
+  });
+
+
 });
-card.mount('#card-element');
+
+
+
 
 
 function setOutcome(result) {
@@ -94,23 +118,9 @@ function setOutcome(result) {
 }
 
 
-card.on('change', function(event) {
-  setOutcome(event);
-});
 
 
-$('#payment-form').submit(function(e){
 
-	e.preventDefault();
-	var form = this;
-	var extraDetails = {
-	    name: form.find('input[name=cardholder-name]').prop(),
-	};
-	console.log( extraDetails );
-
-	stripe.createToken(card, extraDetails).then(setOutcome);				
-
-});
 
 // document.querySelector('form').addEventListener('submit', function(e) {
 //   e.preventDefault();

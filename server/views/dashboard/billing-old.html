@@ -13,8 +13,14 @@
 
     {% include "../partials/flash.html" %}
 
+    <div class="page-header">
+      <h3>Subscription</h3>
+    </div>
 
-    {% include "../forms/checkout-form.html" %}
+    <!-- @TODO move billing-new form to another view -->
+    <!-- {% include "../forms/billing-new.html" %} -->
+
+    
 
 
 
@@ -35,7 +41,11 @@
 
     {% endif %}
 
-    
+    <div class="page-header">
+      <h3>Delete Account</h3>
+    </div>
+
+    {% include "../forms/unsubscribe.html" %}
 
     
 

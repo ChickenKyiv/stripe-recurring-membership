@@ -22,7 +22,7 @@ module.exports = function (app, passport) {
 
   //switch plan
   // @TODO change this. right now all stuff included on dashboard billing
-  app.route('/subscription/switch')
+  app.route('/subscription/switch/:subscription_id')
 	   .all(setRedirect({auth: '/', success: '/'})) //@TODO change redirect object
 	   .all(isAuthenticated)	
 	   .get(setRender('profile/switch-subscription-plan'), dashboard.getSwitchAccountPage)

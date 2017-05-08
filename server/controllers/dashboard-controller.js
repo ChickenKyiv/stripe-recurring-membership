@@ -33,6 +33,7 @@ exports.getDefault = function(req, res, next){
 
 };
 
+
 exports.getBilling = function(req, res, next){
 
   var form       = {},
@@ -47,12 +48,13 @@ exports.getBilling = function(req, res, next){
   if (errorFlash.length) {
     error = errorFlash[0];
   }
+
   const renderObject = {
     user: req.user,
     domain : req.user.profile.domain || '',
     form: form,
     error: error,
-    plans: plans
+    // plans: plans
   };
   
   res.render(req.render, renderObject);
@@ -61,7 +63,7 @@ exports.getBilling = function(req, res, next){
 
 //dashboard/profile
 exports.getProfile = function (req, res, next){
-// console.log('123');
+
   var form       = {},
       error      = null,
       formFlash  = req.flash('form'),
@@ -357,6 +359,14 @@ exports.getSwitchAccountPage = function (req, res, next){
 
 //duplicated from post plan page. @TODO add a similar to previous billing version - when user can switch from free plan to payed plan by adding credit card information and subscribe on Stripe
 
-exports.switchSubscriptionPlan = function (){
+exports.switchSubscriptionPlan = function (req, res, next){
   
+  var subscription_id = req.body.subscription_id;
+
+  var plan = user.getPlanBySubscriptionId( subscription_id );
+
+  console.log( plan );
+
+  
+
 };

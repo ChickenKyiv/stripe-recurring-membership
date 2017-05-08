@@ -11,7 +11,7 @@ setRedirect       = require('middleware-responder').setRedirect;
 var users     = require('../controllers/users-controller');
 var passwords     = require('../controllers/passwords-controller');
 
-
+//@TODO move this function to profile for better logic
 module.exports = function (app, passport) {
 	
 	// app.route('/user') //@TODO check this route

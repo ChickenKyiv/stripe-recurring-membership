@@ -35,21 +35,23 @@ footer <br />
 </script>
 
 
-
-
-<!-- <script src="https://js.stripe.com/v3/"></script> -->
-<!-- <script src="/javascripts/stripe-form-wrapper.js"></script> -->
-
-<!-- <script type="text/javascript">
-//  var stripe   = Stripe('{{stripePubKey}}');
-
-  Stripe.setPublishableKey('{{stripePubKey}}');
-</script> -->
-
 <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
+
+
+
+<script src="https://js.stripe.com/v3/"></script>
+<script type="text/javascript">
+ var stripe   = Stripe('{{stripePubKey}}');
+ var elements = stripe.elements();
+</script>
+<script src="/javascripts/stripe-form-wrapper.js"></script>
+
+
+
+
   
 <!-- <script src="/javascripts/jquery.min.js"></script> -->
 
