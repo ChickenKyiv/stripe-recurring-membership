@@ -79,6 +79,116 @@ $( document ).ready(function() {
 
 	});
 
+
+	$('#email_value').text( $('input[name=email]') );
+
+
+	
+
+	$('input[name=first_name]').keyup(function(){
+
+	  if($(this).val().length > 3){
+	  	$('#first_name_value').text($(this).val());
+	  } else {
+	  	$('#first_name_value').text($(this).val());
+	  }
+	   
+	
+	});
+
+	$('input[name=last_name]').keyup(function(){
+
+	  if($(this).val().length > 3){
+	  	$('#last_name_value').text($(this).val());
+	  } else {
+	  	$('#last_name_value').text($(this).val());
+	  }
+	   
+	
+	});
+
+	$('input[name=company_name]').keyup(function(){
+
+	  if($(this).val().length > 3){
+	  	$('#company_name_value').text($(this).val());
+	  } else {
+	  	$('#company_name_value').text($(this).val());
+	  }
+	   
+	
+	});
+	
+	$('input[name=address1]').keyup(function(){
+
+	  if($(this).val().length > 3){
+	  	$('#address1_value').text($(this).val());
+	  } else {
+	  	$('#address1_value').text($(this).val());
+	  }
+	   
+	
+	});	
+
+	$('input[name=city]').keyup(function(){
+
+	  if($(this).val().length > 3){
+	  	$('#city_value').text($(this).val());
+	  } else {
+	  	$('#city_value').text($(this).val());
+	  }
+	   
+	
+	});	
+
+	$('#country').on('change', function(){
+
+	  // if($(this).val().length > 3){
+	  	$('#country_value').text($(this).val());
+	  // } else {
+	  	// $('#city_value').text($(this).val());
+	  // }
+	   
+	
+	});	
+
+	$('input[name=phone]').keyup(function(){
+
+	  if($(this).val().length > 3){
+	  	$('#phone_value').text($(this).val());
+	  } else {
+	  	$('#phone_value').text($(this).val());
+	  }
+	   
+	
+	});
+
+	$('input[name=fax]').keyup(function(){
+
+	  if($(this).val().length > 3){
+	  	$('#fax_value').text($(this).val());
+	  } else {
+	  	$('#fax_value').text($(this).val());
+	  }
+	   
+	
+	});	
+
+	
+	// full name
+	// $('input[name=last_name]').keyup(function(){
+
+	//   if($(this).val().length > 3){
+	//   	$('#name_value').text( $('input[name=first_name]').val() + $(this).val() );
+	//   } else {
+	//   	$('#name_value').text( $('input[name=first_name]').val() );
+	//   }
+	   
+	
+	// });
+
+	
+
+
 	// $('#payment-form').on('submit', function(e){
 
  //        //prevent Default functionality

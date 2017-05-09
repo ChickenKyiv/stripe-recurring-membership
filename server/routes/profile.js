@@ -27,6 +27,6 @@ module.exports = function (app, passport) {
 	   .all(isAuthenticated)	
 	   .get(setRender('profile/switch-subscription-plan'), dashboard.getSwitchAccountPage)
 	   .post(dashboard.switchSubscriptionPlan);   
-
+     
 
 };

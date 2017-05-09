@@ -367,6 +367,29 @@ exports.switchSubscriptionPlan = function (req, res, next){
 
   console.log( plan );
 
+// stripeToken
+  // user.setPlan(plan, stripeToken, function (err) {
+//   var msg;
+
+//   if (err) {
+//     if(err.code && err.code == 'card_declined'){
+//       msg = 'Your card was declined. Please provide a valid card.';
+//     } else if(err && err.message) {
+//       msg = err.message;
+//     } else {
+//       msg = 'An unexpected error occurred.';
+//     }
+
+//     req.flash('errors', {
+//      msg:  msg
+//    });
+//     return res.redirect(req.redirect.failure);
+//   }
+//   req.flash('success', { 
+//     msg: 'Plan has been updated.' 
+//   });
+//   res.redirect(req.redirect.success);
+// });
   
 
 };
