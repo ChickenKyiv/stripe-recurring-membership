@@ -31,7 +31,7 @@ form {
   margin-bottom: 20px;
 }
 
-label {
+label.stripe-label {
   position: relative;
   color: #8898AA;
   font-weight: 300;
@@ -41,11 +41,11 @@ label {
   display: block;
 }
 
-.group label:not(:last-child) {
+.group label.stripe-label:not(:last-child) {
   border-bottom: 1px solid #F0F5FA;
 }
 
-label > span {
+label.stripe-label > span {
   width: 20%;
   text-align: right;
   float: left;

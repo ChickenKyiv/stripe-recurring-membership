@@ -152,20 +152,19 @@
       <!-- right side -->
       <div class="col-xs-6 col-sm-12 col-md-6">
 
-        {% include "fields/enable-whois-checkbox.html" %}
-        <!-- <div class="example">
-          <div class="pull-left margin-right-20">
-            <input type="checkbox" 
-                   id="inputBasicOff" 
-                   name="enable-whois" data-plugin="switchery"
-            />
-          </div>
-          <label class="padding-top-3" for="inputBasicOff">
-            Enable WHOIS
-          </label>
-        </div> -->
+         
 
-      Privacy switch ON / OFF <br />
+        <div class="example">
+          <div class="pull-left margin-right-20">
+            <!-- <input type="checkbox" id="inputBasicOff" name="inputiCheckBasicCheckboxes" data-plugin="switchery"
+            /> -->
+            {% include "fields/enable-whois-checkbox.html" %}
+          </div>
+          <!-- <span class="padding-top-3">Privacy switch</span> -->
+          <label class="padding-top-3 undo-stripe" for="inputBasicOff">Privacy switch</label>
+        </div>
+
+      <!-- Privacy switch ON / OFF <br /> -->
       Here is the WHOIS of your domain appears:<br />
       email:<div id="email_value"></div><br />
 

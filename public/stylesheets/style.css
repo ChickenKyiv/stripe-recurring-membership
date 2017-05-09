@@ -117,3 +117,14 @@ fieldset[disabled] .btn-primary.active {
 .fast-failed {
   display: none;
 }
+
+.example {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.margin-right-20 {
+    margin-right: 20px!important;
+}
+.padding-top-3 {
+    padding-top: 3px!important;
+}

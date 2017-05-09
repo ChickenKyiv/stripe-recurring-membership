@@ -83,6 +83,12 @@ var init = new Switchery(elem, {size:'small'});
 
 <!-- {% include "sweet-alert-flash.html" %} -->
 
+<script src="/bower_components/select2/dist/js/select2.min.js"></script>
+<script type="text/javascript">
+  $( document ).ready(function() {
+    $('#country').select2();
+  });
+</script>
 
 {% if sweetAlertShow %}
 

@@ -80,7 +80,7 @@ $( document ).ready(function() {
 	});
 
 
-	$('#email_value').text( $('input[name=email]') );
+	$('#email_value').text( $('input[name=email]').prop('value') );
 
 
 	
@@ -117,7 +117,7 @@ $( document ).ready(function() {
 	   
 	
 	});
-	
+
 	$('input[name=address1]').keyup(function(){
 
 	  if($(this).val().length > 3){
