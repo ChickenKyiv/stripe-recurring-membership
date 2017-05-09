@@ -1,25 +1,6 @@
 // var stripe   = Stripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
 // var elements = stripe.elements();
 
-var card = elements.create('card', {
-	hidePostalCode: true,
-  style: {
-    base: {
-      iconColor: '#666EE8',
-      color: '#31325F',
-      lineHeight: '40px',
-      fontWeight: 300,
-      fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-      fontSize: '15px',
-
-      '::placeholder': {
-        color: '#CFD7E0',
-      },
-    },
-  }
-});
-card.mount('#card-element');
-
 
 function setOutcome(result) {
 
@@ -41,24 +22,50 @@ function setOutcome(result) {
   }
 }
 
-card.on('change', function(event) {
-  setOutcome(event);
-});
+var div_wrapper = document.getElementById('card-element');
+if( div_wrapper !== null ){
 
-document.querySelector('form').addEventListener('submit', function(e) {
+  var card = elements.create('card', {
+    hidePostalCode: true,
+    style: {
+      base: {
+        iconColor: '#666EE8',
+        color: '#31325F',
+        lineHeight: '40px',
+        fontWeight: 300,
+        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+        fontSize: '15px',
 
-  e.preventDefault();
-  var form = document.querySelector('form');
-  var extraDetails = {
-    name: form.querySelector('input[name=cardholder-name]').value,
-  };
+        '::placeholder': {
+          color: '#CFD7E0',
+        },
+      },
+    }
+  });
+  card.mount('#card-element');
 
-  stripe.createToken(card, extraDetails).then(setOutcome);
+  card.on('change', function(event) {
+    setOutcome(event);
+  });
 
-});
+  document.querySelector('form').addEventListener('submit', function(e) {
+
+    e.preventDefault();
+    var form = document.querySelector('form');
+    var extraDetails = {
+      name: form.querySelector('input[name=cardholder-name]').value,
+    };
+
+    stripe.createToken(card, extraDetails).then(setOutcome);
+
+  });
 
 
-var form = document.getElementById('payment-form')
+  var form = document.getElementById('payment-form')
+
+
+
+}
 
 
 
