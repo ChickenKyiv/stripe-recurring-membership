@@ -21,13 +21,13 @@ exports.getDefault = function(req, res, next){
 
   // console.log( req.user.stripe.plan )
 
-    const renderObject = {
+  const renderObject = {
       user: req.user, 
     form: form, 
     error: error, 
     plans: User.getPlans()
       // messages: req.flash('messages')
-    };
+  };
 
   res.render(req.render, renderObject);
 
@@ -391,5 +391,32 @@ exports.switchSubscriptionPlan = function (req, res, next){
 //   res.redirect(req.redirect.success);
 // });
   
+
+};
+
+exports.getUpdateCardPage = function(req, res, next){
+
+  var form       = {},
+      error      = null,
+      formFlash  = req.flash('form'),
+      errorFlash = req.flash('error');
+
+  if (formFlash.length) {
+    form.email   = formFlash[0].email;
+  }
+
+  if (errorFlash.length) {
+    error = errorFlash[0];
+  }
+
+  const renderObject = {
+    user: req.user,
+    domain : req.user.profile.domain || '',
+    form: form,
+    error: error,
+    // plans: plans
+  };
+  
+  res.render(req.render, renderObject);
 
 };

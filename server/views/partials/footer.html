@@ -64,9 +64,10 @@ footer <br />
 
 <script>
 
-
-var elem = document.querySelector('.js-switch');
-var init = new Switchery(elem, {size:'small'});
+if( document.querySelector('.js-switch') !== null ){
+  var elem = document.querySelector('.js-switch');
+  var init = new Switchery(elem, {size:'small'});
+}
 
 
 // $( document ).ready(function() {
@@ -90,8 +91,6 @@ var init = new Switchery(elem, {size:'small'});
   });
 </script>
 
-<!-- <script src="/javascripts/jquery.formatter.js"></script> -->
-<!-- <script src="/javascripts/formatter-wrapper.js"></script> -->
 
 <!-- <script src="/bower_components/formatter.js/dist/formatter.min.js"></script> -->
 <script src="/node_modules/inputmask/dist/jquery.inputmask.bundle.js"></script>
@@ -100,31 +99,10 @@ var init = new Switchery(elem, {size:'small'});
   $( document ).ready(function($) {
 
     $("#phone").inputmask();
-    // $("#phone").inputmask({"mask": "(999) 999-9999"});
+    $("#fax").inputmask();
 
-    // $('#phone').formatter({
-      // 'pattern': '({{999}}) {{999}} {{9999}}',
-      // 'persistent': true
-    // });
-    
-    // $('#fax').formatter({
-    //   'pattern': '([[999]]) [[999]]-[[9999]]',
-    //   'persistent': true
-    // });
 
   });
-</script>
-
-<script type="text/javascript">
-  // var formatted1 = new Formatter(document.getElementById('phone'), {
-  //   'pattern': '({{999}}) {{999}} {{9999}}',
-  //   'persistent': false
-  // });
-
-  // var formatted2 = new Formatter(document.getElementById('fax'), {
-  // 'pattern': '{{999}}-{{999}}-{{999}}-{{9999}}',
-  // 'persistent': true
-  // });
 </script>
 
 

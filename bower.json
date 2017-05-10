@@ -25,6 +25,6 @@
     "bootstrap-sweetalert": "^1.0.1",
     "switchery": "^0.8.2",
     "select2": "^4.0.3",
-    "formatter.js": "formatter#^0.1.5"
+    
   }
 }

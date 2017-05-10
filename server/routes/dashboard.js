@@ -25,11 +25,11 @@ module.exports = function (app, passport) {
   //    .get(setRender('dashboard/billing'), dashboard.getBilling)
   //    .post(dashboard.postBilling); // this must be replaced by post user/plan
 
-  //@TODO i think this is not finished   
-  app.route('/update-card')
-     .all(setRedirect({auth: '/'}))
-     .all(isAuthenticated)
-     .get(setRender('dashboard/update-card'), dashboard.getBilling)   
+  // //@TODO i think this is not finished   
+  // app.route('/update-card')
+  //    .all(setRedirect({auth: '/'}))
+  //    .all(isAuthenticated)
+  //    .get(setRender('dashboard/update-card'), dashboard.getBilling);   
 
      
 

@@ -29,4 +29,11 @@ module.exports = function (app, passport) {
 	   .post(dashboard.switchSubscriptionPlan);   
      
 
+    //@TODO i think this is not finished   
+  app.route('/update-card')
+     .all(setRedirect({auth: '/'}))
+     .all(isAuthenticated)
+     .get(setRender('profile/update-card'), dashboard.getUpdateCardPage);
+     // .get(setRender('profile/update-card'), dashboard.getBilling);   
+
 };

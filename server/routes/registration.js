@@ -45,7 +45,7 @@ module.exports    = function (app, passport) {
 app.route('/billing-form')
   .all(setRedirect({ auth: '/', success: '/dashboard', failure: '/billing-form' }))
   .all(isAuthenticated)
-  .get(setRender('dashboard/billing'), dashboard.getBilling)
+  .get(setRender('signup/billing'), dashboard.getBilling)
   .post(dashboard.postBilling);
   
   ;
