@@ -111,12 +111,12 @@ exports.postProfile = function (req, res, next){
   req.assert('first_name',   'First Name is required').notEmpty(); 
   req.assert('last_name',    'Last Name is required').notEmpty();  
   req.assert('company_name', 'Company Name is required').notEmpty();
-  req.assert('address',       'Name is required').notEmpty();
-  req.assert('zip',           'Name is required').notEmpty();
-  req.assert('city',          'Name is required').notEmpty();
-  req.assert('state',         'Name is required').notEmpty();
+  req.assert('address',      'Name is required').notEmpty();
+  req.assert('zip',          'Name is required').notEmpty();
+  req.assert('city',         'Name is required').notEmpty();
+  req.assert('state',        'Name is required').notEmpty();
   // req.assert('country', 'Name is required').notEmpty();
-  req.assert('phone', 'Name is required').notEmpty();
+  req.assert('phone',        'Name is required').notEmpty();
 
 
   var userAdditionalData = {

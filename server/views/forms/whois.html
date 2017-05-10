@@ -115,23 +115,26 @@
 
 
         <!-- Text input-->
-        <div class="form-group">
+        <div class="form-group required">
           
           <div class="col-xs-7 col-sm-7 col-md-7">
             {% include "fields/phone-field.html" %}
+            <span class="required">*</span>
           </div>
         </div>
 
 
 
         <!-- Text input-->
-        <div class="form-group">
+        <div class="form-group required">
           
           <div class="col-xs-7 col-sm-7 col-md-7">
-            <input id="fax" name="fax" type="text" 
+            <!-- {% include "fields/phone-field.html" %} -->
+            {% include "fields/phone-field.html" with {'value':user.profile.fax, 'name':'fax', 'placeholder':'Fax number'} %}
+            <!-- <input id="fax" name="fax" type="text" 
                    placeholder="Fax number" 
                    class="form-control input-md" 
-                   value="{{user.profile.fax}}" />
+                   value="{{user.profile.fax}}" /> -->
            <!-- <span class="required">*</span> -->
           </div>
         </div>

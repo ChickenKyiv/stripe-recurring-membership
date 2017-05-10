@@ -74,8 +74,9 @@ if (app.get('env') === 'production') {
   app.locals.production = false;
   swig.setDefaults({ cache: false });
   staticDir = path.join(__dirname + '/../public');
-  console.log(__dirname + '/bower_components');
+  // console.log(__dirname + '/bower_components');
   app.use('/bower_components',  express.static(__dirname + '/../bower_components'));
+  app.use('/node_modules',  express.static(__dirname + '/../node_modules'));
   //dev
   app.locals.stripePubKey = secrets.stripeNextVersion.public.stripe.testPublishableKey;
 

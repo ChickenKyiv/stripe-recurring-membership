@@ -128,3 +128,13 @@ fieldset[disabled] .btn-primary.active {
 .padding-top-3 {
     padding-top: 3px!important;
 }
+
+/*
+.form-group.required #phone:before { 
+   
+   color: #d00;
+    content: "*";
+    position: absolute;
+    margin-left: 8px;
+    top:7px;
+}*/

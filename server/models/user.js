@@ -97,10 +97,8 @@ var userSchema = new mongoose.Schema({
     whois: {
       type: Boolean, default: true  },        
 
-    }    
 
   },
-
 
 
   resetPasswordToken: String,

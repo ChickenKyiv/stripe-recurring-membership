@@ -1,4 +1,21 @@
-<input id="phone" name="phone" type="text" 
-       placeholder="Phone number" class="form-control input-md" 
-       value="{{user.profile.phone}}" />
-<span class="required">*</span>
+<input 
+       {% if name %}
+         name ="{{name}}"	
+         id   ="{{name}}" 
+       {% else %}  	
+         name ="phone"	
+         id   ="phone" 
+       {% endif %}
+
+       {% if placeholder %}
+         placeholder="{{placeholder}}"	
+       {% else %}  	
+         name="Phone number"	
+       {% endif %}
+
+       type="text" 
+       class="form-control input-md" 
+       value="{{user.profile.phone}}"
+       data-inputmask="'mask': '(999) 999-9999'"
+       required="required"
+        />
