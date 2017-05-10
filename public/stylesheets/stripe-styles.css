@@ -18,12 +18,12 @@
   width: 100%;
 }*/
 
-form {
+form#cardForm {
   width: 480px;
   margin: 20px auto;
 }
 
-.group {
+#cardForm .group {
   background: white;
   box-shadow: 0 7px 14px 0 rgba(49,49,93,0.10),
               0 3px 6px 0 rgba(0,0,0,0.08);
@@ -41,7 +41,7 @@ label.stripe-label {
   display: block;
 }
 
-.group label.stripe-label:not(:last-child) {
+#cardForm .group label.stripe-label:not(:last-child) {
   border-bottom: 1px solid #F0F5FA;
 }
 
@@ -51,7 +51,7 @@ label.stripe-label > span {
   float: left;
 }
 
-.field {
+#cardForm .field {
   background: transparent;
   font-weight: 300;
   border: 0;
@@ -65,11 +65,11 @@ label.stripe-label > span {
   float: right;
 }
 
-.field::-webkit-input-placeholder { color: #CFD7E0; }
-.field::-moz-placeholder { color: #CFD7E0; }
-.field:-ms-input-placeholder { color: #CFD7E0; }
+#cardForm .field::-webkit-input-placeholder { color: #CFD7E0; }
+#cardForm .field::-moz-placeholder { color: #CFD7E0; }
+#cardForm .field:-ms-input-placeholder { color: #CFD7E0; }
 
-button {
+#cardForm button {
   float: left;
   display: block;
   background: #666EE8;
@@ -87,15 +87,15 @@ button {
   outline: none;
 }
 
-button:focus {
+#cardForm button:focus {
   background: #555ABF;
 }
 
-button:active {
+#cardForm button:active {
   background: #43458B;
 }
 
-.outcome {
+#cardForm .outcome {
   float: left;
   width: 100%;
   padding-top: 8px;
@@ -103,24 +103,24 @@ button:active {
   text-align: center;
 }
 
-.success, .error {
+#cardForm .success, .error {
   display: none;
   font-size: 13px;
 }
 
-.success.visible, .error.visible {
+#cardForm .success.visible, .error.visible {
   display: inline;
 }
 
-.error {
+#cardForm .error {
   color: #E4584C;
 }
 
-.success {
+#cardForm .success {
   color: #666EE8;
 }
 
-.success .token {
+#cardForm .success .token {
   font-weight: 500;
   font-size: 13px;
 }
