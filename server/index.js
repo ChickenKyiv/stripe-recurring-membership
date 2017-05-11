@@ -46,7 +46,7 @@ var users = require('./routes/user');
 
 var profile = require('./routes/profile');
 
-var dashboard = require('./routes/dashboard');
+// var dashboard = require('./routes/dashboard');
 
 
 
@@ -169,7 +169,7 @@ forgot(app, passport);
 registration(app, passport);
 login(app, passport);
 users(app, passport);
-dashboard(app, passport);
+// dashboard(app, passport);
 profile(app, passport);
 
 

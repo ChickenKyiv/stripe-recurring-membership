@@ -13,6 +13,19 @@ var dashboard = require('../controllers/dashboard-controller');
 module.exports = function (app, passport) {
 
 
+  // dashboard
+  app.route('/dashboard')
+     .all(setRedirect({auth: '/'}))
+     .all(isAuthenticated)     
+     .get(setRender('dashboard/index'), dashboard.getDefault); //@TODO not finished functionality
+
+  //@TODO check and compare this routes with 3rd registration step   
+  // app.route('/billing')
+  //    .all(setRedirect({auth: '/'}))
+  //    .all(isAuthenticated)     
+  //    .get(setRender('dashboard/billing'), dashboard.getBilling)
+  //    .post(dashboard.postBilling); // this must be replaced by post user/plan
+
   app.route('/profile')
      .all(setRedirect({auth: '/', success: '/profile', failure: '/profile'}))
      .all(isAuthenticated)     
@@ -23,10 +36,10 @@ module.exports = function (app, passport) {
   //switch plan
   // @TODO change this. right now all stuff included on dashboard billing
   app.route('/subscription/switch/:subscription_id')
-	   .all(setRedirect({auth: '/', success: '/'})) //@TODO change redirect object
-	   .all(isAuthenticated)	
-	   .get(setRender('profile/switch-subscription-plan'), dashboard.getSwitchAccountPage)
-	   .post(dashboard.switchSubscriptionPlan);   
+     .all(setRedirect({auth: '/', success: '/'})) //@TODO change redirect object
+     .all(isAuthenticated)  
+     .get(setRender('profile/switch-subscription-plan'), dashboard.getSwitchAccountPage)
+     .post(dashboard.switchSubscriptionPlan);   
      
 
     //@TODO i think this is not finished   
@@ -35,6 +48,6 @@ module.exports = function (app, passport) {
      .all(isAuthenticated)
      .get(setRender('profile/update-card'), dashboard.getUpdateCardPage);
      // .post(dashboard.postUpdateCard);
-     // .get(setRender('profile/update-card'), dashboard.getBilling);   
+     // .get(setRender('profile/update-card'), dashboard.getBilling);  
 
 };
