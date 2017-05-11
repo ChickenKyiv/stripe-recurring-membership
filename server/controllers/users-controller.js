@@ -203,70 +203,40 @@ exports.updateForwardEmail = function (req, res, next){
 
 exports.postForwardEmail = function (req, res, next){
 
-  // req.assert('email',    'Please use a valid email.').isEmail();
-  // req.assert('confirm', 'Passwords must match').isEmail().equals(req.body.password);
+  req.assert('email',    'Please use a valid email.').isEmail();
+  req.assert('confirm', 'Passwords must match').isEmail().equals(req.body.email);
 
   var errors = req.validationErrors();
 
-  // console.log( req.body );
-  // console.log( errors );
+  if (errors) {
 
-  console.log( req.body );
-  // console.log( plan );
-  console.log( req.user );
-  console.log( req.user.id );
-  
-// // req.user.id
-//   var query  = { _id: req.user.id };
-//   var update = {$set:{ 
+    req.flash('errors', errors);
+    return res.redirect(req.redirect.failure);
+  }
+
+  var query  = { _id: req.user.id };
+  var update = {$set:{ 
         
-//         profile:  { forwardEmail :  } 
+        profile:  { forwardEmail : req.body.email } 
 
-//       }} ;
+      }} ;
 
-//   User.findOneAndUpdate( query, update, {new: true}, function(err, user){
-//     if (err) return next(err); 
-//     //or  
-//     // req.flash('errors', {
-//     //        msg:  'We didn\'t update forward email setting'
-//     // });
-//     // return res.redirect(req.redirect.failure);
+  User.findOneAndUpdate( query, update, {new: true}, function(err, user){
+    if (err) return next(err); 
+    //or  
+    // req.flash('errors', {
+    //        msg:  'We didn\'t update forward email setting'
+    // });
+    // return res.redirect(req.redirect.failure);
 
-//     // console.log(user);
+    // console.log(user);
 
-//       // updateForwardEmailConfirmation(); //@TODO send confirmation message
+      // updateForwardEmailConfirmation(); //@TODO send confirmation message
 
-//     req.flash('success', { msg: 'Profile information updated.' });
+    req.flash('success', { msg: 'Profile information updated.' });
 
-//     res.redirect(req.redirect.success);
+    res.redirect(req.redirect.success);
 
-//   });
-
-  // User.findOneAndUpdate({_id: req.user.id}, {$set:{profile:"Naomi"}}, {new: true}, 
-  //   function(err, user){
-
-  //     if(err){
-  //         console.log("Something wrong when updating data!");
-
-  //         req.flash('errors', {
-  //          msg:  'We didn\'t update'
-  //        });
-  //         return res.redirect(req.redirect.failure);
-  //     }
-
-  //     console.log(user);
-
-
-
-
-  // });
-
-
-
-
+  });
 
 };
-
-
-
-

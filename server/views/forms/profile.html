@@ -5,22 +5,57 @@
 		  Email
 		</label>
 		<div class="col-sm-4">
-		  {% include "fields/email-field.html" with {'value':value} %}
+		  {% include "fields/email-field.html" with {'value':user.email} %}
 		</div>
 	</div>
 
 	<div class="form-group">
 		<label for="name" class="col-sm-3 control-label">
-		Name
+		First Name
 		</label>
 		<div class="col-sm-4">
-			<input type="text" 
-			name="name" id="name" 
-			value="{{user.profile.name}}"
-			class="form-control">
+
+           <input type="text" name="first_name" id="first_name" 
+                class="form-control input-sm" 
+                placeholder="First Name" 
+                value="{{user.profile.first_name}}">
+
 		</div>
 		
 	</div>
+
+	<div class="form-group">
+		<label for="name" class="col-sm-3 control-label">
+		Last Name
+		</label>
+		<div class="col-sm-4">
+
+            <input type="text" name="last_name" id="last_name" 
+                class="form-control input-sm" 
+                placeholder="Last Name" 
+                value="{{user.profile.last_name}}">
+		</div>
+		
+	</div>
+
+	<div class="form-group">
+		<label for="name" class="col-sm-3 control-label">
+		Company name
+		</label>
+		<div class="col-sm-4">
+
+            <input id="company_name" name="company_name" 
+            type="text" 
+            placeholder="Company name" 
+            class="form-control input-md" required="" 
+            value="{{user.profile.company_name}}">
+
+		</div>
+		
+	</div>
+
+
+
 	
 	<div class="form-group">
 		<label for="name" class="col-sm-3 control-label">
@@ -62,6 +97,7 @@
 		  Domain name
 		</label>
 		<div class="col-sm-4">
+
 		  <input type="text" name="domain" id="domain" 
 		  
 		  value="{{domain}}"
@@ -70,7 +106,8 @@
 
 	</div>
 
-	<div class="form-group">
+	<!-- @TODO - maybe remove this field, because we have update this field on other pages -->
+	<!-- <div class="form-group">
 		<label for="forward_email" class="col-sm-3 control-label">
 		  Forward email
 		</label>
@@ -79,7 +116,28 @@
 			{% include "fields/email-field.html" with {'value':forwardEmail, 'name':'forward_email'} %}
 
 		</div>
+	</div> -->
+
+
+	<div class="form-group">
+		<label for="name" class="col-sm-3 control-label">
+		  Phone
+		</label>
+		<div class="col-sm-4">
+            {% include "fields/phone-field.html" %}
+            <!-- <span class="required">*</span> -->
+          </div>
 	</div>
+
+	<div class="form-group">
+		<label for="name" class="col-sm-3 control-label">
+		  Fax
+		</label>
+		<div class="col-sm-4">
+            {% include "fields/phone-field.html" with {'value':user.profile.fax, 'name':'fax', 'placeholder':'Fax number'} %}
+          </div>
+	</div>
+
 
 	<div class="form-group">
 		<div class="col-sm-offset-3 col-sm-4">
@@ -89,9 +147,6 @@
 			</button>
 		</div>
 	</div>
-
-
-
 
 
 </form>

@@ -61,16 +61,13 @@ exports.getBilling = function(req, res, next){
 
 };
 
-//dashboard/profile
+//profile
 exports.getProfile = function (req, res, next){
 
   var form       = {},
       error      = null,
       formFlash  = req.flash('form'),
       errorFlash = req.flash('error');
-
-
-
 
 
   if (formFlash.length) {
@@ -80,8 +77,9 @@ exports.getProfile = function (req, res, next){
   if (errorFlash.length) {
     error = errorFlash[0];
   }
-    const renderObject = {
-      user: req.user,
+
+  const renderObject = {
+    user: req.user,
     //email
     placeholder: '',
     value: req.user.email,
@@ -94,7 +92,45 @@ exports.getProfile = function (req, res, next){
     form: form,
     error: error,
     // plans: plans //@TODO check plans info. can boost an error
-    };
+  };
+
+  res.render(req.render, renderObject);
+  
+};
+
+
+//update profile form
+exports.getProfileForm = function (req, res, next){
+
+  var form       = {},
+      error      = null,
+      formFlash  = req.flash('form'),
+      errorFlash = req.flash('error');
+
+
+  if (formFlash.length) {
+    form.email = formFlash[0].email;
+  }
+
+  if (errorFlash.length) {
+    error = errorFlash[0];
+  }
+
+  const renderObject = {
+    user: req.user,
+    //email
+    placeholder: '',
+    // value: req.user.email,
+
+    //forward email
+    // forwardEmail: req.user.profile.forwardEmail,
+
+    // domain: req.user.profile.domain,
+
+    form: form,
+    error: error,
+    // plans: plans //@TODO check plans info. can boost an error
+  };
 
   res.render(req.render, renderObject);
   

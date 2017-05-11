@@ -29,9 +29,14 @@ module.exports = function (app, passport) {
   app.route('/profile')
      .all(setRedirect({auth: '/', success: '/profile', failure: '/profile'}))
      .all(isAuthenticated)     
-     .get(setRender('profile/index'), dashboard.getProfile) //@TODO move to different controller  
-     .post(dashboard.postProfile);
+     .get(setRender('profile/index'), dashboard.getProfile); //@TODO move to different controller  
+     // .post(dashboard.postProfile);
 
+  app.route('/profile/update')
+     .all(setRedirect({auth: '/', success: '/profile', failure: '/profile'}))
+     .all(isAuthenticated)     
+     .get(setRender('profile/edit-details'), dashboard.getProfileForm) //@TODO move to different controller  
+     .post(dashboard.postProfile);     
 
   //switch plan
   // @TODO change this. right now all stuff included on dashboard billing
@@ -47,7 +52,7 @@ module.exports = function (app, passport) {
      .all(setRedirect({auth: '/'}))
      .all(isAuthenticated)
      .get(setRender('profile/update-card'), dashboard.getUpdateCardPage);
-     // .post(dashboard.postUpdateCard);
+     // .post(dashboard.postUpdateCard); //@TODO finish this part
      // .get(setRender('profile/update-card'), dashboard.getBilling);  
 
 };
