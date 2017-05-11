@@ -52,7 +52,7 @@ module.exports = function (app, passport) {
 	   
 
   app.route('/user/forward-email')
-	   .all(setRedirect({auth: '/', success: '/'})) //@TODO change redirect object
+	   .all(setRedirect({auth: '/', success: '/', failure: '/user/forward-email'})) //@TODO change redirect object
 	   .all(isAuthenticated)	
 	   .get(setRender('dashboard/forward-email'), users.updateForwardEmail)
 	   .post(users.postForwardEmail); ///user/update-forward-email

@@ -183,30 +183,28 @@ exports.updateForwardEmail = function (req, res, next){
     error: error,
 
     //email
-    email: req.user.email,
+    email: req.user.email, //@TODO not sure if this is important to pass to view
     placeholder: 'New Email Address',
 
-    currentEmail: 'Current.Email.Com', //@TODO change this
-    confirmEmailPlaceholder: 'Confrim Email Address',
+    currentEmail: req.user.profile.forwardEmail || 'Not specified', 
+    
+    confirmEmailPlaceholder: 'Confirm Email Address',
 
       // messages: req.flash('messages')
 
-    route: 'forward-email',
+    route: 'forward-email', //@TODO fix up. Removed from layout right now
     sweetAlertShow: flag || false,
   };
 
-    res.render(req.render, renderObject);
+  res.render(req.render, renderObject);
 
 };
 
 
 exports.postForwardEmail = function (req, res, next){
 
-
-
-
-  req.assert('email',    'Please sign up with a valid email.').isEmail();
-  req.assert('confirm', 'Passwords must match').equals(req.body.password);
+  // req.assert('email',    'Please use a valid email.').isEmail();
+  // req.assert('confirm', 'Passwords must match').isEmail().equals(req.body.password);
 
   var errors = req.validationErrors();
 
@@ -218,33 +216,50 @@ exports.postForwardEmail = function (req, res, next){
   console.log( req.user );
   console.log( req.user.id );
   
-// req.user.id
+// // req.user.id
+//   var query  = { _id: req.user.id };
+//   var update = {$set:{ 
+        
+//         profile:  { forwardEmail :  } 
 
-  User.findOneAndUpdate({_id: req.user.id}, {$set:{name:"Naomi"}}, {new: true}, 
-    function(err, user){
+//       }} ;
 
-      if(err){
-          console.log("Something wrong when updating data!");
+//   User.findOneAndUpdate( query, update, {new: true}, function(err, user){
+//     if (err) return next(err); 
+//     //or  
+//     // req.flash('errors', {
+//     //        msg:  'We didn\'t update forward email setting'
+//     // });
+//     // return res.redirect(req.redirect.failure);
 
-          // req.flash('errors', {
-      //      msg:  msg
-      //    });
-      //     return res.redirect(req.redirect.failure);
-      }
+//     // console.log(user);
 
-      console.log(user);
+//       // updateForwardEmailConfirmation(); //@TODO send confirmation message
+
+//     req.flash('success', { msg: 'Profile information updated.' });
+
+//     res.redirect(req.redirect.success);
+
+//   });
+
+  // User.findOneAndUpdate({_id: req.user.id}, {$set:{profile:"Naomi"}}, {new: true}, 
+  //   function(err, user){
+
+  //     if(err){
+  //         console.log("Something wrong when updating data!");
+
+  //         req.flash('errors', {
+  //          msg:  'We didn\'t update'
+  //        });
+  //         return res.redirect(req.redirect.failure);
+  //     }
+
+  //     console.log(user);
 
 
-      // updateForwardEmailConfirmation();
 
 
-
-  // req.flash('success', { 
-      //     msg: 'Plan has been updated.' 
-      //   });
-      //   res.redirect(req.redirect.success);
-
-  });
+  // });
 
 
 
