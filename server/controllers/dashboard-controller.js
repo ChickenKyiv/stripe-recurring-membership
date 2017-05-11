@@ -408,15 +408,19 @@ exports.getUpdateCardPage = function(req, res, next){
   if (errorFlash.length) {
     error = errorFlash[0];
   }
-
+  
   const renderObject = {
-    user: req.user,
-    domain : req.user.profile.domain || '',
-    form: form,
-    error: error,
+    // user : req.user,
+    // domain : req.user.profile.domain || '',
+    cardholder_name : req.user.profile.last_name + ' ' + req.user.profile.first_name,
+    phone : req.user.profile.phone, 
+    form  : form,
+    error : error,
     // plans: plans
   };
   
   res.render(req.render, renderObject);
 
 };
+
+//postUpdateCard

@@ -31,7 +31,8 @@
       <!-- <h3>You cannot update card, without subscription to non-free plan</h3> -->
 
     <!-- {% endif %} -->
-
+    
+<!-- @TODO move this form to partial file -->
    <form id="cardForm" action="/update-card" 
       method="POST" class="form-horizontal">
 
@@ -56,6 +57,7 @@
 
       <input class="field" 
       placeholder="(123) 456-7890" 
+      value="{{phone}}" 
       type="tel" />
     </label>
 

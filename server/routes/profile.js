@@ -34,6 +34,7 @@ module.exports = function (app, passport) {
      .all(setRedirect({auth: '/'}))
      .all(isAuthenticated)
      .get(setRender('profile/update-card'), dashboard.getUpdateCardPage);
+     // .post(dashboard.postUpdateCard);
      // .get(setRender('profile/update-card'), dashboard.getBilling);   
 
 };
