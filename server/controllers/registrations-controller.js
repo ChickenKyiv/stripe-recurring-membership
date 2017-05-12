@@ -114,18 +114,9 @@ exports.postSignup2 = function(req, res, next){
   // this middleware can be found in /server/middleware/passport.js
   passport.authenticate('signup2', {
     successRedirect: req.redirect.success,
-    // successRedirect: '/signup2-1',
     failureRedirect: req.redirect.failure,
-    // failureRedirect: '/signup2',
     failureFlash : true
   })(req, res, next);
-
-
-  // passport.authenticate('signup2', {
-  //   successRedirect: '/dashboard',
-  //   failureRedirect: '/signup2',
-  //   failureFlash : true
-  // })(req, res, next);
   
 };
 
