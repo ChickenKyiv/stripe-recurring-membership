@@ -33,7 +33,7 @@ module.exports = function (app, passport) {
      // .post(dashboard.postProfile);
 
   app.route('/profile/update')
-     .all(setRedirect({auth: '/', success: '/profile/update', failure: '/profile/update'})) //@TODO change success value
+     .all(setRedirect({auth: '/', success: '/profile', failure: '/profile/update'})) //@TODO change success value
      .all(isAuthenticated)     
      .get(setRender('profile/edit-details'), dashboard.getProfileForm) //@TODO move to different controller  
      .post(dashboard.postProfile);     
