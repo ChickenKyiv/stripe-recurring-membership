@@ -141,181 +141,117 @@ exports.postProfile = function (req, res, next){
 
   console.log( req.body );
 
-  req.assert('email',        'Email is not valid').isEmail();
-  // req.assert('name', 'Name is required').notEmpty();
-
-  req.assert('first_name',   'First Name is required').notEmpty(); 
-  req.assert('last_name',    'Last Name is required').notEmpty();  
-  req.assert('company_name', 'Company Name is required').notEmpty();
-  req.assert('address',      'Name is required').notEmpty();
-  req.assert('zip',          'Name is required').notEmpty();
-  req.assert('city',         'Name is required').notEmpty();
-  req.assert('state',        'Name is required').notEmpty();
-  // req.assert('country', 'Name is required').notEmpty();
-  req.assert('phone',        'Name is required').notEmpty();
 
 
-  var userAdditionalData = {
+  // req.assert('email',        'Email is not valid').isEmail();
+  // // req.assert('name', 'Name is required').notEmpty();
+
+  // req.assert('first_name',   'First Name is required').notEmpty(); 
+  // req.assert('last_name',    'Last Name is required').notEmpty();  
+  // req.assert('company_name', 'Company Name is required').notEmpty();
+  // req.assert('address',      'Name is required').notEmpty();
+  // req.assert('zip',          'Name is required').notEmpty();
+  // req.assert('city',         'Name is required').notEmpty();
+  // req.assert('state',        'Name is required').notEmpty();
+  // // req.assert('country', 'Name is required').notEmpty();
+  // req.assert('phone',        'Name is required').notEmpty();
 
 
-    first_name : req.body.first_name || '',
-
-    last_name  : req.body.last_name  || '',
-
-    company_name : req.body.company_name || '', 
-
-    address : req.body.address1 || '',
-
-    zip : req.body.zip          || '',
-
-    city : req.body.city        || '',
-
-    state : req.body.state      || '',
-
-    country : req.body.country  || '', 
-
-    phone : req.body.phone      || '',
-
-    fax : req.body.fax          || '',
-
-  };
-
-  //additional validation messages
-
-    // first_name : req.body.first_name || '',
-
-    // last_name  : req.body.last_name || '',
-
-    // company_name : req.body.company_name || '', 
-
-    // address : req.body.address || '',
-
-    // zip : req.body.zip || '',
-
-    // city : req.body.city || '',
-
-    // state : req.body.state || '',
-
-    // country : req.body.country || '', 
-
-    // phone : req.body.phone || '',
-
-    // fax : req.body.fax || '',
+  // var userAdditionalData = {
 
 
-  var errors = req.validationErrors();
+  //   first_name : req.body.first_name || '',
 
-  if (errors) {
-    req.flash('errors', errors);
-    return res.redirect(req.redirect.failure);
-  }
+  //   last_name  : req.body.last_name  || '',
+
+  //   company_name : req.body.company_name || '', 
+
+  //   address : req.body.address1 || '',
+
+  //   zip : req.body.zip          || '',
+
+  //   city : req.body.city        || '',
+
+  //   state : req.body.state      || '',
+
+  //   country : req.body.country  || '', 
+
+  //   phone : req.body.phone      || '',
+
+  //   fax : req.body.fax          || '',
+
+  // };
+
+
+  // var errors = req.validationErrors();
+
+  // if (errors) {
+  //   req.flash('errors', errors);
+  //   return res.redirect(req.redirect.failure);
+  // }
 
   if(req.body.email != req.user.email){
 
-    User.findOne({ email: req.body.email }, function(err, existingUser) {
+    // User.findOne({ email: req.body.email }, function(err, existingUser) {
 
-      if (existingUser) {
-        req.flash('errors', { msg: 'An account with that email address already exists.' });
-        return res.redirect(req.redirect.failure);
+    //   if (existingUser) {
+    //     req.flash('errors', { msg: 'An account with that email address already exists.' });
+    //     return res.redirect(req.redirect.failure);
 
-      } else {
+    //   } else {
 
-        var query  = { _id : req.user.id };
-        var update = {$set:{ 
-          email: req.body.email || '', 
-          profile: userAdditionalData 
-          // {
-          //       first_name : req.body.first_name || '',
+    //     var query  = { _id : req.user.id };
+    //     var update = {$set:{ 
+    //       email: req.body.email || '', 
+    //       profile: userAdditionalData 
 
-          //       last_name  : req.body.last_name  || '',
 
-          //       company_name : req.body.company_name || '', 
-
-          //       address : req.body.address || '',
-
-          //       zip : req.body.zip         || '',
-
-          //       city : req.body.city       || '',
-
-          //       state : req.body.state     || '',
-
-          //       country : req.body.country || '', 
-
-          //       phone : req.body.phone     || '',
-
-          //       fax : req.body.fax         || '',
-          //   // name     : req.body.name || '',
-          //   // location : req.body.location || '',
-          // }
-
-        }} ;
+    //     }} ;
         
-        User.findOneAndUpdate( query, update, {new: true}, function(err, user){
-          if (err) return next(err);
+    //     // User.findOneAndUpdate( query, update, {new: true}, function(err, user){
+    //     //   if (err) return next(err);
 
-          console.log(user);
+    //     //   console.log(user);
 
-          user.updateStripeEmail(function(err){
+    //     //   user.updateStripeEmail(function(err){
 
-            if (err) return next(err);
-            req.flash('success', { msg: 'Profile information updated.' });
-            res.redirect(req.redirect.success);
+    //     //     if (err) return next(err);
+    //     //     req.flash('success', { msg: 'Profile information updated.' });
+    //     //     res.redirect(req.redirect.success);
 
-          });
+    //     //   });
 
-        });
+    //     // });
 
         
 
-      }
-    });
+    //   }
+    // });
 
   } else {
 
-      var query  = { _id : req.user.id };
-      var update = {$set:{ 
-        email        : req.body.email || '', 
-        profile: userAdditionalData
-        // {
-        //     first_name : req.body.first_name || '',
+      // var query  = { _id : req.user.id };
+      // var update = {$set:{ 
+      //   email        : req.body.email || '', 
+      //   profile: userAdditionalData
 
-        //     last_name  : req.body.last_name  || '',
 
-        //     company_name : req.body.company_name || '', 
+      // }} ;
 
-        //     address : req.body.address || '',
+      // User.findOneAndUpdate( query, update, {new: true}, function(err, user){
+      //   if (err) return next(err);
 
-        //     zip : req.body.zip         || '',
+      //   console.log(user);
 
-        //     city : req.body.city       || '',
+      //   user.updateStripeEmail(function(err){
 
-        //     state : req.body.state     || '',
+      //     if (err) return next(err);
+      //     req.flash('success', { msg: 'Profile information updated.' });
+      //     res.redirect(req.redirect.success);
 
-        //     country : req.body.country || '', 
+      //   });
 
-        //     phone : req.body.phone     || '',
-
-        //     fax : req.body.fax         || '',
-        //     // name     : req.body.name || '',
-        //     // location : req.body.location || '',
-        // }
-
-      }} ;
-
-      User.findOneAndUpdate( query, update, {new: true}, function(err, user){
-        if (err) return next(err);
-
-        console.log(user);
-
-        user.updateStripeEmail(function(err){
-
-          if (err) return next(err);
-          req.flash('success', { msg: 'Profile information updated.' });
-          res.redirect(req.redirect.success);
-
-        });
-
-      });
+      // });
 
 
 
