@@ -25,7 +25,7 @@ module.exports    = function (app, passport) {
   app.route('/signup2') //@TODO change this path and redirect and render
      .all(setRedirect({ auth: '/whois', success: '/whois', failure: '/signup2' }))
      .all(isUnauthenticated)
-     .get(setRender('signup2'), registrations.getSignup)
+     .get(setRender('signup2'), registrations.getSignup)     
      .post(registrations.postSignup2);
 
   app.route('/whois')

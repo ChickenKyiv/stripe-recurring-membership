@@ -1,7 +1,5 @@
 'use strict';
 
-var User = require('../models/user');
-
 exports.getHome = function(req, res, next){
 
   var form = {},
@@ -16,12 +14,12 @@ exports.getHome = function(req, res, next){
     error = errorFlash[0];
   }
 
-      const renderObject = {
-      form: form,
+  const renderObject = {
+    form: form,
     error: error,
     // plans: plans,
     domain: ''
-    };
+  };
 
   res.render(req.render, renderObject);
 

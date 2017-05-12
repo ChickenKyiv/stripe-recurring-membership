@@ -8,6 +8,7 @@ isUnauthenticated = require('../middleware/auth').isUnauthenticated;
 
 //controllers
 var homepage      = require('../controllers/homepage-controller');
+var test          = require('../controllers/test-controller');
 
 module.exports = function (app, passport) {
 
@@ -25,5 +26,9 @@ module.exports = function (app, passport) {
      .get(setRender('homepage'), homepage.getHome);
 
 
+    app.route('/userlist')
+     .all(setRedirect({auth: '/', search: '/'}))
+     // .all(isUnauthenticated)
+     .get(setRender('homepage'), test.getUsers);   
 
 };

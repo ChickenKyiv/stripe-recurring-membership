@@ -54,33 +54,34 @@ exports.getSignup = function(req, res){
 
 };
 
-// exports.postSignup = function(req, res, next){
+// this is a clean version of sign up. Can be used later
+exports.postSignup = function(req, res, next){
 
-//   req.assert('email', 'Please sign up with a valid email.').isEmail();
-//   req.assert('password', 'Password must be at least 6 characters long').len(6);
+  req.assert('email', 'Please sign up with a valid email.').isEmail();
+  req.assert('password', 'Password must be at least 6 characters long').len(6);
 
-//   var errors = req.validationErrors();
+  var errors = req.validationErrors();
 
-//   if (errors) {
-//     req.flash('errors', errors);
-//     req.flash('form', {
-//       email: req.body.email
-//     });
-//     return res.redirect('/signup');
-//   }
+  if (errors) {
+    req.flash('errors', errors);
+    req.flash('form', {
+      email: req.body.email
+    });
+    return res.redirect('/signup');
+  }
 
-//   console.log( req.body );
+  console.log( req.body );
 
-//   // calls next middleware to authenticate with passport
-//   passport.authenticate('signup', {
-//     successRedirect: '/dashboard',
-//     failureRedirect: '/signup',
-//     failureFlash : true
-//   })(req, res, next);
+  // calls next middleware to authenticate with passport
+  passport.authenticate('signup', {
+    successRedirect: '/dashboard',
+    failureRedirect: '/signup',
+    failureFlash : true
+  })(req, res, next);
   
-// };
+};
 
-
+//@TODO rename this method later
 exports.postSignup2 = function(req, res, next){
 
   req.assert('email',    'Please sign up with a valid email.').isEmail();
