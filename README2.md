@@ -28,8 +28,6 @@ Start the server with `node server`.
 
 Note: Stripe webhooks can be recieved at `https://your-url.com/stripe/events`.
 
-### Email templates from Keystone
-
 
 ### create .env file for storing information 
 ### install dotenv package: npm install dotenv --save
