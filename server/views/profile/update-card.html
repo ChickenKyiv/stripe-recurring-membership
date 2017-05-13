@@ -1,0 +1,96 @@
+{% extends '../layouts/dashboard.html' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+  <div class="container-fluid container-max">
+    <div class="page-header">
+      <h1>
+        Update Card 
+        <small>/views/dashboard/update-card</small>
+      </h1>
+    </div>
+
+    {% include "../partials/flash.html" %}
+
+
+    <!-- {% if user.stripe.last4 %} -->
+
+
+
+    	<!-- {% include "../forms/card-only.html" %} -->
+
+    	<!-- second form, that will replace a card-only -->
+
+    <!-- 1123 -->
+    <!-- {% include "../forms/checkout-form.html" %} -->
+
+
+    <!-- {% else %}   -->
+
+      <!-- <h3>You cannot update card, without subscription to non-free plan</h3> -->
+
+    <!-- {% endif %} -->
+    
+<!-- @TODO move this form to partial file -->
+   <form id="cardForm" action="/update-card" 
+      method="POST" class="form-horizontal">
+
+  <div class="group">
+
+    <label class="stripe-label">
+      <span>
+      Name
+      </span>
+
+      <input name="cardholder-name" 
+      class="field" 
+      placeholder="Jane Doe"
+      value="{{cardholder_name}}"
+       />
+    </label>
+
+    <label class="stripe-label">
+      <span>
+      Phone
+      </span>
+
+      <input class="field" 
+      placeholder="(123) 456-7890" 
+      value="{{phone}}" 
+      type="tel" />
+    </label>
+
+  </div>
+
+  <div class="group">
+    <label class="stripe-label">
+      <span>
+      Card
+      </span>
+      
+      <div id="card-element" class="field"></div>
+    </label>
+  </div>
+
+  <button type="submit">
+    Submit Payment
+  </button>
+  <!-- <button type="submit">
+  Purchase via Stripe
+  </button> -->
+
+  <div class="outcome">
+    <div class="error"></div>
+    <div class="success">
+      Success! Your Stripe token is 
+      <span class="token"></span>
+      <input type="hidden" name="token" class="token" />
+    </div>
+  </div>
+
+</form>
+
+  </div>
+</div>
+{% endblock %}

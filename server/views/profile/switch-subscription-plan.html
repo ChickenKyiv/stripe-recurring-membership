@@ -1,0 +1,30 @@
+{% extends '../layouts/dashboard.html' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+  <div class="container-fluid container-max">
+    <div class="page-header">
+      <h1>
+        Switch subscription plan 
+        <small>/views/dashboard/billing</small>
+      </h1>
+    </div>
+
+    {% include "../partials/flash.html" %}
+
+    <div class="page-header">
+      <h3>Subscription</h3>
+    </div>
+
+    Right now you've got a %planName% subscription.
+    
+    <!-- {% include "../forms/billing-new.html" %} -->
+    {% include "../forms/checkout-form.html" %}
+
+
+   
+
+  </div>
+</div>
+{% endblock %}

@@ -16,10 +16,14 @@ exports.getHome = function(req, res, next){
   if (errorFlash.length) {
     error = errorFlash[0];
   }
-  res.render(req.render, {
-    form: form,
+
+      const renderObject = {
+      form: form,
     error: error,
-    plans: plans
-  });
+    plans: plans,
+    domain: ''
+    };
+
+  res.render(req.render, renderObject);
 
 };

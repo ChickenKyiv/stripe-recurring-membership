@@ -1,0 +1,18 @@
+<input type="text" 
+       class="form-control" 
+       
+       {% if name %}
+         name="{{name}}"	
+       {% else %}  	
+         name="email"	
+       {% endif %}
+
+	   {% if placeholder %}
+         placeholder="{{placeholder}}"
+	   {% endif %}
+
+	   {% if value %}
+	    value="{{value}}"
+	   {% endif %}	 
+	            
+       autofocus />

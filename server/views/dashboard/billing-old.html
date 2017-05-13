@@ -1,0 +1,54 @@
+{% extends '../layouts/dashboard.html' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+  <div class="container-fluid container-max">
+    <div class="page-header">
+      <h1>
+        Billing 
+        <small>/views/dashboard/billing</small>
+      </h1>
+    </div>
+
+    {% include "../partials/flash.html" %}
+
+    <div class="page-header">
+      <h3>Subscription</h3>
+    </div>
+
+    <!-- @TODO move billing-new form to another view -->
+    <!-- {% include "../forms/billing-new.html" %} -->
+
+    
+
+
+
+
+
+    {% if user.stripe.last4 %}
+
+    <div class="page-header">
+      <h3>Payment Details</h3>
+    </div>
+
+    {% include "../forms/card-only.html" %}
+
+    <!-- second form, that will replace a card-only -->
+    {% include "../forms/checkout-form.html" %}
+
+
+
+    {% endif %}
+
+    <div class="page-header">
+      <h3>Delete Account</h3>
+    </div>
+
+    {% include "../forms/unsubscribe.html" %}
+
+    
+
+  </div>
+</div>
+{% endblock %}

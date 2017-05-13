@@ -7,7 +7,14 @@ var secrets  = require('../config/secrets');
 
 
 
-var timestamps = require('mongoose-timestamp');
+// var timestamps = require('mongoose-timestamp');
+
+var options = {
+        timestamps: { 
+             createdAt: 'created_at',
+             updatedAt: 'updated_at' 
+        }        
+};
 
 var userSchema = new mongoose.Schema({
 
@@ -18,6 +25,7 @@ var userSchema = new mongoose.Schema({
   },
 
   
+
   //@todo add validation messages
     
   password: String,
@@ -44,8 +52,9 @@ var userSchema = new mongoose.Schema({
 
     forwardEmail: { //second email
       type      : String,
-      unique    : true,
-      lowercase : true 
+      default   : '',
+      // unique    : true,
+      // lowercase : true 
     }, 
 
 
@@ -81,22 +90,46 @@ var userSchema = new mongoose.Schema({
     fax : { 
         type: String, default: '' },
 
-        
+
+    plan: {
+      type: String, default: '' },      
+    
+    whois: {
+      type: Boolean, default: true  },        
+
 
   },
 
 
-
   resetPasswordToken: String,
   resetPasswordExpires: Date
-});
+}, options);
 
 // var stripeOptions = secrets.stripeOptions;
 var stripeOptions = secrets.stripeNextVersion;
 
 
-userSchema.plugin(timestamps);
+// userSchema.plugin(timestamps);
 userSchema.plugin(stripeCustomer, stripeOptions);
+
+
+// methods ======================
+
+// generating a hash
+userSchema.methods.generateHash = function(password) {
+
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
+
+
+/**
+ * Validate user's password.
+ * Used by Passport-Local Strategy for password validation.
+ */
+userSchema.methods.validPassword = function(password) {
+
+  return bcrypt.compareSync(password, this.password);
+};
 
 
 /**
@@ -104,55 +137,79 @@ userSchema.plugin(stripeCustomer, stripeOptions);
  * "Pre" is a Mongoose middleware that executes before each user.save() call.
  */
 
-userSchema.pre('save', function(next) {
-  var user = this;
 
-  if (!user.isModified('password')) return next();
+// userSchema.pre('save', function(next) {
+//   var user = this;
 
-  bcrypt.genSalt(10, function(err, salt) {
-    if (err) return next(err);
+//   if (!user.isModified('password')) return next();
 
-    bcrypt.hash(user.password, salt, null, function(err, hash) {
-      if (err) return next(err);
-      user.password = hash;
-      next();
-    });
+//   bcrypt.genSalt(10, function(err, salt) {
+//     if (err) return next(err);
 
-  });
-});
+//     bcrypt.hash(user.password, salt, null, function(err, hash) {
+//       if (err) return next(err);
+//       user.password = hash;
+//       next();
+//     });
 
-/**
- * Validate user's password.
- * Used by Passport-Local Strategy for password validation.
- */
+//   });
+// });
 
-userSchema.methods.comparePassword = function(candidatePassword, cb) {
 
-  bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-    if (err) return cb(err);
-    cb(null, isMatch);
-  });
 
-};
+// userSchema.methods.comparePassword = function(candidatePassword, cb) {
+
+//   bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+//     if (err) return cb(err);
+//     cb(null, isMatch);
+//   });
+
+// };
+
+
 
 userSchema.methods.deleteDomain = function() {
 
-  // bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-  //   if (err) return cb(err);
-  //   cb(null, isMatch);
-  // });
 
 };
 
 //renew domain
 userSchema.methods.reactivate = function() {
 
-  // bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-  //   if (err) return cb(err);
-  //   cb(null, isMatch);
-  // });
+
 
 };
+
+userSchema.methods.fetch = function() {
+
+  var information = {};
+
+
+  // 2 queries
+  User.find({}, {limit:10, skip:20}, function (err, users) {            
+      if (err) {
+          return next(err);
+      }
+
+      // information[] = {
+         //   user.email
+    //   user.profile.domain
+    //   user.profile.first_name
+    //   user.profile.last_name
+      // }
+
+
+      User.count({}, function (err, count) {
+          if (err) {
+              return next(err);
+          }
+
+          res.send({count: count, users: users});
+      });
+
+  });
+
+}
 
 
 

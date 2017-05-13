@@ -1,18 +1,49 @@
 'use strict';
 
-var nodemailer = require('nodemailer');
-// var mailgunApiTransport = require('nodemailer-mailgunapi-transport');
+// var nodemailer = require('nodemailer');
+// // var mailgunApiTransport = require('nodemailer-mailgunapi-transport');
+
 var async      = require('async');
 var crypto     = require('crypto');
 var User       = require('../models/user');
-var secrets    = require('../config/secrets');
+
+var resetPassword        = require('../middleware/email-helper').resetPasswordEmail; 
+var resetPasswordConfirm = require('../middleware/email-helper').resetPasswordConfirmationEmail;
+// var secrets    = require('../config/secrets');
+
+// new password page
+exports.getPasswordPage = function (req, res, next){
+  
+  var form       = {},
+      error      = null,
+      formFlash  = req.flash('form'),
+      errorFlash = req.flash('error');
+
+  if (formFlash.length) {
+    form.email = formFlash[0].email;
+  }
+
+  if (errorFlash.length) {
+    error = errorFlash[0];
+  }
+
+  const renderObject = {
+    user: req.user, 
+    form: form, 
+    error: error,
+  };
+
+  res.render(req.render, renderObject);
+
+};
+
 
 // edit password
 
 exports.postNewPassword = function(req, res, next){
 
   req.assert('password', 'Password must be at least 6 characters long.').len(6);
-  req.assert('confirm', 'Passwords must match.').equals(req.body.password);
+  req.assert('confirm',  'Passwords must match.').equals(req.body.password);
 
   var errors = req.validationErrors();
 
@@ -27,20 +58,23 @@ exports.postNewPassword = function(req, res, next){
     user.password = req.body.password;
 
     user.save(function(err) {
+
       if (err) return next(err);
       req.flash('success', { msg: 'Success! Your password has been changed.' });
       res.redirect(req.redirect.success);
     });
   });
+  
 };
 
 // show forgot password page
 
 exports.getForgotPassword = function(req, res){
 
-  if (req.isAuthenticated()) {
+  if (req.isAuthenticated()) { //@TODO change this
     return res.redirect(req.redirect.auth);
   }
+
   var form       = {},
       error      = null,
       formFlash  = req.flash('form'),
@@ -54,11 +88,51 @@ exports.getForgotPassword = function(req, res){
     error = errorFlash[0];
   }
 
-  res.render(req.render, {
-    title: 'Forgot Password',
+
+    const renderObject = {
+       title: 'Forgot Password',
     form : form,
     error: error
-  });
+      // messages: req.flash('messages')
+    };
+ res.render(req.render, renderObject);
+};
+
+// @TODO remove redirect object and place it to app.route
+exports.getForgotPassword2 = function(req, res){
+
+  // setRedirect({auth: '/dashboard'});
+  //@TODO change this
+  req.redirect = { auth: '/dashboard', success: '/forgot', failure: '/forgot' };
+
+  if (req.isAuthenticated()) {
+    return res.redirect(req.redirect.auth);
+  }
+
+  var form       = {},
+      error      = null,
+      formFlash  = req.flash('form'),
+      errorFlash = req.flash('error');
+
+  if (formFlash.length) {
+    form.email = formFlash[0].email;
+  }
+
+  if (errorFlash.length) {
+    error = errorFlash[0];
+  }
+
+
+    const renderObject = {
+      title: 'Forgot Password',
+    form : form,
+    error: error,
+    //email
+    placeholder: 'Email Address'
+      // messages: req.flash('messages')
+    };
+
+   res.render(req.render, renderObject);
 };
 
 // post forgot password will create a random token,
@@ -109,30 +183,37 @@ exports.postForgotPassword = function(req, res, next){
       });
 
     },
-    function(token, user, done) {
+
+    resetPassword()
+
+
+    // function(token, user, done) {
 
       
-      var transporter = nodemailer.createTransport(secrets.emailServer);
-      // var transporter = nodemailer.createTransport(mailgunApiTransport(secrets.mailgun));
+    //   var transporter = nodemailer.createTransport(secrets.emailServer);
+    //   // var transporter = nodemailer.createTransport(mailgunApiTransport(secrets.mailgun));
       
-      // req.get('host')
+    //   // req.get('host')
       
-      var mailOptions = {
-        to: user.email,
-        from   : '"EasyMail support" <admin@easymail.io>', // sender address
-        subject: 'Reset your password on stripe-a.herokuapp.com',
-        text: 'You are receiving this email because you (or someone else) have requested the reset of the password for your account.\n\n' +
-          'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-          'http://' + req.headers.host + '/reset/' + token + '\n\n' +
-          'If you did not request this, please ignore this email and your password will remain unchanged.\n'
-      };
+    //   var mailOptions = {
+    //     to: user.email,
+    //     from   : '"EasyMail support" <admin@easymail.io>', // sender address
+    //     subject: 'Reset your password on stripe-a.herokuapp.com',
+    //     text: 'You are receiving this email because you (or someone else) have requested the reset of the password for your account.\n\n' +
+    //       'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+    //       'http://' + req.headers.host + '/reset/' + token + '\n\n' +
+    //       'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+    //   };
 
-      transporter.sendMail(mailOptions, function(err) {
-        req.flash('info', { msg: 'An e-mail has been sent to ' + user.email + ' with further instructions.' });
-        done(err, 'done');
-      });
+    //   transporter.sendMail(mailOptions, function(err) {
+    //     req.flash('info', { msg: 'An e-mail has been sent to ' + user.email + ' with further instructions.' });
+    //     done(err, 'done');
+    //   });
 
-    }
+    // }
+
+
+
   ], function(err) {
     if (err) return next(err);
     res.redirect(req.redirect.success);
@@ -166,12 +247,16 @@ exports.getToken = function(req, res){
         return res.redirect(req.redirect.failure);
       }
 
-      res.render(req.render, {
-        title: 'Password Reset',
+
+    const renderObject = {
+      title: 'Password Reset',
         token: req.params.token,
         form: form,
         error: error
-      });
+      // messages: req.flash('messages')
+    };
+       res.render(req.render, renderObject);
+
 
     });
 
@@ -201,42 +286,51 @@ exports.postToken = function(req, res, next){
             return res.redirect(req.redirect.failure);
           }
 
-          user.password = req.body.password;
-          user.resetPasswordToken = undefined;
+          user.password             = req.body.password;
+          user.resetPasswordToken   = undefined;
           user.resetPasswordExpires = undefined;
 
           user.save(function(err) {
+
             if (err) return next(err);
+
             var time = 14 * 24 * 3600000;
-            req.session.cookie.maxAge = time; //2 weeks
+            req.session.cookie.maxAge  = time; //2 weeks
             req.session.cookie.expires = new Date(Date.now() + time);
             req.session.touch();
 
             req.logIn(user, function(err) {
               done(err, user);
             });
+
           });
         });
 
     },
-    function(user, done) {
-      var transporter = nodemailer.createTransport(secrets.emailServer);
-      // var transporter = nodemailer.createTransport(mailgunApiTransport(secrets.mailgun));
 
-      var mailOptions = {
-        to: user.email,
-        from   : '"EasyMail support" <admin@easymail.io>', // sender address
-        subject: 'Your stripe-a.herokuapp.com password has been changed',
-        text: 'Hello,\n\n' +
-          'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
-      };
+    resetPasswordConfirm()
 
-      transporter.sendMail(mailOptions, function(err) {
-        req.flash('success', { msg: 'Success! Your password has been changed.' });
-        done(err);
-      });
+    // function(user, done) {
+    //   var transporter = nodemailer.createTransport(secrets.emailServer);
+    //   // var transporter = nodemailer.createTransport(mailgunApiTransport(secrets.mailgun));
 
-    }
+    //   var mailOptions = {
+    //     to: user.email,
+    //     from   : '"EasyMail support" <admin@easymail.io>', // sender address
+    //     subject: 'Your stripe-a.herokuapp.com password has been changed',
+    //     text: 'Hello,\n\n' +
+    //       'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
+    //   };
+
+    //   transporter.sendMail(mailOptions, function(err) {
+    //     req.flash('success', { msg: 'Success! Your password has been changed.' });
+    //     done(err);
+    //   });
+
+    // }
+
+
+
   ], function(err) {
     if (err) return next(err);
     res.redirect(req.redirect.success);

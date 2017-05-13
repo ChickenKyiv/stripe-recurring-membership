@@ -3,15 +3,19 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block content %}
-  <div class="container" style="max-width: 400px;">
-    <h2>
-      Home Page with search field
-    </h2>
+  <div class="container" >
+
+    <div class="row">
+        <div class="col-md-12">
+            
+            <h2>
+              Home Page with search field <span>/index</span>
+            </h2>
 
 
-<!-- =========================================
-     		Hero-Section
-	========================================== -->
+    <!-- =========================================
+                Hero-Section
+        ========================================== -->
         <div class="container vmiddle fast-reg">
             <div class="row">
                 <div class="col-md-12">
@@ -32,14 +36,22 @@
                         <div class="col-sm-12">
                             <div class="fast-reg-box">
 
-                        	    {% include "../forms/search-domain.html" %}
+                                {% include "forms/search-domain.html" %}
 
                             </div><!-- /End Fast-Reg -->
                         </div><!-- /End Col -->
+                        
                     </div><!-- /End Intro-Section -->
                 </div><!-- /End Col -->
             </div><!-- /End Row -->
         </div><!-- /End Container Hero-Section -->
+
+
+
+        </div>
+    </div>
+
+
 
 
 

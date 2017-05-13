@@ -1,95 +1,152 @@
-<form action="/user" method="POST" class="form-horizontal">
+<form action="/profile/update" method="POST" class="form-horizontal">
 
-  <div class="form-group">
-    <label for="email" class="col-sm-3 control-label">
-    Email
-    </label>
-    <div class="col-sm-4">
-    <input type="email" name="email" 
-    id="email" value="{{user.email}}" class="form-control">
-    </div>
-  </div>
+	<div class="form-group">
+		<label for="email" class="col-sm-3 control-label">
+		  Email
+		</label>
+		<div class="col-sm-4">
+		  {% include "fields/email-field.html" with {'value':user.email} %}
+		</div>
+	</div>
 
-<!--   <div class="form-group">
-    <label for="name" class="col-sm-3 control-label">
-    Name
-    </label>
-    <div class="col-sm-4">
-    <input type="text" name="name" id="name" value="{{user.profile.name}}" class="form-control">
-    </div>
-  </div> -->
+	<div class="form-group">
+		<label for="name" class="col-sm-3 control-label">
+		First Name
+		</label>
+		<div class="col-sm-4">
 
-  <div class="form-group">
-    <label for="name" class="col-sm-3 control-label">
-    Customer ID
-    </label>
-    <div class="col-sm-4">
-      <div class="form-control-static">
-        {{user.stripe.customerId}}
-      </div>
-    </div>
-  </div>
+           <input type="text" name="first_name" id="first_name" 
+                class="form-control input-sm" 
+                placeholder="First Name" 
+                value="{{user.profile.first_name}}">
 
-  <div class="form-group">
-    <label for="name" class="col-sm-3 control-label">
-    Plan
-    </label>
-    <div class="col-sm-4">
-      <p class="form-control-static">
-      	{{plans[user.stripe.plan].name}} - ${{plans[user.stripe.plan].price}}
-      </p>
-    </div>
-  </div>
+		</div>
+		
+	</div>
 
-  <div class="form-group">
-    <label for="name" class="col-sm-3 control-label">
-    Last 4
-    </label>
-    <div class="col-sm-4">
-      <p class="form-control-static">
-      {{user.stripe.last4}}
-      </p>
-    </div>
-  </div>
+	<div class="form-group">
+		<label for="name" class="col-sm-3 control-label">
+		Last Name
+		</label>
+		<div class="col-sm-4">
 
-<!--   <div class="form-group">
-    <label for="location" class="col-sm-3 control-label">
-    Location
-    </label>
-    <div class="col-sm-4">
-    <input type="text" name="location" id="location" value="{{user.profile.location}}" class="form-control">
-    </div>
-  </div> -->
+            <input type="text" name="last_name" id="last_name" 
+                class="form-control input-sm" 
+                placeholder="Last Name" 
+                value="{{user.profile.last_name}}">
+		</div>
+		
+	</div>
 
-  <div class="form-group">
-    <label for="domain" class="col-sm-3 control-label">
-    Domain name
-    </label>
-    <div class="col-sm-4">
-    <input type="text" name="domain" id="domain" 
-    value="{{user.profile.domain}}" class="form-control" disabled="">
-    </div>
-  </div>
+	<div class="form-group">
+		<label for="name" class="col-sm-3 control-label">
+		Company name
+		</label>
+		<div class="col-sm-4">
 
-  <div class="form-group">
-    <label for="forward_email" class="col-sm-3 control-label">
-    Forward email
-    </label>
-    <div class="col-sm-4">
-      <input type="text" name="forward_email" 
-      id="forward_email" 
-           value="{{user.profile.forwardEmail}}" 
-           class="form-control">
-    </div>
-  </div>
+            <input id="company_name" name="company_name" 
+            type="text" 
+            placeholder="Company name" 
+            class="form-control input-md" required="" 
+            value="{{user.profile.company_name}}">
 
-  <div class="form-group">
-    <div class="col-sm-offset-3 col-sm-4">
-    <button type="submit" class="btn btn-primary">
-      <span class="ion-edit"></span>
-      Update Profile
-    </button>
-    </div>
-  </div>
+		</div>
+		
+	</div>
+
+
+
+	
+	<div class="form-group">
+		<label for="name" class="col-sm-3 control-label">
+		  Customer ID
+		</label>
+		<div class="col-sm-4">
+		  <div class="form-control-static">
+		    {{user.stripe.customerId}}
+		  </div>
+		</div>
+	</div>
+
+	
+	<div class="form-group">
+		<label for="name" class="col-sm-3 control-label">
+		  Plan
+		</label>
+		<div class="col-sm-4">
+		  <p class="form-control-static">
+		  	
+		  </p>
+		</div>
+	</div>
+	
+
+	<div class="form-group">
+		<label for="name" class="col-sm-3 control-label">
+		  Last 4
+		</label>
+		<div class="col-sm-4">
+		  <p class="form-control-static">
+		    {{user.stripe.last4}}
+		  </p>
+		</div>
+	</div>	
+
+	<div class="form-group">
+		<label for="domain" class="col-sm-3 control-label">
+		  Domain name
+		</label>
+		<div class="col-sm-4">
+
+		  <input type="text" name="domain" id="domain" 
+		  
+		  value="{{domain}}"
+		  class="form-control" disabled="">
+		</div>
+
+	</div>
+
+	<!-- @TODO - maybe remove this field, because we have update this field on other pages -->
+	<!-- <div class="form-group">
+		<label for="forward_email" class="col-sm-3 control-label">
+		  Forward email
+		</label>
+		<div class="col-sm-4">
+
+			{% include "fields/email-field.html" with {'value':forwardEmail, 'name':'forward_email'} %}
+
+		</div>
+	</div> -->
+
+
+	<div class="form-group">
+		<label for="name" class="col-sm-3 control-label">
+		  Phone
+		</label>
+		<div class="col-sm-4">
+            {% include "fields/phone-field.html" %}
+            <!-- <span class="required">*</span> -->
+          </div>
+	</div>
+
+	<div class="form-group">
+		<label for="name" class="col-sm-3 control-label">
+		  Fax
+		</label>
+		<div class="col-sm-4">
+            {% include "fields/phone-field.html" with {'value':user.profile.fax, 'name':'fax', 'placeholder':'Fax number'} %}
+          </div>
+	</div>
+
+
+	<div class="form-group">
+		<div class="col-sm-offset-3 col-sm-4">
+			<button type="submit" class="btn btn-primary">
+			  <span class="ion-edit"></span>
+			  Update Profile
+			</button>
+		</div>
+	</div>
+
 
 </form>

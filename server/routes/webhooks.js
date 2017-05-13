@@ -1,13 +1,14 @@
 'use strict';
 
 // middleware
-
-var stripeEvents      = require('./middleware/stripe-events');
+var secrets           = require('../config/secrets'),
+    StripeWebhook     = require('stripe-webhook-middleware'),
+    stripeEvents      = require('../middleware/stripe-events');
 
 
 //@TODO redo this. @TODO add wrapper for checking dev/production version
 var stripeWebhook = new StripeWebhook({
-  stripeApiKey: secrets.stripeOptions.apiKey,
+  stripeApiKey: secrets.stripeNextVersion.public.stripe.testSecretKey,
   respond: true
 });
 

@@ -1,0 +1,45 @@
+{% extends '../layouts/dashboard.html' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+  <div class="container-fluid container-max">
+    <div class="page-header">
+      My Account <small>/views/dashboard/profile</small>
+    </div>
+
+    {% include "../partials/flash.html" %}
+
+
+    My domain - {{user.profile.domain}}
+    <hr>
+    Forward email to {{user.profile.forwardEmail}}  <br />
+    (all emails sent to [anything]@{{user.profile.domain}} are being sent there)
+
+
+    My plan: {{user.plan}} <br />
+    (per month)
+    <span>(renews on May 21, 2017)</span> <br>
+
+
+    {% include "manage-account-dropdown.html" %}
+<br />
+
+<a href="#">
+Login to Webmail
+</a>
+<br />
+View instructions to send email from your current email account:<br />
+[Gmail]<br />
+[Hotmail]<br />
+[Yahoo]<br />
+[Aol]<br />
+[Others]<br />
+
+
+
+
+
+  </div>
+</div>
+{% endblock %}

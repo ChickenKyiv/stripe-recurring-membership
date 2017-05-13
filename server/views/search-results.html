@@ -3,15 +3,15 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block content %}
-  <div class="container" style="max-width: 400px;">
+  <div class="container" >
     <h2>
       Domain Search results
     </h2>
 
     
-    {% include "../forms/search-domain.html" %}
+    {% include "forms/search-domain.html" %}
     
-    {% include "../forms/book-domain.html" %}
+    <!-- {% include "partials/search-results.html" %} -->
 
     <div>
       <div>name.com</div>

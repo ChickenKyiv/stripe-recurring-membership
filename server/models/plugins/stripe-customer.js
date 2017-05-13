@@ -1,15 +1,22 @@
 'use strict';
 
-var Stripe = require('stripe'),
-    stripe = {};
+var Stripe  = require('stripe'),
+    stripe  = {};
 
+var express = require('express'),
+    app     = express();
 // var stripe = require("stripe")(options.apiKey);
 
 module.exports = exports = function stripeCustomer (schema, options) {
-  
 
-  var secretKey = options.private.stripe.testSecretKey;
-  // var secret = options.private.stripe.liveSecretKey;
+
+  if (app.get('env') === 'production') {
+
+    var secretKey = options.private.stripe.liveSecretKey;
+  } else {
+
+    var secretKey = options.private.stripe.testSecretKey;  
+  }
   
   if( !secretKey ){ //error handler if we have empty plans
     throw new Error('Please configure your Stripe API keys on https://dashboard.stripe.com/account/apikeys');
@@ -37,10 +44,12 @@ module.exports = exports = function stripeCustomer (schema, options) {
     if( !user.isNew || user.stripe.customerId ) return next();
 
     user.createCustomer(function(err){
-      if (err) return next(err);
+      if (err) 
+        return next(err);
       next();
     });
 
+    
   });
 
   //@TODO finish this method and change getPlans
@@ -94,6 +103,11 @@ module.exports = exports = function stripeCustomer (schema, options) {
 
   };
 
+  //return array like [ 'free', 'quarterly', 'yearly' ]
+  schema.statics.getPlansNames = function () {
+    
+  };
+
   schema.statics.getPlans = function () {
 
     // @todo add checking that all data placed at planData object
@@ -110,23 +124,29 @@ module.exports = exports = function stripeCustomer (schema, options) {
 
     var plans = options.public.plans;
 
-    plans.forEach(function(element){
+    
+    //@TODO move this to separate function
+    plans.forEach(function(item, i, arr) {
+    
+      var amount = item.amount;
+      if( amount ){
 
-        var amount = element.amount;
-        var euro   = amount / 100;
+        var euro = amount / 100;
         euro.toLocaleString("en-US", {style:"currency", currency:"EUR"});
-
-        console.log(euro);
-        element.amount = euro;
-
+    
+        arr[i].amount = euro;
+        
+      }
+      
+      
     });
 
-    
-    console.log(plans);
+    // console.log( plans );    
 
     return plans;
     
   };
+
 
   schema.methods.createCustomer = function(cb) {
     var user = this;
@@ -141,6 +161,7 @@ module.exports = exports = function stripeCustomer (schema, options) {
       return cb();
     });
   };
+
 
   schema.methods.setCard = function(stripe_token, cb) {
     var user = this;
@@ -158,7 +179,7 @@ module.exports = exports = function stripeCustomer (schema, options) {
       
       user.stripe.last4 = card.last4;
 
-      console.log( user.stripe );
+      // console.log( user.stripe );
 
       user.save(function(err){
         if (err) return cb(err);
@@ -168,7 +189,11 @@ module.exports = exports = function stripeCustomer (schema, options) {
 
     if(user.stripe.customerId){
 
-      stripe.customers.update(user.stripe.customerId, {card: stripe_token}, cardHandler);
+      stripe.customers.update(
+        user.stripe.customerId,
+        {card: stripe_token},
+        cardHandler
+      );
 
     } else {
 
@@ -244,8 +269,11 @@ module.exports = exports = function stripeCustomer (schema, options) {
 
     if(!user.stripe.customerId) return cb();
 
-    stripe.customers.update(user.stripe.customerId, {email: user.email}, function(err, customer) {
-      cb(err);
+    stripe.customers.update(
+      user.stripe.customerId,
+      {email: user.email},
+      function(err, customer) {
+        cb(err);
     });
 
   };

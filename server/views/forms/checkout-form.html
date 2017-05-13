@@ -1,34 +1,54 @@
-<form>
+<form id="cardForm" action="/billing-form" 
+      method="POST" class="form-horizontal">
+
   <div class="group">
-    <label>
+
+    <label class="stripe-label">
       <span>
       Name
       </span>
-      <input name="cardholder-name" class="field" placeholder="Jane Doe" />
+
+      <input name="cardholder-name" 
+      class="field" 
+      placeholder="Jane Doe" />
     </label>
-    <label>
+
+    <label class="stripe-label">
       <span>
       Phone
       </span>
-      <input class="field" placeholder="(123) 456-7890" type="tel" />
+
+      <input class="field" 
+      placeholder="(123) 456-7890" 
+      type="tel" />
     </label>
+
   </div>
+
   <div class="group">
-    <label>
+    <label class="stripe-label">
       <span>
       Card
       </span>
+      
       <div id="card-element" class="field"></div>
     </label>
   </div>
+
   <button type="submit">
-  Pay $25
+    Submit Payment
   </button>
+  <!-- <button type="submit">
+  Purchase via Stripe
+  </button> -->
+
   <div class="outcome">
     <div class="error"></div>
     <div class="success">
       Success! Your Stripe token is 
       <span class="token"></span>
+      <input type="hidden" name="token" class="token" />
     </div>
   </div>
+
 </form>

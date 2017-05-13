@@ -3,17 +3,19 @@
 	  Reset Password
 	</h2>
 
-	<!-- <p>
+	<p>
 	  New Password
-	  <input type="password" name="password" class="form-control" 
-	         placeholder="New Password" autofocus />
-	</p> -->
 
-	<!-- <p>
+	  {% include "fields/password-field.html" %}       
+	</p>
+
+	<p>
 	  Confirm Password
-	  <input type="password" name="confirm" class="form-control" 
-	         placeholder="Confirm Password" />
-	</p> -->
+
+	  {% include "fields/password-field.html" with {'name':'confirm', 'placeholder':'Confirm Password'} %}       
+     	
+     	
+	</p>
 	
 	<button class="btn btn-lg btn-primary btn-block" type="submit">
 	  Change Password

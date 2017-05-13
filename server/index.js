@@ -27,6 +27,30 @@ var cors             = require('cors');
 var corsOptions      = { origin: '*' };
 var staticDir;
 
+
+// one routes version
+// var routes = require('./routes/routes');
+// var allRoutes = require('./routes');
+// var allRoutes = require('./routes/index');
+
+var homepage     = require('./routes/homepage');
+var search = require('./routes/search');
+
+var forgot    = require('./routes/forgot');
+// var stripeHooks = require('./routes/webhooks');
+var registration = require('./routes/registration');
+var login =  require('./routes/login');
+
+// @TODO maybe rename to profile?
+var users = require('./routes/user');
+
+var profile = require('./routes/profile');
+
+// var dashboard = require('./routes/dashboard');
+
+
+
+
 // setup db
 mongoose.connect(secrets.db);
 mongoose.connection.on('error', function() {
@@ -38,15 +62,23 @@ var corsOptions = { origin: '*' };
 // express setup
 var app = express();
 
+
 if (app.get('env') === 'production') {
   app.locals.production = true;
   swig.setDefaults({ cache: 'memory' });
   staticDir = path.join(__dirname + '/../public');
+  app.locals.stripePubKey = secrets.stripeNextVersion.public.stripe.livePublishableKey;
 
 } else {
+
   app.locals.production = false;
   swig.setDefaults({ cache: false });
   staticDir = path.join(__dirname + '/../public');
+  // console.log(__dirname + '/bower_components');
+  app.use('/bower_components',  express.static(__dirname + '/../bower_components'));
+  app.use('/node_modules',  express.static(__dirname + '/../node_modules'));
+  //dev
+  app.locals.stripePubKey = secrets.stripeNextVersion.public.stripe.testPublishableKey;
 
 }
 
@@ -57,11 +89,15 @@ app.set('view engine', 'html');
 
 app.locals._ = lodash;
 //@TODO change this
-app.locals.stripePubKey = secrets.stripeNextVersion.public.stripe.testPublishableKey;
 
-console.log( secrets.stripeNextVersion.public.stripe.testPublishableKey );
+// app.locals.stripePubKey = secrets.stripeNextVersion.public.stripe.testPublishableKey;
 // console.log( app.locals.stripePubKey );
-// app.locals.stripePubKey = secrets.stripeOptions.stripePubKey;
+
+// if (app.get('env') === 'production') {
+  
+// } else {
+  
+// }
 
 
 app.use(favicon(path.join(__dirname + '/../public/favicon.ico')));
@@ -73,8 +109,20 @@ app.use(expressValidator());
 app.use(cookieParser());
 
 app.use(express.static(staticDir));
+
+// app.use('/', function(req, res, next) {  // GET 'http://www.example.com/admin/new'
+//   // console.log(req.originalUrl); // '/admin/new'
+//   // console.log(req.baseUrl); // '/admin'
+//   console.log(req.path); // '/new'
+//   next();
+// });
+
+// app.use('/bower_components',  express.static(__dirname + '/bower_components'));
+
+
 if(app.get('env') !== 'production'){
   app.use('/styles', express.static(__dirname + '/../.tmp/styles'));
+
   // app.use('/', routes.styleguide);
 }
 
@@ -94,6 +142,7 @@ app.use(session({
 // setup passport authentication
 app.use(passport.initialize());
 app.use(passport.session());
+
 // @TODO fix it
 // app.use(passport.authenticate('remember-me'));
 
@@ -113,9 +162,15 @@ app.use(viewHelper);
 
 
 // setup routes
-var routes = require('./routes');
-routes(app, passport);
-
+homepage(app, passport);
+search(app, passport);
+forgot(app, passport);
+// stripeHooks(app, passport);
+registration(app, passport);
+login(app, passport);
+users(app, passport);
+// dashboard(app, passport);
+profile(app, passport);
 
 
 /// catch 404 and forwarding to error handler

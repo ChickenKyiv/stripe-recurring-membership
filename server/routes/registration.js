@@ -1,68 +1,52 @@
 'use strict';
 
 // middleware
-var StripeWebhook = require('stripe-webhook-middleware'),
-isAuthenticated   = require('./middleware/auth').isAuthenticated,
-isUnauthenticated = require('./middleware/auth').isUnauthenticated,
+var 
+isAuthenticated   = require('../middleware/auth').isAuthenticated,
+isUnauthenticated = require('../middleware/auth').isUnauthenticated,
 setRender         = require('middleware-responder').setRender,
 setRedirect       = require('middleware-responder').setRedirect,
-stripeEvents      = require('./middleware/stripe-events'),
-secrets           = require('./config/secrets');
+stripeEvents      = require('../middleware/stripe-events'),
+secrets           = require('../config/secrets');
 
 // controllers
-var registrations = require('./controllers/registrations-controller');
+var registrations = require('../controllers/registrations-controller'),
+// @TODO split controller action's to a different place.
+users             = require('../controllers/users-controller');
+
+var  dashboard         = require('../controllers/dashboard-controller');
+
 
 module.exports    = function (app, passport) {
 
-  app.get('/signup2',
-    setRedirect({auth: '/dashboard'}),
-    isUnauthenticated,
-    setRender('signup2'),
-    registrations.getSignup2
-  );
+  // registrations
 
 
-  app.post('/signup2',
-    setRedirect({auth: '/dashboard', success: '/signup2-1', failure: '/signup2'}),
-    // setRedirect({auth: '/dashboard', success: '/dashboard', failure: '/signup2'}),
-    isUnauthenticated,
-    registrations.postSignup2
-  );
+  app.route('/signup2') //@TODO change this path and redirect and render
+     .all(setRedirect({ auth: '/whois', success: '/whois', failure: '/signup2' }))
+     .all(isUnauthenticated)
+     .get(setRender('signup2'), registrations.getSignup)     
+     .post(registrations.postSignup2);
 
+  app.route('/whois')
+     .all(setRedirect({ auth: '/', success: '/billing-form', failure: '/whois' }))
+     .all(isAuthenticated)
+     .get(setRender('signup/whois'), registrations.getWhoisForm2) // @TODO - must be registered and logged in
+     .post(registrations.postWhois);
 
-//user registration before purchase
-  app.post('/signupshort',
-    setRedirect({auth: '/dashboard', success: '/dashboard', failure: '/signup2'}),
-    isUnauthenticated,
-    registrations.postSignupFirstTime
-  );
-
-
-  app.get('/signup2-1',
-    setRedirect({auth: '/dashboard'}),
-    isUnauthenticated,
-    setRender('signup2-1'),
-    registrations.getSignup2
-  );
 
 
 
   //display whois form 
   //@TODO change URL name
-  app.get('/whois',
-    setRender('dashboard/whois-settings'),
-    setRedirect({auth: '/'}),
-    isAuthenticated,
-    dashboard.getWhoisForm
-  );
+  // app.get('/whois',
 
-//@TODO replace redirect rules
-  app.post('/whois-settings',
-    setRedirect({ auth: '/', success: '/profile', failure: '/profile' }),
-    isAuthenticated,
-    users.postWhois
-  );
-
-
-
+  //billing form
+app.route('/billing-form')
+  .all(setRedirect({ auth: '/', success: '/dashboard', failure: '/billing-form' }))
+  .all(isAuthenticated)
+  .get(setRender('signup/billing'), dashboard.getBilling)
+  .post(dashboard.postBilling);
+  
+  ;
 };
