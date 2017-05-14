@@ -1,20 +1,21 @@
 'use strict';
 
-var express    = require('express');
-var swig       = require('swig');
+var express     = require('express');
+var swig        = require('swig');
 var subdomainOffset = process.env.SUBDOMAIN_OFFSET || 0;
-var secrets    = require('./config/secrets');
-var path       = require('path');
-var favicon    = require('serve-favicon');
-var logger     = require('morgan');
+var secrets     = require('./config/secrets');
+var path        = require('path');
+var favicon     = require('serve-favicon');
+var logger      = require('morgan');
 var cookieParser = require('cookie-parser');
-var session    = require('express-session');
-var MongoStore = require('connect-mongo')({ session: session });
-var mongoose   = require('mongoose');
-var passport   = require('passport');
-var bodyParser = require('body-parser');
-var compress   = require('compression')();
-var lodash     = require('lodash');
+var session     = require('express-session');
+var MongoStore  = require('connect-mongo')({ session: session });
+var mongoose    = require('mongoose');
+var passport    = require('passport');
+var bodyParser  = require('body-parser');
+var compress    = require('compression')();
+var lodash      = require('lodash');
+var routeConfig = require('./config/route-config.js');
 
 // require('dotenv').load();
 
@@ -28,25 +29,19 @@ var corsOptions      = { origin: '*' };
 var staticDir;
 
 
-// one routes version
-// var routes = require('./routes/routes');
-// var allRoutes = require('./routes');
-// var allRoutes = require('./routes/index');
 
-var homepage     = require('./routes/homepage');
-var search = require('./routes/search');
+// var homepage     = require('./routes/homepage');
+// var search = require('./routes/search');
 
-var forgot    = require('./routes/forgot');
-// var stripeHooks = require('./routes/webhooks');
-var registration = require('./routes/registration');
-var login =  require('./routes/login');
+// var forgot    = require('./routes/forgot');
+// // var stripeHooks = require('./routes/webhooks');
+// var registration = require('./routes/registration');
+// var login =  require('./routes/login');
 
-// @TODO maybe rename to profile?
-var users = require('./routes/user');
+// // @TODO maybe rename to profile?
+// var users = require('./routes/user');
 
-var profile = require('./routes/profile');
-
-// var dashboard = require('./routes/dashboard');
+// var profile = require('./routes/profile');
 
 
 
@@ -161,16 +156,19 @@ passportMiddleware(passport);
 app.use(viewHelper);
 
 
+// *** config *** //
 // setup routes
-homepage(app, passport);
-search(app, passport);
-forgot(app, passport);
-// stripeHooks(app, passport);
-registration(app, passport);
-login(app, passport);
-users(app, passport);
-// dashboard(app, passport);
-profile(app, passport);
+routeConfig.init(app, passport);
+
+// homepage(app, passport);
+// search(app, passport);
+// forgot(app, passport);
+// // stripeHooks(app, passport);
+// registration(app, passport);
+// login(app, passport);
+// users(app, passport);
+// // dashboard(app, passport);
+// profile(app, passport);
 
 
 /// catch 404 and forwarding to error handler
