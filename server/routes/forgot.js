@@ -1,7 +1,7 @@
 'use strict';
 
 // middleware
-var secrets       = require('../config/secrets'),
+var secrets       = require('../config/secrets.js'),
 isAuthenticated   = require('../middleware/auth').isAuthenticated,
 isUnauthenticated = require('../middleware/auth').isUnauthenticated,
 setRender         = require('middleware-responder').setRender,

@@ -1,7 +1,7 @@
 'use strict';
 
 // middleware
-let secrets       = require('./config/secrets');
+let secrets       = require('./config/secrets.js');
 const nodemailer  = require('nodemailer');
 const hbs         = require('nodemailer-express-handlebars');
 

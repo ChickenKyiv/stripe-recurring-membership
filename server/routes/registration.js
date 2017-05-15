@@ -7,7 +7,7 @@ isUnauthenticated = require('../middleware/auth').isUnauthenticated,
 setRender         = require('middleware-responder').setRender,
 setRedirect       = require('middleware-responder').setRedirect,
 stripeEvents      = require('../middleware/stripe-events'),
-secrets           = require('../config/secrets');
+secrets           = require('../config/secrets.js');
 
 // controllers
 var registrations = require('../controllers/registrations-controller'),

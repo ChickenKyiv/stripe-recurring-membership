@@ -1,7 +1,7 @@
 'use strict';
 
 // middleware
-var secrets           = require('./config/secrets');
+var secrets           = require('./config/secrets.js');
 
 var 
 isAuthenticated   = require('../middleware/auth').isAuthenticated,
