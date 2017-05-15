@@ -1,0 +1,126 @@
+/** {
+  font-family: "Helvetica Neue", Helvetica;
+  font-size: 15px;
+  font-variant: normal;
+  padding: 0;
+  margin: 0;
+}*/
+
+/*html {
+  height: 100%;
+}*/
+
+/*body {
+  background: #E6EBF1;
+  align-items: center;
+  min-height: 100%;
+  display: flex;
+  width: 100%;
+}*/
+
+form#cardForm {
+  width: 480px;
+  margin: 20px auto;
+}
+
+#cardForm .group {
+  background: white;
+  box-shadow: 0 7px 14px 0 rgba(49,49,93,0.10),
+              0 3px 6px 0 rgba(0,0,0,0.08);
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+label.stripe-label {
+  position: relative;
+  color: #8898AA;
+  font-weight: 300;
+  height: 40px;
+  line-height: 40px;
+  margin-left: 20px;
+  display: block;
+}
+
+#cardForm .group label.stripe-label:not(:last-child) {
+  border-bottom: 1px solid #F0F5FA;
+}
+
+label.stripe-label > span {
+  width: 20%;
+  text-align: right;
+  float: left;
+}
+
+#cardForm .field {
+  background: transparent;
+  font-weight: 300;
+  border: 0;
+  color: #31325F;
+  outline: none;
+  padding-right: 10px;
+  padding-left: 10px;
+  cursor: text;
+  width: 70%;
+  height: 40px;
+  float: right;
+}
+
+#cardForm .field::-webkit-input-placeholder { color: #CFD7E0; }
+#cardForm .field::-moz-placeholder { color: #CFD7E0; }
+#cardForm .field:-ms-input-placeholder { color: #CFD7E0; }
+
+#cardForm button {
+  float: left;
+  display: block;
+  background: #666EE8;
+  color: white;
+  box-shadow: 0 7px 14px 0 rgba(49,49,93,0.10),
+              0 3px 6px 0 rgba(0,0,0,0.08);
+  border-radius: 4px;
+  border: 0;
+  margin-top: 20px;
+  font-size: 15px;
+  font-weight: 400;
+  width: 100%;
+  height: 40px;
+  line-height: 38px;
+  outline: none;
+}
+
+#cardForm button:focus {
+  background: #555ABF;
+}
+
+#cardForm button:active {
+  background: #43458B;
+}
+
+#cardForm .outcome {
+  float: left;
+  width: 100%;
+  padding-top: 8px;
+  min-height: 24px;
+  text-align: center;
+}
+
+#cardForm .success, .error {
+  display: none;
+  font-size: 13px;
+}
+
+#cardForm .success.visible, .error.visible {
+  display: inline;
+}
+
+#cardForm .error {
+  color: #E4584C;
+}
+
+#cardForm .success {
+  color: #666EE8;
+}
+
+#cardForm .success .token {
+  font-weight: 500;
+  font-size: 13px;
+}

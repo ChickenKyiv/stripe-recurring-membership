@@ -2,23 +2,23 @@
 
   'use strict';
 
-  routeConfig.init = function (app) {
+  routeConfig.init = function (app, passport) {
 
     // *** routes *** //
 
 	//@TODO test this paths
-	const homepage  = require('./routes/homepage');
-	const search    = require('./routes/search');
+	const homepage  = require('../routes/homepage');
+	const search    = require('../routes/search');
 
-	const forgot    = require('./routes/forgot');
+	const forgot    = require('../routes/forgot');
 	// const stripeHooks = require('./routes/webhooks');
-	const registration = require('./routes/registration');
-	const login     =  require('./routes/login');
+	const registration = require('../routes/registration');
+	const login     =  require('../routes/login');
 
 	// @TODO maybe rename to profile?
-	const users     = require('./routes/user');
+	const users     = require('../routes/user');
 
-	const profile   = require('./routes/profile');
+	const profile   = require('../routes/profile');
 
 
 

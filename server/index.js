@@ -59,9 +59,12 @@ var app = express();
 
 
 if (app.get('env') === 'production') {
+  
   app.locals.production = true;
   swig.setDefaults({ cache: 'memory' });
   staticDir = path.join(__dirname + '/../public');
+  app.use('/build',  express.static(__dirname + '/../build'));
+
   app.locals.stripePubKey = secrets.stripeNextVersion.public.stripe.livePublishableKey;
 
 } else {
@@ -70,7 +73,8 @@ if (app.get('env') === 'production') {
   swig.setDefaults({ cache: false });
   staticDir = path.join(__dirname + '/../public');
   // console.log(__dirname + '/bower_components');
-  app.use('/bower_components',  express.static(__dirname + '/../bower_components'));
+  app.use('/build',  express.static(__dirname + '/../build'));
+  // app.use('/bower_components',  express.static(__dirname + '/../bower_components'));
   app.use('/node_modules',  express.static(__dirname + '/../node_modules'));
   //dev
   app.locals.stripePubKey = secrets.stripeNextVersion.public.stripe.testPublishableKey;
