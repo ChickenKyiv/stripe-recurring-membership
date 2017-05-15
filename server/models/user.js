@@ -156,15 +156,15 @@ userSchema.methods.validPassword = function(password) {
 // });
 
 
+//@TODO remove later, 'cause we made a validPassword method
+userSchema.methods.comparePassword = function(candidatePassword, cb) {
 
-// userSchema.methods.comparePassword = function(candidatePassword, cb) {
+  bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+    if (err) return cb(err);
+    cb(null, isMatch);
+  });
 
-//   bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-//     if (err) return cb(err);
-//     cb(null, isMatch);
-//   });
-
-// };
+};
 
 
 
