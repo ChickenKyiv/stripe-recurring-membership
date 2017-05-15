@@ -6,4 +6,3 @@ bower_components
 .env
 /server/data/*
 local-links
-/server/config/secrets.js
