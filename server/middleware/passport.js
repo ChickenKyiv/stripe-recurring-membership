@@ -37,6 +37,7 @@ module.exports = function(passport){
           if (!user){
             return done(null, false, req.flash('error', 'User not found'));
           }
+          
 
           user.comparePassword(password, function(err, isMatch) {
 

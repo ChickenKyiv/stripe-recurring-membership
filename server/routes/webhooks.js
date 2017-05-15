@@ -1,7 +1,7 @@
 'use strict';
 
 // middleware
-var secrets           = require('../config/secrets.js'),
+var secrets           = require('../config/secrets'),
     StripeWebhook     = require('stripe-webhook-middleware'),
     stripeEvents      = require('../middleware/stripe-events');
 

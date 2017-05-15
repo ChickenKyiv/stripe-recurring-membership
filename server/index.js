@@ -15,9 +15,9 @@ var bodyParser  = require('body-parser');
 var compress    = require('compression')();
 var lodash      = require('lodash');
 
-var secrets     = require('./config/secrets.js');
-console.log( secrets );
-var routeConfig = require('./config/route-config.js');
+var secrets     = require('./config/secrets');
+// console.log( secrets );
+var routeConfig = require('./config/route-config');
 
 // require('dotenv').load();
 
