@@ -3,7 +3,6 @@
 var express     = require('express');
 var swig        = require('swig');
 var subdomainOffset = process.env.SUBDOMAIN_OFFSET || 0;
-var secrets     = require('./config/secrets');
 var path        = require('path');
 var favicon     = require('serve-favicon');
 var logger      = require('morgan');
@@ -15,6 +14,9 @@ var passport    = require('passport');
 var bodyParser  = require('body-parser');
 var compress    = require('compression')();
 var lodash      = require('lodash');
+
+var secrets     = require('./config/secrets.js');
+console.log( secrets );
 var routeConfig = require('./config/route-config.js');
 
 // require('dotenv').load();
