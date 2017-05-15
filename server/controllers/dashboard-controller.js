@@ -185,13 +185,7 @@ exports.postProfile = function (req, res, next){
 
       } else {
 
-        // var query  = { _id : req.user.id };
-        // var update = {$set:{ 
-        //   email  : req.body.email || '', 
-        //   profile: userAdditionalData 
 
-
-        // }} ;
 
         
         User.findOneAndUpdate( query, update, {new: true}, function(err, user){
@@ -216,13 +210,7 @@ exports.postProfile = function (req, res, next){
 
   } else {
 
-      // var query  = { _id : req.user.id };
-      // var update = {$set:{ 
-      //   email        : req.body.email || '', 
-      //   profile: userAdditionalData
 
-
-      // }} ;
 
       User.findOneAndUpdate( query, update, {new: true}, function(err, user){
         if (err) return next(err);

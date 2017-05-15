@@ -47,7 +47,8 @@ footer <br />
  var stripe   = Stripe('{{stripePubKey}}');
  var elements = stripe.elements();
 </script>
-<script src="/javascripts/stripe-form-wrapper.js"></script>
+<!-- <script src="/javascripts/stripe-form-wrapper.js"></script> -->
+<script src="/build/stripe-form-wrapper.js"></script>
 
 
 
@@ -55,12 +56,14 @@ footer <br />
   
 <!-- <script src="/javascripts/jquery.min.js"></script> -->
 
-<script src="/javascripts/registration.js"></script>    
+<script src="/build/registration.js"></script>    
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>    
 
-<script src="/bower_components/bootstrap-sweetalert/dist/sweetalert.min.js"></script>
+<!-- <script src="/bower_components/bootstrap-sweetalert/dist/sweetalert.min.js"></script> -->
+<script src="/build/bootstrap-sweetalert/dist/sweetalert.js"></script>
 
-<script src="/bower_components/switchery/dist/switchery.js"></script>
+<script src="/build/switchery/dist/switchery.js"></script>
+<!-- <script src="/bower_components/switchery/dist/switchery.js"></script> -->
 
 <script>
 
@@ -84,7 +87,8 @@ if( document.querySelector('.js-switch') !== null ){
 
 <!-- {% include "sweet-alert-flash.html" %} -->
 
-<script src="/bower_components/select2/dist/js/select2.min.js"></script>
+<!-- <script src="/bower_components/select2/dist/js/select2.min.js"></script> -->
+<script src="/build/select2/dist/js/select2.js"></script>
 <script type="text/javascript">
   $( document ).ready(function() {
     $('#country').select2();
@@ -93,13 +97,19 @@ if( document.querySelector('.js-switch') !== null ){
 
 
 <!-- <script src="/bower_components/formatter.js/dist/formatter.min.js"></script> -->
-<script src="/node_modules/inputmask/dist/jquery.inputmask.bundle.js"></script>
+<!-- <script src="/node_modules/inputmask/dist/jquery.inputmask.bundle.js"></script> -->
+<script src="/build/inputmask2/dist/jquery.inputmask.bundle.js"></script>
+<!-- <script src="/build/inputmask/dist/inputmask/bindings/inputmask.binding.js"></script> -->
+<!-- <script src="/build/inputmask/dist/inputmask/jquery.inputmask.js"></script> -->
+
 
 <script type="text/javascript">
   $( document ).ready(function($) {
 
     $("#phone").inputmask();
     $("#fax").inputmask();
+    // $("#phone").inputmask({"mask": "(999) 999-9999"});
+    // $("#fax").inputmask({"mask": "(999) 999-9999"});
 
 
   });
