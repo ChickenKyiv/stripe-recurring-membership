@@ -137,6 +137,7 @@ userSchema.methods.validPassword = function(password) {
  * "Pre" is a Mongoose middleware that executes before each user.save() call.
  */
 
+// we creating a password hash on some other steps
 
 // userSchema.pre('save', function(next) {
 //   var user = this;
