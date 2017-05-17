@@ -26,23 +26,28 @@ exports.getSearchResults = function(req, res, next){
 	}
 
 
+	var status = {
+		'red'   : 'unavailable',
+		'blue'  : 'selected',
+		'green' : 'available',
+	}
+
 	// namecheap.fetchCom()
 	// namecheap.fetchNet()
 	// namecheap.fetchMe()
 
 
     const renderObject = {
-      title: 'user profile',
-      user: req.user,
-      transactions: transactions,
-      messages: req.flash('messages')
-    };
-	res.render(req.render, {
+    
 		title  : 'Search Results',
 		form   : form,
 		domain : '' || domain,
 		error  : error
-	});
+	
+      // messages: req.flash('messages')
+    };
+
+	res.render(req.render, renderObject);
 
 };
 
