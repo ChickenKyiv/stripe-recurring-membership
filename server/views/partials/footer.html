@@ -128,16 +128,17 @@ function show_popup(){
       	title: "Congratulations! Your email has been created.",
       	text:  "Please wait until your domain comes online (usually just a few minutes, but sometimes up to a couple hours)",
       	type: "success",
-      	timer: 2000
+      	timer: 9000
+        // timer: 2000
       	}).then(function(){
 
       	});
 
 
    };
-   if( $( '.forward-email' ).length ){
+   // if( $( '.forward-email' ).length ){
    	window.setTimeout( show_popup, 3000 );	
-   }
+   // }
    
 	
 	

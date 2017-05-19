@@ -5,8 +5,6 @@ var crypto   = require('crypto');
 var stripeCustomer = require('./plugins/stripe-customer');
 var secrets  = require('../config/secrets');
 
-
-
 // var timestamps = require('mongoose-timestamp');
 
 var options = {
