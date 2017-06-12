@@ -1,0 +1,11 @@
+cd "C:\Program Files\MongoDB\Server\3.4\bin"
+mongod.exe --dbpath="f:\code\easymail\stri-pe\server\data"
+
+mongo
+
+f:
+cd code\easymail\stri-pe
+
+npm run watch
+
+heroku config:set MONGODB_URI=mongodb://heroku_pl3qcvnq:97ddflt7fotu8657ms483f884q@ds155820.mlab.com:55820/heroku_pl3qcvnq
