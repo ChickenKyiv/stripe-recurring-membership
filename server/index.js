@@ -8,8 +8,10 @@ var favicon     = require('serve-favicon');
 var logger      = require('morgan');
 var cookieParser = require('cookie-parser');
 var session     = require('express-session');
+
 var MongoStore  = require('connect-mongo')({ session: session });
 var mongoose    = require('mongoose');
+
 var passport    = require('passport');
 var bodyParser  = require('body-parser');
 var compress    = require('compression')();
@@ -84,9 +86,16 @@ if (app.get('env') === 'production') {
 }
 
 // This is where all the magic happens!
-app.engine('html', swig.renderFile);
-app.set('views',   path.join(__dirname, 'views'));
-app.set('view engine', 'html');
+// app.engine('html', swig.renderFile);
+// app.set('views',   path.join(__dirname, 'views'));
+// app.set('view engine', 'html');
+
+
+app.set('view engine', 'pug');
+app.set('views', path.resolve(__dirname, 'views/pug'));
+app.set('json spaces', 2); // format json responses for easier viewing
+
+
 
 app.locals._ = lodash;
 //@TODO change this

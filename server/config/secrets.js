@@ -14,33 +14,28 @@ module.exports = {
 
   sessionSecret: process.env.SESSION_SECRET || '34SDgsdgspxxxxxxxdfsG', //you can use a long random string
 
-  // mailgun: {
-  //   apiKey: process.env.MAILGUN_API_KEY || '',
-  //   domain: process.env.MAILGUN_DOMAIN  || ''
-  // },
-
-  // poolConfig for SMTP, nodemailer package
-  emailServer: {
-
-    pool: true,
-    host: 'host54.registrar-servers.com', //EMAIL_HOST
-    port: 465,
-    secure: true, // use TLS
-    auth: {
-        user: 'admin@easymail.io', //EMAIL_USERNAME
-        pass: 'ArtJeremieIO123'    //EMAIL_PASSWORD
-    },
-
-    logger : true, 
-    debug  : true
-
+  // we propose to use mailgun, but if you have email server, you can fill credentials below
+  mailgun: {
+    apiKey: process.env.MAILGUN_API_KEY || '',
+    domain: process.env.MAILGUN_DOMAIN  || ''
   },
 
-   
+  // poolConfig for SMTP, nodemailer package
+  // emailServer: {
 
+  //   pool: true,
+  //   host: '', //EMAIL_HOST
+  //   port: 465,
+  //   secure: true, // use TLS
+  //   auth: {
+  //       user: '', //EMAIL_USERNAME
+  //       pass: ''  //EMAIL_PASSWORD
+  //   },
 
+  //   logger : true, 
+  //   debug  : true
 
-
+  // },
 
   stripeNextVersion:{
     "public": {
@@ -76,23 +71,20 @@ module.exports = {
       }
     ],
       "stripe": {
-        "testPublishableKey": "pk_test_thzSoJYFgDc9t97sgrZ05KH9",
+        "testPublishableKey": "pk_test_wlMBFmqetAqkqAoYQr6CfiF9",
         "livePublishableKey": "pk_live_"
       }
   },
   "private": {
     "stripe": {
-      "testSecretKey": "sk_test_2kBJjZnrNHcTtgDXUuuYzSsx",
+      "testSecretKey": "sk_test_41tXNokC4a1y9mIHh7itAgaD",
       "liveSecretKey": "sk_live_"
     }
   }
 }, 
 
 
-
-
-
-  googleAnalytics: process.env.GOOGLE_ANALYTICS || 'UA-96603282-1'
+  googleAnalytics: process.env.GOOGLE_ANALYTICS || ''
 
   
 };
