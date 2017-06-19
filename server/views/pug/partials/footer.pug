@@ -1,5 +1,97 @@
 extends layout
 
+hr
+br
+ul
+  li
+    a(href='#') Link1
+  li
+    a(href='#') Link2
+  li
+    a(href='#') Link3
+  li
+    a(href='#') Link4
+  li
+    a(href='#') Link5
+
+// Google Analytics: change UA-XXXXX-X to be your site's ID
+script.
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', '{{googleAnalytics}}');
+  ga('send', 'pageview');
+
+script(src='https://code.jquery.com/jquery-3.2.1.min.js', integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=', <='', script='')
+
+  <script src="https://js.stripe.com/v3/">
+
+script(type='text/javascript').
+  var stripe   = Stripe('{{stripePubKey}}');
+  var elements = stripe.elements();
+
+script(src='/build/stripe-form-wrapper.js')
+script(src='/build/registration.js')
+script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+script(src='/build/bootstrap-sweetalert/dist/sweetalert.js')
+script(src='/build/switchery/dist/switchery.js')
+
+script.
+  if( document.querySelector('.js-switch') !== null ){
+  var elem = document.querySelector('.js-switch');
+  var init = new Switchery(elem, {size:'small'});
+  }
+  // $( document ).ready(function() {
+  //   if( $('#enableWhois').length ){
+  //     console.log( 'yes' );
+  //     var checkbox = $('#enableWhois');
+  //     var init = new Switchery(checkbox);
+  //   }
+  // });
+// {% include "sweet-alert-flash.html" %}
+
+script(src='/build/select2/dist/js/select2.js')
+script(type='text/javascript').
+  $( document ).ready(function() {
+  $('#country').select2();
+  });
+script(src='/build/inputmask2/dist/jquery.inputmask.bundle.js')
+script(type='text/javascript').
+  $( document ).ready(function($) {
+  $("#phone").inputmask();
+  $("#fax").inputmask();
+  });
+  
+| {% if sweetAlertShow %}
+script.
+  $( document ).ready(function() {
+  function show_popup(){
+  // swal(
+  //   "Congratulations! Your email has been created.",
+  //   "Please wait until your domain comes online (usually just a few minutes, but sometimes up to a couple hours)",
+  //   "success"
+  //   );
+  swal({
+  title: "Congratulations! Your email has been created.",
+  text:  "Please wait until your domain comes online (usually just a few minutes, but sometimes up to a couple hours)",
+  type: "success",
+  timer: 9000
+  // timer: 2000
+  }).then(function(){
+  });
+  };
+  // if( $( '.forward-email' ).length ){
+  window.setTimeout( show_popup, 3000 );
+  // }
+  });
+| {% endif %}
+//
+  <script></script>
+// 
+// <script src="/javascripts/app.js"></script>
+
+
   footer.footer
     .container
 
