@@ -1,0 +1,12 @@
+li.dropdown
+  a(href="#", class="dropdown-toggle", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false")
+    | Welcome, #{user.email}!
+    span.caret
+
+  ul.dropdown-menu
+    li
+      a(href="/profile") Edit my details
+    li
+      a(href="/user/password") Change password      
+    li
+      a(href="/logout") Logout

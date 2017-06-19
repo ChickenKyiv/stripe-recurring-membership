@@ -1,0 +1,20 @@
+div.well
+  p Debug Info:
+
+  ul
+    li
+      | Does this user have a plan?
+
+      if #{user.stripe.plan} in #{plans}
+      | YES
+      else 
+      | NO
+
+    li
+      | Does this user have paid plan?
+
+      if #{user.stripe.plan} in #{plans}
+      | YES
+      else 
+      | NO
+

@@ -1,0 +1,27 @@
+div.container-fluid(style="max-width: 900px;")
+
+if #{error}
+  .alert.alert-danger(role="alert")
+    p #{error}
+
+if #{messages.errors}
+  .alert.alert-danger(role="alert")
+    each error, index in messages.errors
+      if index == 0
+        ul
+          li 
+            if error.msg #{error.msg}
+            else #{error} 
+
+
+if #{messages.info}
+  .alert.alert-danger(role="alert")
+    each error, index in messages.info
+
+      info.msg info
+
+if #{messages.success}
+  .alert.alert-danger(role="alert")
+    each error, index in messages.success
+    
+    success.msg    success
