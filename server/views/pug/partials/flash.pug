@@ -17,11 +17,19 @@ if #{messages.errors}
 if #{messages.info}
   .alert.alert-danger(role="alert")
     each error, index in messages.info
-
-      info.msg info
+      if index == 0
+        ul
+          li 
+            if info.msg #{info.msg}
+            else #{info} 
+       
 
 if #{messages.success}
   .alert.alert-danger(role="alert")
     each error, index in messages.success
-    
-    success.msg    success
+      if index == 0
+        ul
+          li 
+            if success.msg #{success.msg}
+            else #{success}     
+        
