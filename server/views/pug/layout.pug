@@ -1,0 +1,126 @@
+doctype html
+html
+  head
+    title= title
+    
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons')    
+    
+    
+
+    link(rel='stylesheet', href='/stylesheets/wizard/bootstrap.min.css') 
+
+    link(rel='stylesheet', href='/stylesheets/wizard/material-kit.css') 
+
+    link(rel='stylesheet', href='/stylesheets/wizard/material-bootstrap-wizard.css') 
+   
+    link(rel='stylesheet', href='/stylesheets/wizard/demo.css') 
+    
+
+  body.index-page
+
+    .navbar.navbar-transparent.navbar-absolute.so-navbar
+      .container
+        .navbar-header
+          //-a.navbar-brand(href="/")
+          a(href="/")
+            .logo-container
+              .logo 
+                img(src="/images/logo32.png", alt="Go to home page")
+              .brand.so-brand CutStream
+
+    .wrapper
+      .header.header-filter
+        .container
+          .row
+            .col-md-8.col-md-offset-2 
+
+
+      .main.main-raised
+        .section
+          .container.text-center
+            .row
+              .col-md-8.col-md-offset-2.text-center
+                h2 Start and End points for Youtube videos
+                h4 Want to share video with friend? But only short version with start and end point?
+
+          .section.section-full-screen.section-signup     
+            .container
+              .row
+                .col-sm-8.col-sm-offset-2
+                  .wizard-container
+                    .card.wizard-card#wizard(data-color="red")
+
+                      block content 
+
+
+
+
+          .space-50
+
+          .section.section-examples            
+            .container.text-center
+              .row
+                .col-md-12
+                  h2 Examples
+                .space-50
+
+              .row
+
+                .col-md-6
+                  .card.card-background(style="background-image: url('/images/jessjo.jpg')")
+                    .content.content-video 
+                      a(href="player/G1aSAQ1CibQ")
+                        .icon
+                          i.material-icons play_arrow
+                      h3.card-title Logan Epic Kill --- Jessica Jones Window Crack
+                          
+
+                .col-md-6 
+                  .card.card-background(style="background-image: url('/images/bp4.jpg')")
+                    .content.content-video
+                      a(href="player/Lt-U_t2pUHI")
+                        .icon
+                          i.material-icons play_arrow
+                      h3.card-title Benedict Cumberbatch Shows Off Doctor Strange's Hands
+
+
+                .col-md-6     
+                  .card.card-background(style="background-image: url('/images/wizard-book.jpg')")
+                    .content.content-video
+                      a(href="player/nWHUjuJ8zxE")
+                        .icon
+                          i.material-icons play_arrow
+                      h3.card-title Jessica Jones Mirror Crack
+
+
+                .col-md-6     
+                  .card.card-background(style="background-image: url('/images/wizard-book.jpg')")
+                    .content.content-video
+                      a(href="player/Q88JeXtKMDY")
+                        .icon
+                          i.material-icons play_arrow
+                      h3.card-title Black Panther Featurette      
+
+
+      footer.footer
+        .container
+
+
+
+
+
+    script(src='/javascripts/wizard/jquery-2.2.4.min.js')
+    
+    script(src='/javascripts/wizard/bootstrap.min.js')
+    script(src='/javascripts/wizard/jquery.bootstrap.js')
+
+    script(src='/javascripts/wizard/jquery.validate.min.js')
+
+    script(src='/javascripts/wizard/material.min.js')
+
+    script(src='/javascripts/wizard/material-bootstrap-wizard.js')
+
+    script(src='/javascripts/wizard/maskinput-bundle.js')
+    script(src='/javascripts/wizard/bla-bla.js')
+
+

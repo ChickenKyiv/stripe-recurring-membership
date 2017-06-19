@@ -1,0 +1,131 @@
+extends layout
+
+block content
+  form#formSubmitVideo(name="formsubmit", method="post", action="/insert")
+    .wizard-header      
+
+    .wizard-navigation
+      ul
+        li
+          a(href='#details', data-toggle='tab') Youtube link
+      
+        li
+          a(href='#captain', data-toggle='tab') Video Type
+      
+        li
+          a(href='#description', data-toggle='tab') Extra Details
+
+    .tab-content
+      #details.tab-pane
+        .row
+          .col-sm-12
+            h4.info-text Let&apos;s start with the basic details.
+    
+          .col-sm-10.col-sm-offset-1
+            .input-group
+              span.input-group-addon
+                i.material-icons link
+        
+              .form-group.label-floating
+                label.control-label Link 
+                  small (required)
+          
+                input#inputUrl.form-control.input-lg(type="text", name="url")
+          
+                .hint Links like https://www.youtube.com/watch?v=WbIPHjHoYaA or  https://youtu.be/G1aSAQ1CibQ accepted
+          
+                span.material-input
+                span.material-input
+
+
+      #captain.tab-pane
+        h4.info-text What type of video would you store? 
+  
+        .row
+          .col-sm-10.col-sm-offset-1
+            .col-sm-4
+              .choice(data-toggle='wizard-radio', rel='tooltip', title='You will have ability to use minutes and seconds')
+                input#inputVideoType1(type="radio", name="stepA" value="1")
+              
+                .icon          
+                  i.material-icons exposure_zero
+          
+                h4 Short video          
+                h6  &lt; 10 minutes 
+                                          
+            .col-sm-4
+              .choice(data-toggle='wizard-radio', rel='tooltip', title='Select this if want to use minutes only')
+                input#inputVideoType2(type="radio", name="stepA" value="60")
+          
+                .icon          
+                  i.material-icons exposure_plus_1
+          
+                h4 Medium video          
+                h6  &gt; 10 minutes 
+      
+            .col-sm-4
+              .choice(data-toggle='wizard-radio', rel='tooltip', title='Select this option if you want to use 5 minutes time range')
+                input#inputVideoType3(type="radio", name="stepA" value="300")                
+          
+                .icon          
+                  i.material-icons exposure_plus_2
+          
+                h4 Long video          
+                h6  &gt; 30 minutes 
+                        
+      #description.tab-pane
+        .row
+                                    
+          h4.info-text You can skip this step if you don&apos;t know time you want
+          //- @todo add link with skip text to this title
+                                    
+          .col-sm-5.col-sm-offset-1
+            .form-group
+              label(style="width:100%;") Start Time (seconds)
+                a.pull-right#maskToggler(href="#", data-type="hours") Toggle hours
+              input#inputStart.form-control(type="text",  name="startB")              
+
+
+    
+          .col-sm-5
+            .form-group
+              label End Time (seconds) 
+              input#inputEnd.form-control(type="text", name="endB")
+              
+                                    
+          .col-sm-10.col-sm-offset-1
+            .form-group
+              label Title
+              input#inputTitle.form-control(type="text", name="title")
+              
+    
+          .col-sm-10.col-sm-offset-1
+            .form-group
+              label Description
+              input#desc.form-control(type="text", name="desc")
+              
+    
+
+
+    .wizard-footer
+      .pull-right
+        input.btn.btn-next.btn-fill.btn-danger.btn-wd(type='button', name='next', value='Next')
+        input#hiddenStep(type="hidden", name="step", value="")
+        input#hiddenStart(type="hidden", name="start", value="")
+        input#hiddenEnd(type="hidden", name="end", value="")
+
+
+
+
+
+
+
+
+
+
+        input.btn.btn-finish.btn-fill.btn-danger.btn-wd(type='submit', name='finish', value='Finish')
+
+      .pull-left
+        input.btn.btn-previous.btn-fill.btn-default.btn-wd(type='button', name='previous', value='Previous')
+
+      .clearfix
