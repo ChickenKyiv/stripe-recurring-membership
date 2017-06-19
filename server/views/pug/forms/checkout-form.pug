@@ -1,1 +1,19 @@
-checkout-form.pug
+form#cardForm.form-horizontal(action='/billing-form', method='POST')
+  .group
+    label.stripe-label
+      span Name
+      input.field(name='cardholder-name', placeholder='Jane Doe')
+    label.stripe-label
+      span Phone
+      input.field(placeholder='(123) 456-7890', type='tel')
+  .group
+    label.stripe-label
+      span Card
+      #card-element.field
+  button(type='submit') Submit Payment
+  .outcome
+    .error
+    .success
+      | Success! Your Stripe token is 
+      span.token
+      input.token(type='hidden', name='token')
