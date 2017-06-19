@@ -1,16 +1,24 @@
 doctype html
-html
+html.no-js
   head
-    title= title
+    title= Default title
     
-    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons')    
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css')    
     
-    
+    link(rel='stylesheet', href='/build/style.css')   
+
+    link(rel='stylesheet', href='/build/bootstrap-sweetalert/dist/sweetalert.css')   
 
 
     
 
   body.index-page
+
+    include partials/navbar.pug  
+
+    block content
+    
+    include partials/flash.pug   
 
     .navbar.navbar-transparent.navbar-absolute.so-navbar
       .container
@@ -31,13 +39,7 @@ html
 
       .main.main-raised
 
-      footer.footer
-        .container
 
 
+     include partials/footer.pug   
 
-
-
-    script(src='/javascripts/wizard/jquery-2.2.4.min.js')
-    
-    script(src='/javascripts/wizard/bootstrap.min.js')
