@@ -46,3 +46,6 @@ heroku config:set GOOGLE_ANALYTICS='UA-XXXXXX-1'
 ```
 
 Want add a heroku deploy button? Pull requests welcome :]
+
+Project scheme
+![alt text](https://github.com/atherdon/stripe-recurring-membership/blob/master/docs/162f6342b3ee45ae9c5f338212d554dc.png)
