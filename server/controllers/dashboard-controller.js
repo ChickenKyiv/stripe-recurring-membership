@@ -51,7 +51,7 @@ exports.getBilling = function(req, res, next){
 
   const renderObject = {
     user: req.user,
-    domain : req.user.profile.domain || '',
+    // domain : req.user.profile.domain || '',
     form: form,
     error: error,
     // plans: plans
@@ -85,9 +85,9 @@ exports.getProfile = function (req, res, next){
     value: req.user.email,
 
     //forward email
-    forwardEmail: req.user.profile.forwardEmail,
+    // forwardEmail: req.user.profile.forwardEmail,
 
-    domain: req.user.profile.domain,
+    // domain: req.user.profile.domain,
 
     form: form,
     error: error,
@@ -143,7 +143,7 @@ exports.postProfile = function (req, res, next){
   req.assert('first_name',   'First Name is required').notEmpty(); 
   req.assert('last_name',    'Last Name is required').notEmpty();  
   req.assert('company_name', 'Company Name is required').notEmpty();
-  req.assert('phone',        'Name is required').notEmpty();
+  // req.assert('phone',        'Name is required').notEmpty();
   //fax field is not required field
 
   var errors = req.validationErrors();
@@ -162,7 +162,7 @@ exports.postProfile = function (req, res, next){
 
     company_name : req.body.company_name || '', 
 
-    phone        : req.body.phone        || '',
+    // phone        : req.body.phone        || '',
 
   };
 
