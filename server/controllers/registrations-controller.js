@@ -90,7 +90,7 @@ exports.postSignup2 = function(req, res, next){
   req.assert('confirm',  'Confirm password must be at least 6 characters long').notEmpty().len(6);
   req.assert('confirm',  'Password and confirm password fields must match').equals(req.body.password);
 
-  req.assert('domain',   'Please fill a domain name').notEmpty();
+  // req.assert('domain',   'Please fill a domain name').notEmpty();
 
   var errors = req.validationErrors();
 
@@ -102,7 +102,7 @@ exports.postSignup2 = function(req, res, next){
     req.flash('errors', errors);
     req.flash('form', {
       email  : req.body.email,
-      domain : req.body.domain      
+      // domain : req.body.domain      
     });
     
     return res.redirect(req.redirect.failure);
@@ -139,7 +139,7 @@ exports.postSignupFirstTime = function(req, res, next){
   // req.assert('confirm', 'Confirm password must be at least 6 characters long').notEmpty().len(6);
   // req.assert('confirm', 'Passwords must match').equals(req.body.password);
 
-  req.assert('domain',   'Please fill a domain name').notEmpty();
+  // req.assert('domain',   'Please fill a domain name').notEmpty();
 
   var errors = req.validationErrors();
 
@@ -258,7 +258,7 @@ exports.postWhois2 = function(req, res, next){
   // req.assert('confirm', 'Confirm password must be at least 6 characters long').notEmpty().len(6);
   // req.assert('confirm', 'Passwords must match').equals(req.body.password);
 
-  req.assert('domain',       'Please fill a domain name').notEmpty();
+  // req.assert('domain',       'Please fill a domain name').notEmpty();
 
   // @TODO get email value from logged in user or put email field to hidden field
   req.assert('email',        'Please sign up with a valid email.').isEmail();
@@ -271,7 +271,7 @@ exports.postWhois2 = function(req, res, next){
   req.assert('city',         'City is required').notEmpty();
   req.assert('state',        'State field is required').notEmpty();
   req.assert('country',      'Country field is required').notEmpty();
-  req.assert('phone',        'Phone field is required').notEmpty();
+  // req.assert('phone',        'Phone field is required').notEmpty();
 
   var errors = req.validationErrors();
 
@@ -287,128 +287,9 @@ exports.postWhois2 = function(req, res, next){
   //check whois checkbox
   //output( req.body.whois-flag )
   // var flag = req.body.whois-flag;
-  var data = {
-    DomainName : domain,
-    Years      : years, //by default we need to set 1 value
-    AddFreeWhoisguard : flag, 
-    WGEnabled : flag,
-  };
-
-  // RegistrantFirstName String  255 Yes First name of the Registrant user
-  // RegistrantLastName  String  255 Yes Second name of the Registrant user
-  // RegistrantAddress1  String  255 Yes Address1 of the Registrant user
-
-  // RegistrantCity  String  50  Yes City of the Registrant user
-  // RegistrantStateProvince String  50  Yes State/Province of the Registrant user
-
-  // RegistrantPostalCode  String  50  Yes PostalCode of the Registrant user
-  // RegistrantCountry String  50  Yes Country of the Registrant user
-
-  // RegistrantPhone String  50  Yes Phone number in the format +NNN.NNNNNNNNNN
-
-  // RegistrantEmailAddress  String  255 Yes Email address of the Registrant user
 
 
-  var registrantData = {
-    RegistrantFirstName : '',
-    RegistrantLastName  : '',
-    RegistrantAddress1  : '' ,         
 
-    RegistrantCity      : '',
-    RegistrantStateProvince : '',
-
-    RegistrantPostalCode: '' ,  
-    RegistrantCountry   : '',
-
-    RegistrantPhone     : '',
-
-    RegistrantEmailAddress : ''
-  };
-
-
-  //   TechFirstName String  255 Yes First name of the Tech user
-  // TechLastName  String  255 Yes Second name of the Tech user
-  // TechAddress1  String  255 Yes Address1 of the Tech user
-
-  // TechCity  String  50  Yes City of the Tech user
-  // TechStateProvince String  50  Yes State/Province of the Tech user
-
-  // TechPostalCode  String  50  Yes PostalCode of the Tech user
-  // TechCountry String  50  Yes Country of the Tech user
-  // TechPhone String  50  Yes Phone number in the format +NNN.NNNNNNNNNN
-
-  // TechEmailAddress  String  255 Yes Email address of the Tech user
-
-  var techPersonData = {
-    TechFirstName : '',
-    TechLastName  : '',
-    TechAddress1  : '',
-
-    TechCity      : '',
-    TechStateProvince : '',
-
-    TechPostalCode : '',
-    TechCountry    : '',
-    TechPhone      : '',
-
-    TechEmailAddress : ''
-  };
-
-  //   AdminFirstName  String  255 Yes First name of the Admin user
-  // AdminLastName String  255 Yes Second name of the Admin user
-  // AdminAddress1 String  255 Yes Address1 of the Admin user
-
-  // AdminCity String  50  Yes City of the Admin user
-  // AdminStateProvince  String  50  Yes State/Province of the Admin user
-
-  // AdminPostalCode String  50  Yes PostalCode of the Admin user
-  // AdminCountry  String  50  Yes Country of the Admin user
-  // AdminPhone  String  50  Yes Phone number in the format +NNN.NNNNNNNNNN
-
-  // AdminEmailAddress String  255 Yes Email address of the Admin user
-  var adminData      = {
-    AdminFirstName:'',
-    AdminLastName:'',
-    AdminAddress1:'',
-
-    AdminCity:'',
-    AdminStateProvince:'',
-
-    AdminPostalCode:'',
-    AdminCountry:'',
-    AdminPhone:'',
-
-    AdminEmailAddress:'',
-  };
-
-  // AuxBillingFirstName String  255 Yes First name of the AuxBilling user
-  // AuxBillingLastName  String  255 Yes Second name of the AuxBilling user
-  // AuxBillingAddress1  String  255 Yes Address1 of the AuxBilling user
-
-  // AuxBillingCity  String  50  Yes City of the AuxBilling user
-  // AuxBillingStateProvince String  50  Yes State/Province of the AuxBilling user
-
-  // AuxBillingPostalCode  String  50  Yes PostalCode of the AuxBilling user
-  // AuxBillingCountry String  50  Yes Country of the AuxBilling user
-  // AuxBillingPhone String  50  Yes Phone number in the format +NNN.NNNNNNNNNN
-
-  // AuxBillingEmailAddress  String  255 Yes Email address of the AuxBilling user
-
-  var auxData = {
-    AuxBillingFirstName:'',
-    AuxBillingLastName:'',
-    AuxBillingAddress1:'',
-
-    AuxBillingCity:'',
-    AuxBillingStateProvince:'',
-
-    AuxBillingPostalCode:'',
-    AuxBillingCountry:'',
-    AuxBillingPhone:'',
-
-    AuxBillingEmailAddress:'',
-
-  };
 
 
     // req.body.first_name       
@@ -440,33 +321,7 @@ exports.postWhois2 = function(req, res, next){
   // var plans  = User.getPlans();
   // console.log(plans);
 
-  // var userDataFields = {
-  //   profile: {
-  //     email :
-  //     domain:
-
-  //     first_name:
-  //     last_name:
-  //     company_name:
-  //     address:
-  //     zip:
-  //     city:
-  //     state:
-  //     country:
-  //     phone:
-  //     fax:
-  //   }
-  // };
-
-// Call Namecheap create.domain method and pass all data that we have for domain registration
-// Response
-// Domain  Domain name that you are trying to register.
-// Registered  Possible responses: True, False. Indicates whether the domain was registered.
-// ChargedAmount Total amount charged for registration.
-// DomainID  Unique integer value that represents the domain.
-// OrderID Unique integer value that represents the order.
-// TransactionID Unique integer value that represents the transaction.
-
+  
 
 
 
@@ -510,7 +365,7 @@ exports.postWhois = function(req, res, next){
   req.assert('zip',          'Zip is required').notEmpty();
   req.assert('city',         'City is required').notEmpty();
   req.assert('state',        'State is required').notEmpty();
-  req.assert('phone',        'Phone Number is required').notEmpty();
+  // req.assert('phone',        'Phone Number is required').notEmpty();
 
 
   var userAdditionalData = {
@@ -531,14 +386,14 @@ exports.postWhois = function(req, res, next){
 
     country : req.body.country  || '', 
 
-    phone : req.body.phone      || '',
+    // phone : req.body.phone      || '',
 
-    fax : req.body.fax          || '',
+    // fax : req.body.fax          || '',
 
     //@TODO check Do we need to pass this values too?
     plan         : req.user.profile.plan,
-    forwardEmail :  req.user.profile.forwardEmail,
-    domain       :  req.user.profile.domain,
+    // forwardEmail :  req.user.profile.forwardEmail,
+    // domain       :  req.user.profile.domain,
 
   };
 

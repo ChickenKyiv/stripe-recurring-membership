@@ -158,85 +158,87 @@ exports.getCancelMyAccountAction = function (req, res, next){
 
 
 //@TODO finish and test
-exports.updateForwardEmail = function (req, res, next){
+// exports.updateForwardEmail = function (req, res, next){
 
-  var form       = {},
-      error      = null,
-      formFlash  = req.flash('form'),
-      errorFlash = req.flash('error');
+//   var form       = {},
+//       error      = null,
+//       formFlash  = req.flash('form'),
+//       errorFlash = req.flash('error');
 
-  if (formFlash.length) {
-    form.email = formFlash[0].email;
-  }
+//   if (formFlash.length) {
+//     form.email = formFlash[0].email;
+//   }
 
-  if (errorFlash.length) {
-    error = errorFlash[0];
-  }
+//   if (errorFlash.length) {
+//     error = errorFlash[0];
+//   }
 
-  //flag variable responsible for showing
-  var flag = true;
+//   //flag variable responsible for showing
+//   var flag = true;
 
-  // console.log( req.route.path )
-  const renderObject = {
-    user: req.user, 
-    form: form, 
-    error: error,
+//   // console.log( req.route.path )
+//   const renderObject = {
+//     user: req.user, 
+//     form: form, 
+//     error: error,
 
-    //email
-    email: req.user.email, //@TODO not sure if this is important to pass to view
-    placeholder: 'New Email Address',
+//     //email
+//     email: req.user.email, //@TODO not sure if this is important to pass to view
+//     placeholder: 'New Email Address',
 
-    currentEmail: req.user.profile.forwardEmail || 'Not specified', 
+//     currentEmail: req.user.profile.forwardEmail || 'Not specified', 
     
-    confirmEmailPlaceholder: 'Confirm Email Address',
+//     confirmEmailPlaceholder: 'Confirm Email Address',
 
-      // messages: req.flash('messages')
+//       // messages: req.flash('messages')
 
-    route: 'forward-email', //@TODO fix up. Removed from layout right now
-    sweetAlertShow: flag || false,
-  };
+//     route: 'forward-email', //@TODO fix up. Removed from layout right now
+//     sweetAlertShow: flag || false,
+//   };
 
-  res.render(req.render, renderObject);
+//   res.render(req.render, renderObject);
 
-};
+// };
 
 
-exports.postForwardEmail = function (req, res, next){
 
-  req.assert('email',    'Please use a valid email.').isEmail();
-  req.assert('confirm', 'Passwords must match').isEmail().equals(req.body.email);
 
-  var errors = req.validationErrors();
+// exports.postForwardEmail = function (req, res, next){
 
-  if (errors) {
+//   req.assert('email',    'Please use a valid email.').isEmail();
+//   req.assert('confirm', 'Passwords must match').isEmail().equals(req.body.email);
 
-    req.flash('errors', errors);
-    return res.redirect(req.redirect.failure);
-  }
+//   var errors = req.validationErrors();
 
-  var query  = { _id: req.user.id };
-  var update = {$set:{ 
+//   if (errors) {
+
+//     req.flash('errors', errors);
+//     return res.redirect(req.redirect.failure);
+//   }
+
+//   var query  = { _id: req.user.id };
+//   var update = {$set:{ 
         
-        profile:  { forwardEmail : req.body.email } 
+//         profile:  { forwardEmail : req.body.email } 
 
-      }} ;
+//       }} ;
 
-  User.findOneAndUpdate( query, update, {new: true}, function(err, user){
-    if (err) return next(err); 
-    //or  
-    // req.flash('errors', {
-    //        msg:  'We didn\'t update forward email setting'
-    // });
-    // return res.redirect(req.redirect.failure);
+//   User.findOneAndUpdate( query, update, {new: true}, function(err, user){
+//     if (err) return next(err); 
+//     //or  
+//     // req.flash('errors', {
+//     //        msg:  'We didn\'t update forward email setting'
+//     // });
+//     // return res.redirect(req.redirect.failure);
 
-    // console.log(user);
+//     // console.log(user);
 
-      // updateForwardEmailConfirmation(); //@TODO send confirmation message
+//       // updateForwardEmailConfirmation(); //@TODO send confirmation message
 
-    req.flash('success', { msg: 'Profile information updated.' });
+//     req.flash('success', { msg: 'Profile information updated.' });
 
-    res.redirect(req.redirect.success);
+//     res.redirect(req.redirect.success);
 
-  });
+//   });
 
-};
+// };

@@ -45,16 +45,9 @@ var userSchema = new mongoose.Schema({
     // picture: { 
     //   type: String, default: '' },
 
-    domain:  { 
-      type: String, default: '' }, 
 
-    forwardEmail: { //second email
-      type      : String,
-      default   : '',
-      // unique    : true,
-      // lowercase : true 
-    }, 
 
+  
 
     //whois part
 
@@ -82,18 +75,13 @@ var userSchema = new mongoose.Schema({
     country : { 
         type: String, default: '' },
 
-    phone : { 
-        type: String, default: '' },
 
-    fax : { 
-        type: String, default: '' },
 
 
     plan: {
       type: String, default: '' },      
     
-    whois: {
-      type: Boolean, default: true  },        
+       
 
 
   },
@@ -167,17 +155,7 @@ userSchema.methods.comparePassword = function(candidatePassword, cb) {
 
 
 
-userSchema.methods.deleteDomain = function() {
 
-
-};
-
-//renew domain
-userSchema.methods.reactivate = function() {
-
-
-
-};
 
 userSchema.methods.fetch = function() {
 
