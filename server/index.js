@@ -92,7 +92,7 @@ if (app.get('env') === 'production') {
 
 
 app.set('view engine', 'pug');
-app.set('views', path.resolve(__dirname, 'views/pug'));
+app.set('views', path.resolve(__dirname, 'views/pug/starter'));
 app.set('json spaces', 2); // format json responses for easier viewing
 
 
