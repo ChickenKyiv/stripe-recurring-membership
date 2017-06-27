@@ -24,7 +24,6 @@ exports.deleteAccount = function(req, res, next){
     //     res.redirect(req.redirect.success);
     //   });
 
-        // user.deleteDomain.
         
 
     // });
