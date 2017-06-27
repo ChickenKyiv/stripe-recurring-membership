@@ -1,0 +1,20 @@
+form#billing.form-horizontal({%='', if='', !user.stripe.last4='', %}id='cardForm', endif='', %}='', action='/subscription/switch', method='POST')
+  .form-group
+    label.col-sm-3.control-label(for='plan')
+      | Plan
+    .col-sm-4
+      | {% for plan in plans %}
+      | {% if plan.change == true %}
+      | not free plan
+      | {% endif %}
+      | {% if plan.change == true %}
+      | {% include "_plan-partial.html" %}
+      | {% endif %}
+      | {% endfor %}
+  |   {% if !user.stripe.last4 %}
+  |     {% include "_stripe-card2-partial.html" %}
+  |   {% endif %}
+  .form-group
+    .col-sm-offset-3.col-sm-4
+      button.btn.btn-primary(type='submit')
+        | Update Plan

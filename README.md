@@ -38,14 +38,17 @@ Note: Stripe webhooks can be recieved at `https://your-url.com/stripe/events`.
 heroku create your-awesome-saas-product
 heroku addons:add mongohq
 heroku config:set SESSION_SECRET='your_secret';
-heroku config:set STRIPE_KEY='sk_test_example'
-heroku config:set STRIPE_PUB_KEY='pk_test_example'
+heroku config:set STRIPE_TEST_KEY='sk_test_example'
+heroku config:set STRIPE_TEST_PUB_KEY='pk_test_example'
 heroku config:set MAILGUN_USER='example.org'
 heroku config:set MAILGUN_PASSWORD='key-secret'
 heroku config:set GOOGLE_ANALYTICS='UA-XXXXXX-1'
+heroku config:set MONGODB_URI='mongodb://heroku_pl3qcvnq'
+
 ```
 
 Want add a heroku deploy button? Pull requests welcome :]
 
 Project scheme
 ![alt text](https://github.com/atherdon/stripe-recurring-membership/blob/master/docs/162f6342b3ee45ae9c5f338212d554dc.png)
+
