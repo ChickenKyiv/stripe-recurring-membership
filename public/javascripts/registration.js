@@ -85,93 +85,93 @@ $( document ).ready(function() {
 
 	
 
-	$('input[name=first_name]').keyup(function(){
+	// $('input[name=first_name]').keyup(function(){
 
-	  if($(this).val().length > 3){
-	  	$('#first_name_value').text($(this).val());
-	  } else {
-	  	$('#first_name_value').text($(this).val());
-	  }
+	//   if($(this).val().length > 3){
+	//   	$('#first_name_value').text($(this).val());
+	//   } else {
+	//   	$('#first_name_value').text($(this).val());
+	//   }
 	   
 	
-	});
+	// });
 
-	$('input[name=last_name]').keyup(function(){
+	// $('input[name=last_name]').keyup(function(){
 
-	  if($(this).val().length > 3){
-	  	$('#last_name_value').text($(this).val());
-	  } else {
-	  	$('#last_name_value').text($(this).val());
-	  }
+	//   if($(this).val().length > 3){
+	//   	$('#last_name_value').text($(this).val());
+	//   } else {
+	//   	$('#last_name_value').text($(this).val());
+	//   }
 	   
 	
-	});
+	// });
 
-	$('input[name=company_name]').keyup(function(){
+	// $('input[name=company_name]').keyup(function(){
 
-	  if($(this).val().length > 3){
-	  	$('#company_name_value').text($(this).val());
-	  } else {
-	  	$('#company_name_value').text($(this).val());
-	  }
+	//   if($(this).val().length > 3){
+	//   	$('#company_name_value').text($(this).val());
+	//   } else {
+	//   	$('#company_name_value').text($(this).val());
+	//   }
 	   
 	
-	});
+	// });
 
-	$('input[name=address1]').keyup(function(){
+	// $('input[name=address1]').keyup(function(){
 
-	  if($(this).val().length > 3){
-	  	$('#address1_value').text($(this).val());
-	  } else {
-	  	$('#address1_value').text($(this).val());
-	  }
+	//   if($(this).val().length > 3){
+	//   	$('#address1_value').text($(this).val());
+	//   } else {
+	//   	$('#address1_value').text($(this).val());
+	//   }
 	   
 	
-	});	
+	// });	
 
-	$('input[name=city]').keyup(function(){
+	// $('input[name=city]').keyup(function(){
 
-	  if($(this).val().length > 3){
-	  	$('#city_value').text($(this).val());
-	  } else {
-	  	$('#city_value').text($(this).val());
-	  }
+	//   if($(this).val().length > 3){
+	//   	$('#city_value').text($(this).val());
+	//   } else {
+	//   	$('#city_value').text($(this).val());
+	//   }
 	   
 	
-	});	
+	// });	
 
-	$('#country').on('change', function(){
+	// $('#country').on('change', function(){
 
-	  // if($(this).val().length > 3){
-	  	$('#country_value').text($(this).val());
-	  // } else {
-	  	// $('#city_value').text($(this).val());
-	  // }
+	//   // if($(this).val().length > 3){
+	//   	$('#country_value').text($(this).val());
+	//   // } else {
+	//   	// $('#city_value').text($(this).val());
+	//   // }
 	   
 	
-	});	
+	// });	
 
-	$('input[name=phone]').keyup(function(){
+	// $('input[name=phone]').keyup(function(){
 
-	  if($(this).val().length > 3){
-	  	$('#phone_value').text($(this).val());
-	  } else {
-	  	$('#phone_value').text($(this).val());
-	  }
+	//   if($(this).val().length > 3){
+	//   	$('#phone_value').text($(this).val());
+	//   } else {
+	//   	$('#phone_value').text($(this).val());
+	//   }
 	   
 	
-	});
+	// });
 
-	$('input[name=fax]').keyup(function(){
+	// $('input[name=fax]').keyup(function(){
 
-	  if($(this).val().length > 3){
-	  	$('#fax_value').text($(this).val());
-	  } else {
-	  	$('#fax_value').text($(this).val());
-	  }
+	//   if($(this).val().length > 3){
+	//   	$('#fax_value').text($(this).val());
+	//   } else {
+	//   	$('#fax_value').text($(this).val());
+	//   }
 	   
 	
-	});	
+	// });	
 
 	
 	// full name

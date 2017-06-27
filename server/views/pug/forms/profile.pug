@@ -23,30 +23,16 @@ form.form-horizontal(action='/profile/update', method='POST')
     label.col-sm-3.control-label(for='name') Plan
     .col-sm-4
       p.form-control-static
-      
+
   .form-group
     label.col-sm-3.control-label(for='name') Last 4
     .col-sm-4
       p.form-control-static {{user.stripe.last4}}
 
-  .form-group
-    label.col-sm-3.control-label(for='domain') Domain name
-    .col-sm-4
-      input#domain.form-control(type='text', name='domain', value='{{domain}}', disabled='')
+  
 
-  // @TODO - maybe remove this field, because we have update this field on other pages
-  //<div class="form-group"><label for="forward_email" class="col-sm-3 control-label"></label><div class="col-sm-4"></div></div>
 
-  .form-group
-    label.col-sm-3.control-label(for='name') Phone
-    .col-sm-4
-      | {% include "fields/phone-field.html" %}
-      // <span class="required">*</span>
 
-  .form-group
-    label.col-sm-3.control-label(for='name') Fax
-    .col-sm-4
-      | {% include "fields/phone-field.html" with {'value':user.profile.fax, 'name':'fax', 'placeholder':'Fax number'} %}
 
   .form-group
     .col-sm-offset-3.col-sm-4
