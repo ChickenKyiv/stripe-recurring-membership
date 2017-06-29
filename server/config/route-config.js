@@ -8,7 +8,7 @@
 
 	//@TODO test this paths
 	const homepage  = require('../routes/homepage');
-	const search    = require('../routes/search');
+	// const search    = require('../routes/search');
 
 	const forgot    = require('../routes/forgot');
 	// const stripeHooks = require('./routes/webhooks');
@@ -25,11 +25,12 @@
     // *** register routes *** //  
 
 	homepage(app, passport);
-	search(app, passport);
+	
 	forgot(app, passport);
 	// stripeHooks(app, passport);
 	registration(app, passport);
 	login(app, passport);
+	
 	users(app, passport);
 	// dashboard(app, passport);
 	profile(app, passport);

@@ -180,17 +180,6 @@ app.use(viewHelper);
 // setup routes
 routeConfig.init(app, passport);
 
-// homepage(app, passport);
-// search(app, passport);
-// forgot(app, passport);
-// // stripeHooks(app, passport);
-// registration(app, passport);
-// login(app, passport);
-// users(app, passport);
-// // dashboard(app, passport);
-// profile(app, passport);
-
-
 /// catch 404 and forwarding to error handler
 app.use(errorHandler.notFound);
 

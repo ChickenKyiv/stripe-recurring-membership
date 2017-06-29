@@ -51,13 +51,4 @@ module.exports = function (app, passport) {
 	   .get(users.deleteAccount);	
 	   
 
-  app.route('/user/forward-email')
-	   .all(setRedirect({auth: '/', success: '/profile', failure: '/user/forward-email'})) //@TODO change redirect object
-	   .all(isAuthenticated)	
-	   .get(setRender('dashboard/forward-email'), users.updateForwardEmail)
-	   .post(users.postForwardEmail); ///user/update-forward-email
-
-
-
-
 };
