@@ -95,3 +95,17 @@ Want add a heroku deploy button? Pull requests welcome :]
 Project scheme
 ![alt text](https://github.com/atherdon/stripe-recurring-membership/blob/master/docs/162f6342b3ee45ae9c5f338212d554dc.png)
 
+
+![demo](https://github.com/atherdon/stripe-recurring-membership/blob/master/docs/localhost-3000-billing-form.png)
+
+![demo](https://github.com/atherdon/stripe-recurring-membership/blob/master/docs/localhost-3000-profile-update.png)
+
+![demo](https://github.com/atherdon/stripe-recurring-membership/blob/master/docs/stripe-a.herokuapp.com-profile.png)
+
+![demo](https://github.com/atherdon/stripe-recurring-membership/blob/master/docs/stripe-a.herokuapp.com-signup2.png)
+
+![demo](https://github.com/atherdon/stripe-recurring-membership/blob/master/docs/stripe-a.herokuapp.com-update-card.png)
+
+![demo](https://github.com/atherdon/stripe-recurring-membership/blob/master/docs/stripe-a.herokuapp.com-user-password.png)
+
+![demo](https://github.com/atherdon/stripe-recurring-membership/blob/master/docs/stripe-a.herokuapp.com-whois.png)
