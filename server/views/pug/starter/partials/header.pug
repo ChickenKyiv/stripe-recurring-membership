@@ -6,7 +6,7 @@
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand(href='/')
+      a.navbar-brand(href='/dashboard')
         i.fa.fa-cube
         | Project name
     .collapse.navbar-collapse
@@ -24,7 +24,11 @@
           li(class=(title == 'Login') ? 'active' : undefined)
             a(href='/login') Login
           li(class=(title == 'Create Account') ? 'active' : undefined)
-            a(href='/signup') Create Account
+            a(href='/signup2') Create Account
+
+          li(class=(title == 'Forgot Password') ? 'active' : undefined)
+            a(href='/forgot') Forgot Password
+
         else
           li.dropdown(class=(title == 'Account Management') ? 'active' : undefined)
             a.dropdown-toggle(href='#', data-toggle='dropdown')

@@ -21,14 +21,14 @@ module.exports = function (app, passport) {
   // });
 
   app.route('/')
-     .all(setRedirect({auth: '/dashboard', search: '/domain-search'}))
+     .all(setRedirect({auth: '/dashboard'}))
      .all(isUnauthenticated)
-     .get(setRender('homepage'), homepage.getHome);
+     .get(setRender('home'), homepage.getHome);
 
 
     app.route('/userlist')
-     .all(setRedirect({auth: '/', search: '/'}))
+     .all(setRedirect({auth: '/'}))
      // .all(isUnauthenticated)
-     .get(setRender('homepage'), test.getUsers);   
+     .get(setRender('home'), test.getUsers);   
 
 };

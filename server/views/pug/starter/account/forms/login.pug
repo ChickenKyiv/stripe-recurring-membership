@@ -1,0 +1,10 @@
+form(accept-charset='UTF-8', action='/login', method='POST', role='form')
+  .form-group
+    label(for='email') Email
+    input#email.form-control(name='email', type='text', value=email, autofocus='')
+
+  .form-group
+    label(for='user_password') Password
+    input.form-control(type='password', name='password', placeholder='Password')
+
+  button.btn.btn-lg.btn-primary.btn-block(type='submit') Sign in
