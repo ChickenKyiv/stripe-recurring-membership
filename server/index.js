@@ -34,22 +34,6 @@ var staticDir;
 
 
 
-// var homepage     = require('./routes/homepage');
-// var search = require('./routes/search');
-
-// var forgot    = require('./routes/forgot');
-// // var stripeHooks = require('./routes/webhooks');
-// var registration = require('./routes/registration');
-// var login =  require('./routes/login');
-
-// // @TODO maybe rename to profile?
-// var users = require('./routes/user');
-
-// var profile = require('./routes/profile');
-
-
-
-
 // setup db
 mongoose.connect(secrets.db);
 mongoose.connection.on('error', function() {
