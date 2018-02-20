@@ -49,7 +49,7 @@
     "mongoose": "^5.0.0",
     "morgan": "~1.9.0",
     "nodemailer": "^4.0.1",
-    "nodemailer-express-handlebars": "^2.0.0",
+    "nodemailer-express-handlebars": "^3.0.0",
     "nodemailer-mailgunapi-transport": "0.0.3",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
