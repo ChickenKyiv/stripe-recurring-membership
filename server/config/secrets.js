@@ -1,6 +1,6 @@
 var dotenv = require('dotenv');
-// // There's no need to check if .env exists, dotenv will check this 
-// // for you. It will show a small warning which can be disabled when 
+// // There's no need to check if .env exists, dotenv will check this
+// // for you. It will show a small warning which can be disabled when
 // // using this in production.
 
 dotenv.load();
@@ -10,7 +10,7 @@ dotenv.load();
 
 module.exports = {
 
-  db: process.env.MONGODB_URI || 'mongodb://localhost/stripe',
+  db: process.env.MONGODB_URI || 'mongodb://heroku_r9wdks9x:705ed3cpj3cqhn7grhjrss3q7a@ds245150.mlab.com:45150/heroku_r9wdks9x',
 
   sessionSecret: process.env.SESSION_SECRET || '34SDgsdgspxxxxxxxdfsG', //you can use a long random string
 
@@ -31,12 +31,12 @@ module.exports = {
         pass: 'ArtJeremieIO123'    //EMAIL_PASSWORD
     },
 
-    logger : true, 
+    logger : true,
     debug  : true
 
   },
 
-   
+
 
 
 
@@ -86,7 +86,7 @@ module.exports = {
       "liveSecretKey": "sk_live_"
     }
   }
-}, 
+},
 
 
 
@@ -94,5 +94,5 @@ module.exports = {
 
   googleAnalytics: process.env.GOOGLE_ANALYTICS || 'UA-96603282-1'
 
-  
+
 };
