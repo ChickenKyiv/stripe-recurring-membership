@@ -1,6 +1,6 @@
 var dotenv = require('dotenv');
-// // There's no need to check if .env exists, dotenv will check this 
-// // for you. It will show a small warning which can be disabled when 
+// // There's no need to check if .env exists, dotenv will check this
+// // for you. It will show a small warning which can be disabled when
 // // using this in production.
 
 dotenv.load();
@@ -10,7 +10,7 @@ dotenv.load();
 
 module.exports = {
 
-  db: process.env.MONGODB_URI || 'mongodb://localhost/stripe',
+  db: process.env.MONGODB_URI || 'mongodb://heroku_r9wdks9x:705ed3cpj3cqhn7grhjrss3q7a@ds245150.mlab.com:45150/heroku_r9wdks9x',
 
   sessionSecret: process.env.SESSION_SECRET || '34SDgsdgspxxxxxxxdfsG', //you can use a long random string
 
@@ -21,21 +21,21 @@ module.exports = {
   },
 
   // poolConfig for SMTP, nodemailer package
-  // emailServer: {
+  emailServer: {
 
-  //   pool: true,
-  //   host: '', //EMAIL_HOST
-  //   port: 465,
-  //   secure: true, // use TLS
-  //   auth: {
-  //       user: '', //EMAIL_USERNAME
-  //       pass: ''  //EMAIL_PASSWORD
-  //   },
+    pool: true,
+    host: '', //EMAIL_HOST
+    port: 465,
+    secure: true, // use TLS
+    auth: {
+        user: '', //EMAIL_USERNAME
+        pass: ''  //EMAIL_PASSWORD
+    },
 
-  //   logger : true, 
-  //   debug  : true
+    logger : true,
+    debug  : true
 
-  // },
+  },
 
   stripeNextVersion:{
     "public": {
@@ -81,10 +81,10 @@ module.exports = {
       "liveSecretKey": "sk_live_"
     }
   }
-}, 
+},
 
 
   googleAnalytics: process.env.GOOGLE_ANALYTICS || ''
 
-  
+
 };
