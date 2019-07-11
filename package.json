@@ -44,7 +44,7 @@
     "express-subdomain": "^1.0.1",
     "express-validator": "^5.0.1",
     "keystone-email": "^1.0.5",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "middleware-responder": "^1.0.0",
     "mongoose": "^5.0.0",
     "morgan": "~1.9.1",
