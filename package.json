@@ -48,7 +48,7 @@
     "middleware-responder": "^1.0.0",
     "mongoose": "^5.0.0",
     "morgan": "~1.9.1",
-    "nodemailer": "^4.0.1",
+    "nodemailer": "^6.4.16",
     "nodemailer-express-handlebars": "^3.0.0",
     "nodemailer-mailgunapi-transport": "0.0.3",
     "passport": "^0.4.0",
