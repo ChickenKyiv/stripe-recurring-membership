@@ -42,7 +42,7 @@
     "express-flash": "*",
     "express-session": "*",
     "express-subdomain": "^1.0.1",
-    "express-validator": "^5.0.1",
+    "express-validator": "^6.9.2",
     "keystone-email": "^1.0.5",
     "lodash": "^4.17.11",
     "middleware-responder": "^1.0.0",
